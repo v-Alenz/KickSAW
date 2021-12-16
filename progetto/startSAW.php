@@ -14,9 +14,10 @@
 <?php
 include "navbar.php";
 ?>
+
 <div class="sfondopagprincipale">
 
-    <div class= "container">
+    <div class= "container sfondopagprincipale">
         <div class="row">
             <div class="col-2">
                 <h1>Coca<br>puzzo!</h1>

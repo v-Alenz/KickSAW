@@ -14,7 +14,6 @@
 <?php
 include "navbar.php";
 ?>
-<div class="sfondopagprincipale">
 
 
 <div class="account-page">
@@ -24,17 +23,16 @@ include "navbar.php";
                 <img class="img" src="immagini/gabibbo.jpg" alt="">
             </div>
             <div class="col-2">
-                <div class="form-container">
+                <div class="form-container reg">
                     <div class="form-btn">
                         <span>Registrati</span>
-                        <hr id="Indicator">
                     </div>
                     <form action="registration.php" method="post">
-                            <input type="text" name="firstname" placeholder="Nome">
-                            <input type="text" name="lastname" placeholder="Cognome">
-                            <input type="email" name="email" placeholder="Email">
-                            <input type="password" name="pass" placeholder="Password">
-                            <input type="password" name="confirm" placeholder="Conferma password">
+                            <input type="text" name="firstname" placeholder="Nome" class="form-control">
+                            <input type="text" name="lastname" placeholder="Cognome" class="form-control">
+                            <input type="email" name="email" placeholder="Email" class="form-control">
+                            <input type="password" name="pass" placeholder="Password" class="form-control">
+                            <input type="password" name="confirm" placeholder="Conferma password" class="form-control">
                             <input type="submit" name="submit" value="Registrati" class="btn">
                     </form>
                 </div> 
@@ -43,7 +41,6 @@ include "navbar.php";
     </div>
 </div>
 
-</div>
 
 <?php
 include "footer.php";

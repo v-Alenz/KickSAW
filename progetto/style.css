@@ -57,7 +57,7 @@ p{
 }
 
 .sfondonavbar{   
-    background: /*radial-gradient(#fff, #ffd6d6);*/ #fff;
+    background: /*radial-gradient(#fff, #ffd6d6);*/ rgb(255, 255, 255);
 }
 
 .row{
@@ -91,11 +91,14 @@ p{
     margin: 30px 0;
     border-radius: 30px;
     transition: background 0.5s;
+    font-weight: bold;
+    font-size: medium;
 }
 
 .btn:hover{
     background: #563434;
 }
+
 
 .sfondopagprincipale{   
     background: radial-gradient(#fff, #dad6ff); /*#fff;  ffd6d6*/
@@ -246,41 +249,53 @@ ul{
 
 
 /* ---------------campo ricerca---------------- */
+
 #ricerca{
     padding:15px;
     color:#ffffff;
     background:#35424a
-  }
+}
   
-  #ricerca h1{
+#ricerca h1{
     float:left;
-  }
+    margin: auto;
+    width: 50%;
+    padding: 25px;
+}
   
-  #ricerca form {
+#ricerca form {
     float:right;
     margin-top:10px;
-  }
+}
   
-  #ricerca input[type="text"]{
+#ricerca input[type="text"]{
     padding:17px;
-    height:25px;
+    height: 40px;
     width:250px;
-  }
-
-  .button_1{
-    height:38px;
-    background:#e8491d;
-    border:0;
-    padding-left: 20px;
-    padding-right:20px;
-    color:#ffffff;
-  }
-
-  .button_1:hover{
-    background: #563434;
+    border: 1px solid #ff523b;
+    font-size: 15px;
+    margin-right: 10px;
 }
 
 
+.btnsmall{
+    display: inline-block;
+    background:#e8491d;
+    color:#ffffff;
+    padding-left: 20px;
+    padding-right:20px;
+    border-radius: 30px;    /* rendere tondo il bottone*/
+    transition: background 0.5s;
+    font-weight: bold;
+    font-size: medium;
+    height:38px;
+    border:0;
+  }
+
+
+.btnsmall:hover{
+    background: #563434;
+}
 
 /*-------------Registration/Login pages---------------------*/
 
@@ -295,8 +310,7 @@ ul{
 
 .form-container{
     background: #fff;
-    width: 300px;
-    height: 400px;
+    width: 400px;
     position: relative;
     text-align: center;
     padding: 20px 0;
@@ -304,24 +318,35 @@ ul{
     box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
 }
 
+.log{
+    height: 300px;
+}
+
+.reg{
+    height: 500px;   
+}
+
+
 .form-container span{
     font-weight: bold;
     padding: 0 10px;
     color: #555;
     cursor: pointer;
-    width: 100px;
+    width: 150px;
     display: inline-block;
+    font-size: x-large;
 }
 
 .form-btn{
     display: inline-block;
+    border-bottom: 1px solid #333;
+    margin-bottom: 25px;
+
 }
 
 .form-container form{
     max-width: 300px;
     padding: 0 20px;
-    /*position: absolute;
-    top: 130px;*/
 }
 
 form input{
@@ -329,11 +354,11 @@ form input{
     height: 30px;
     margin: 10px 0;
     padding: 0 10px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(255, 255, 255);
 }
 
 form .btn{
-    width: 100%;
+    width: 360px;
     border: none;
     cursor: pointer;
     margin: 10px 0;
@@ -343,11 +368,48 @@ form .btn:focus{
     outline: none;
 }
 
-#indicator{
-    width: 100px;
+.form-control{
+    border: 1px solid #333;
     border: none;
-    background: #ff523b;
-    height: 3px;
-    margin-top: 8px;
-    transform: translateX(100px);
+    border-bottom: 1px solid #333;
+    display: relative;
+    width: 350px;
+    height: 30px;
+    padding-right: 0;
+    margin-bottom: 25px;
+}
+
+/*---------dettaglio progetto---------------------*/
+
+.single-product{
+    margin-top: 0.05px;         /**/
+}
+
+.single-product .col-2 img{
+    padding: 0;
+    margin-top: 80px;
+}
+
+.single-product .col-2{
+    padding: 20px;
+    text-align: center;
+}
+
+.single-product h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ff523b;
+}
+
+input:focus{
+    outline: none;
 }

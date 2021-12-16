@@ -21,7 +21,7 @@ include "navbar.php";
             <h1>Progetti</h1>
             <form>
                 <input type="text" placeholder="Cerca...">
-                <button type="submit" class="button_1">Cerca</button>
+                <button type="submit" class="btnsmall">Cerca</button>
             </form>
         </div>
     </section> 
@@ -31,9 +31,9 @@ include "navbar.php";
         <div class="row">
 
             <div class="col-4">
-                <img src ="immagini/placeholder.jpg" alt="progetto">
+                <a href=""><img src ="immagini/placeholder.jpg" alt="progetto">
                 <h4> Boia </h4>
-                <p> b </p>
+                <p> b </p></a>
             </div>        
             
         </div>

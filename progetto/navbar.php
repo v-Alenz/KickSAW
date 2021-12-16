@@ -1,7 +1,7 @@
 <div class="sfondonavbar">
     <div class="navbar">
         <div class="logo">
-            <img class="logo_img" src="immagini/logo.png" alt="logo">
+            <a href=""><img class="logo_img" src="immagini/logo.png" alt="logo"></a>
         </div>
         <nav>
             <ul id="MenuItems">

@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <title> StartSAW </title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
 <body>
 
 <?php
-include "navbar.php";
+include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 ?>
 
 <div class="sfondopagprincipale">
@@ -20,7 +20,7 @@ include "navbar.php";
 
         <div class="row">
             <div class="col-2">
-                <img src="immagini/ilgabibbo.jpg" alt="progetto" >
+                <img src="/progetto/immagini/ilgabibbo.jpg" alt="progetto" >
             </div>
             <div class="col-2">
                 <h1>Titolo progetto</h1>
@@ -28,7 +28,7 @@ include "navbar.php";
                 <br>
                 <h4>Soldi raccolti : €</h4>
                 <h4>Su un obiettivo di: €</h4>
-                €<input type="number" min="1" value="1" step="any">
+                <div> € : <input type="int" min="1" value="1" step="any"> </div>
                 <a href="" class="btn">Sostieni questo progetto</a>
 
             </div>
@@ -45,7 +45,7 @@ include "navbar.php";
 </div>
 
 <?php
-include "footer.php";
+include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
 ?>
 
 </body>

@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <title> StartSAW </title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
 <body>
 
 <?php
-include "navbar.php";
+include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 ?>
 
 <div class="sfondopagprincipale">
@@ -31,7 +31,7 @@ include "navbar.php";
         <div class="row">
 
             <div class="col-4">
-                <a href=""><img src ="immagini/placeholder.jpg" alt="progetto">
+                <a href="/progetto/dettaglioprogetto.php"><img src ="/progetto/immagini/placeholder.jpg" alt="progetto">
                 <h4> Boia </h4>
                 <p> b </p></a>
             </div>        
@@ -45,7 +45,7 @@ include "navbar.php";
 
 
 <?php
-include "footer.php";
+include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
 ?>
 
 </body>

@@ -118,7 +118,7 @@ p{
     padding: 10px;
     min-width: 200px;
     margin-bottom: 50px;
-    transition: transform 0.5s;
+    transition: trans- 0.5s;
 }
 
 .col-4 img{
@@ -319,11 +319,21 @@ ul{
 }
 
 .log{
-    height: 300px;
+    height: 350px;
 }
 
 .reg{
-    height: 500px;   
+    height: 530px;   
+}
+
+.msg{
+    height: 200px;
+    padding: 70px 0;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    width: 500px;
+
 }
 
 
@@ -402,7 +412,7 @@ form .btn:focus{
 }
 
 .single-product input{
-    width: 50px;
+    width: 100px;
     height: 40px;
     padding-left: 10px;
     font-size: 20px;
@@ -413,3 +423,99 @@ form .btn:focus{
 input:focus{
     outline: none;
 }
+
+/*class javascript error*/
+
+.error{
+
+    color : red;
+    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+    
+}
+
+/*navbar account*/
+
+.wrapper{
+    position: relative;
+    display: flex;
+    background: #f0beb8;
+
+}
+
+.wrapper .sidebar{
+    width: 200px;
+    height: 700px;
+    background: #4b4276;
+    padding: 30px 0;
+}
+
+.wrapper .sidebar ul li{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(225,225,225,0.5);
+
+}
+
+.wrapper .sidebar a{
+    color: #bdb8d7;
+    display: block;
+    font-weight: bold;
+
+}
+
+.wrapper .sidebar ul li:hover{
+    background: #594f8d;
+}
+
+.wrapper .sidebar ul li:hover a{
+    color:#fff;
+}
+
+.wrapper .content{
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 20px;
+    
+}
+
+.wrapper .content .header{
+    padding: 20px;
+    background: #4b4276;
+    color: #ffffff;
+    border-bottom: 1px solid #e0e4e8;
+    font-weight: bold;
+
+}
+
+.wrapper .content .info{
+    margin: 20px;
+    color: #000000;
+    line-height: 25px;
+    font-size: large;
+    font-weight: bold;
+
+}
+
+.wrapper .content .info div{
+    margin-bottom: 20px;
+}
+
+/*------- Tabella tutti gli utenti---------*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: none;
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #4b4276;
+    color: #fff;
+  }

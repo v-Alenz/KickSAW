@@ -1,0 +1,58 @@
+<?php
+
+//session_start();
+
+if($_SESSION["rid"] === "2" ){
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+
+    $query="SELECT * FROM utente";
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+
+    $res=mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($res) ===  0){
+            
+        echo"Tabella vuota!";
+
+    }else{
+
+        echo"<table>";
+        echo"<tr>";
+            echo"<th>Nome</th>";
+            echo"<th>Cognome</th>";
+            echo"<th>Email</th>";
+            echo"<th>Data di nascita</th>";
+            echo"<th>Indirizzo</th>";
+            echo"<th>Genere</th>";
+            echo"<th>Saldo</th>";
+        echo"</tr>";
+
+        while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
+
+            echo"<tr>";
+                echo"<td>". $row['nome'] . "</td>";
+                echo"<td>". $row['cognome']. "</td>";
+                echo"<td>". $row['email']. "</td>";
+                echo"<td>". $row['datan']. "</td>";
+                echo"<td>". $row['indirizzo']. "</td>";
+                echo"<td>". $row['genere']. "</td>";
+                echo"<td>". $row['saldo']. "</td>";
+            echo"</tr>";
+
+        }
+
+        echo"</table>";
+
+    }
+
+}else{
+    echo("Errore, riprova più tardi!");
+    header("Refresh:2; url=/progetto/startSAW.php");
+
+}
+
+?>

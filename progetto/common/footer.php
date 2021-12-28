@@ -8,7 +8,7 @@
             </div>
 
             <div class="footer-col-2">
-                <img class="logo_img" src="immagini/logo.png" alt="logo">
+                <img class="logo_img" src="/progetto/immagini/logo.png" alt="logo">
                 <p>dura </p>
             </div>
 

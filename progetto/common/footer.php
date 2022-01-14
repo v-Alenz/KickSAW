@@ -30,6 +30,6 @@
 
         </div>
         <hr>
-        <p class="copyright">Copyright 2021 - a </p>
+        <p class="copyright">Copyright 2021 - StarterPunch </p>
     </div>
 </div>

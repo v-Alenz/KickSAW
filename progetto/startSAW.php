@@ -28,6 +28,14 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                 <img src="/progetto/immagini/informatics.jpg" alt="computer in rete" class="img">
             </div>
         </div>
+        <div class="copyright">
+            <br> <br>
+            <h3> Su questo sito potrai supportare progetti o proporne di nuovi </h3>
+            <br>
+            <p> Visita il catalogo per visualizzare i vari progetti che richiedono fondi per diventare realtà! </p>
+            <p> Puoi inoltre pubblicare un tuo progetto personale diventando un utente premium </p>
+            <br> <br> <br>
+        </div>
     </div>
 
 </div>

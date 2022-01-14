@@ -3,30 +3,28 @@
         <div class="row">
 
             <div class="footer-col-1">
-                <h3> fava </h3>
-                <p>lunga </p>
+                <h3> Condizioni d'uso </h3>
+                <p> Policy </p>
             </div>
 
             <div class="footer-col-2">
-                <img class="logo_img" src="/progetto/immagini/logo.png" alt="logo">
-                <p>dura </p>
+                <img class="logo_img" src="/progetto/immagini/logo_piccolo.jpg" alt="logo">
             </div>
 
             <div class="footer-col-3">
-                <h3> Links utili </h3>
+                <h3> Link utili </h3>
                 <ul>
-                    <li>pornhub</li>
-                    <li>grinder</li>
-                    <li>grundax</li>
+                    <li>FAQ</li>
+                    <li>Contatti</li>
+                    <li>Accessibilità</li>
                 </ul>
             </div>
 
             <div class="footer-col-3">
-                <h3> Links utili </h3>
+                <h3> Promuovi il tuo progetto </h3>
                 <ul>
-                    <li>pornhub</li>
-                    <li>grinder</li>
-                    <li>grundax</li>
+                    <li>Ottieni account premium</li>
+                    <li>Crea progetti</li>
                 </ul>
             </div>
 

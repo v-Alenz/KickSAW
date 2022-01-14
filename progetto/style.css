@@ -56,7 +56,7 @@ p{
     margin: auto;
 }
 
-.sfondonavbar{   
+.sfondonavbar{
     background: /*radial-gradient(#fff, #ffd6d6);*/ rgb(255, 255, 255);
 }
 
@@ -100,7 +100,7 @@ p{
 }
 
 
-.sfondopagprincipale{   
+.sfondopagprincipale{
     background: radial-gradient(#fff, #dad6ff); /*#fff;  ffd6d6*/
 }
 
@@ -173,6 +173,7 @@ h4{
 
 .footer-col-2 img{
     width: 180px;
+    height: 180px;
     margin-bottom: 20px;
 }
 
@@ -193,7 +194,7 @@ ul{
 }
 
 .copyright{
-    text-align: center;    
+    text-align: center;
 }
 
 .menu-icon{
@@ -255,19 +256,19 @@ ul{
     color:#ffffff;
     background:#35424a
 }
-  
+
 #ricerca h1{
     float:left;
     margin: auto;
     width: 50%;
     padding: 25px;
 }
-  
+
 #ricerca form {
     float:right;
     margin-top:10px;
 }
-  
+
 #ricerca input[type="text"]{
     padding:17px;
     height: 40px;
@@ -323,7 +324,7 @@ ul{
 }
 
 .reg{
-    height: 530px;   
+    height: 530px;
 }
 
 .msg{
@@ -432,7 +433,7 @@ input:focus{
     text-align: left;
     padding-left: 10px;
     font-weight: bold;
-    
+
 }
 
 /*navbar account*/
@@ -477,7 +478,7 @@ input:focus{
     width: 100%;
     margin-left: 20px;
     margin-top: 20px;
-    
+
 }
 
 .wrapper .content .header{
@@ -508,7 +509,7 @@ table {
     border-collapse: collapse;
     width: 100%;
   }
-  
+
   td, th {
     border: none;
     text-align: left;

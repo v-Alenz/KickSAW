@@ -5,13 +5,12 @@
     <title> Login </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 <body>
-          
+
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 ?>
@@ -19,8 +18,8 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 <div class="account-page">
     <div class="container">
         <div class="col-2">
-            <div class="form-container msg">   
-                
+            <div class="form-container msg">
+
 <?php
 
 //session_start();
@@ -48,7 +47,7 @@ if(isset($_POST["submit"])){
         $res=mysqli_stmt_get_result($stmt);
 
         if (mysqli_num_rows($res) === 1){
-            
+
             $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
             if( password_verify($pass, $row["password"]) ){

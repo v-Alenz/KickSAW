@@ -1,7 +1,7 @@
 <div class="sfondonavbar">
     <div class="navbar">
         <div class="logo">
-            <a href="/progetto/startSAW.php"><img class="logo_img" src="/progetto/immagini/logo.png" alt="logo"></a>
+            <a href="/progetto/startSAW.php"><img class="logo_img" src="/progetto/immagini/logo_grosso.jpg" alt="logo"></a>
         </div>
         <nav>
             <ul id="MenuItems">
@@ -10,12 +10,12 @@
                 <?php
                 session_start();
                 if(!isset($_SESSION["loggato"])){
-                    echo '<li><a href="/progetto/formlogin.php">Loggati</a><img class="_img"src="/progetto/immagini/account.png" alt="loggati"></li>';
-                    echo '<li><a href="/progetto/formregistration.php">Registrati </a><img class="_img"src="/progetto/immagini/registration.png" alt="registrati"></li>';
-                }else{ 
+                    echo '<li><a href="/progetto/formlogin.php">Login</a><img class="_img"src="/progetto/immagini/account.png" alt="Login"></li>';
+                    echo '<li><a href="/progetto/formregistration.php">Registrati </a><img class="_img"src="/progetto/immagini/registration.png" alt="Registrati"></li>';
+                }else{
                     echo '<li><a href="/progetto/account/show_profile.php">Account</a><img class="_img"src="/progetto/immagini/account.png" alt="Account"></li>';
                     echo '<li><a href="/progetto/account/logout.php">Esci</a><img class="_img"src="/progetto/immagini/logout.png" alt="logout"></li>';
-                } 
+                }
                 ?>
             </ul>
         </nav>
@@ -24,4 +24,3 @@
 </div>
 
 <script src="/progetto/common/reducemainmenu.js"></script>
-

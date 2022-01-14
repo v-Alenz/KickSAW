@@ -5,13 +5,12 @@
     <title> Login </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 <body>
-    
+
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 ?>
@@ -32,12 +31,12 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                             <div id="passerror" class="error"></div>
                             <input type="submit" name="submit" value="Loggati" class="btn">
                     </form>
-                </div> 
+                </div>
            </div>
             <div class="col-2">
                 <img class="img" src="/progetto/immagini/gabibbo.jpg" alt="">
             </div>
-        </div>      
+        </div>
     </div>
 </div>
 

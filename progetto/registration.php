@@ -5,9 +5,9 @@
     <title> Registrazione </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 <body>
 
@@ -36,7 +36,7 @@ if(isset($_POST["submit"])){
     if(!empty($nome) & !empty($cognome) & !empty($email) & !empty($pass) & !empty($confpass)){
 
         if( $pass === $confpass){
-            
+
             include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkemail.php";
 
             if ( $emailusata === 0){

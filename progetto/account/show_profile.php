@@ -4,16 +4,15 @@
     <title> Visualizza profilo </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 <body>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
-                
+
 //session_start();
 
 if(isset($_SESSION["loggato"])){
@@ -33,23 +32,23 @@ if(isset($_SESSION["loggato"])){
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
                 $query = "SELECT * FROM utente where uid = ? ";
-                
+
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"]);
-                
+
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
-                
+
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
-                
+
                 $res=mysqli_stmt_get_result($stmt);
-                
+
                 if(mysqli_num_rows($res) === 1){
 
                     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-                    
+
                     ?>
-                    
+
                     <div>Nome : <?php echo $row["nome"] ?> </div>
 
                     <div>Cognome : <?php echo $row["cognome"] ?> </div>
@@ -76,7 +75,7 @@ if(isset($_SESSION["loggato"])){
 
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 
 <?php

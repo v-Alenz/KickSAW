@@ -4,9 +4,9 @@
     <title> StartSAW </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 <body>
 
@@ -24,7 +24,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                 <button type="submit" class="btnsmall">Cerca</button>
             </form>
         </div>
-    </section> 
+    </section>
 
     <div class="small-container">
 
@@ -34,14 +34,14 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                 <a href="/progetto/dettaglioprogetto.php"><img src ="/progetto/immagini/placeholder.jpg" alt="progetto">
                 <h4> Boia </h4>
                 <p> b </p></a>
-            </div>        
-            
+            </div>
+
         </div>
-        
 
-    </div>  
 
-</div>  
+    </div>
+
+</div>
 
 
 <?php

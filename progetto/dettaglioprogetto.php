@@ -38,7 +38,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
     <div class="small-container single-product">
         <h4>In dettaglio di cosa si tratta...</h4>
-        <p> aaaaaaa aaaaaaaa aaaaaa aaaa aaaaaaaaa aaaaaaa aaaaaaa aaaa aaaa aaaaa aaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaa aaaa .</p>
+        <p> aaaaaaa aaaaaaaa aaaaaa aaaa aaaaaaaaa aaaaaaa aaa .</p>
         <br><br><br><br>
     </div>
 

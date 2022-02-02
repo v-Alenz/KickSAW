@@ -9,7 +9,7 @@
         <li><a href="">Carica progetti</a></li>
         <?php
         //session_start();
-        if($_SESSION["rid"] === "2" ){       // 1 -> utente ; 2 -> admin ; 3 -> ...
+        if($_SESSION["rid"] === "admin" ){  
             echo '<li><a href="/progetto/account/admin/areaadmin.php">Area admin</a></li> ';
         }
         ?>

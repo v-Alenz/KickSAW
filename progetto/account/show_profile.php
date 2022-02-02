@@ -31,7 +31,7 @@ if(isset($_SESSION["loggato"])){
                 <?php
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-                $query = "SELECT * FROM utente where uid = ? ";
+                $query = "SELECT * FROM utente JOIN saldo ON idUtente=Utente_idUtente where idUtente = ? ";
 
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -55,13 +55,13 @@ if(isset($_SESSION["loggato"])){
 
                     <div>Email : <?php echo $row["email"] ?> </div>
 
-                    <div>Data di nascita : <?php echo $row["datan"] ?> </div>
+                    <div>Data di nascita : <?php echo $row["dataNascita"] ?> </div>
 
                     <div>Indirizzo : <?php echo $row["indirizzo"] ?> </div>
 
                     <div>Genere : <?php echo $row["genere"] ?> </div>
 
-                    <div>Saldo : <?php echo  $row["saldo"] ?> </div>
+                    <div>Saldo : <?php echo  $row["starterbits"] ?> </div>
 
 
                     <?php

@@ -38,13 +38,13 @@ if(isset($_POST["submit"])){
     if(!empty($nome) & !empty($cognome) & !empty($email)){
 
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkemail.php";
-        if ( $emailusata === 0){
+        //include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkemail.php";
+        //if ( $emailusata === 0){
 
 
             include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-                $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , datan = ?, indirizzo = ?, genere = ? where uid = ?";
+                $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
 
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -55,21 +55,21 @@ if(isset($_POST["submit"])){
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
                 if ( mysqli_affected_rows($conn) === 0){
-
+                  //controllare che la mail non ci sia già
                     echo("Errore, riprova più tardi!");
                     header("Refresh:2; url=/progetto/account/modificaprofilo.php");
 
                 }else{
-                    //echo("Modifica avvenuta con sucesso");
+                    echo("Modifica avvenuta con sucesso");
                     header("Refresh:2; url=/progetto/account/show_profile.php");
 
                 }
 
 
-            }else{
+          /*  }else{
                 //echo("Email già usata!");
                 header("Refresh:2; url=/progetto/account/modificaprofilo.php");
-            }
+            }*/
 
     }else{
         echo("Mancano dei dati importanti, riprova!");

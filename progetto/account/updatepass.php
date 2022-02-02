@@ -37,7 +37,7 @@ if(isset($_POST["submit"])){
 
             include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-            $query= "SELECT password FROM utente where uid = ?";
+            $query= "SELECT password FROM utente where idUtente = ?";
 
             include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -57,7 +57,7 @@ if(isset($_POST["submit"])){
 
                     $newpasscifr = password_hash($newpass, PASSWORD_DEFAULT);
 
-                    $query= "UPDATE utente set password = ? where uid = ?";
+                    $query= "UPDATE utente set password = ? where idUtente = ?";
 
                     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 

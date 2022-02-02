@@ -37,9 +37,7 @@ if(isset($_POST["submit"])){
 
         if( $pass === $confpass){
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkemail.php";
-
-            if ( $emailusata === 0){
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/verificamail.php";
 
 
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -62,16 +60,12 @@ if(isset($_POST["submit"])){
                     header("Refresh:2; url=/progetto/startSAW.php");
 
                 }else{
-                    //echo("Registrazione avvenuta con sucesso");
+
+                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/userdetails.php";
+                    echo("Registrazione avvenuta con sucesso");
                     header("Refresh:2; url=/progetto/startSAW.php");
 
                 }
-
-
-            }else{
-                //echo("Email già usata!");
-                header("Refresh:2; url=/progetto/formregistration.php");
-            }
 
         }else{
             echo("Le password non combaciano, riprova!");

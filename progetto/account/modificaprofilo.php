@@ -31,7 +31,7 @@ if(isset($_SESSION["loggato"])){
                 <?php
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-                $query = "SELECT * FROM utente where uid = ? ";
+                $query = "SELECT * FROM utente where idUtente = ? ";
 
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -52,7 +52,7 @@ if(isset($_SESSION["loggato"])){
                         <div>Nome : <input type="text" name="firstname" class="form-control" value="<?php echo $row['nome'] ?>" > </div>
                         <div>Cognome : <input type="text" name="lastname" class="form-control" value="<?php echo $row['cognome'] ?>" > </div>
                         <div>Email : <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>" > </div>
-                        <div>Data di nascita : <input type="date" name="datan" class="form-control" value="<?php echo $row['datan'] ?>" > </div>
+                        <div>Data di nascita : <input type="date" name="datan" class="form-control" value="<?php echo $row['dataNascita'] ?>" > </div>
                         <div>Indirizzo : <input type="text" name="indirizzo" class="form-control" value="<?php echo $row['indirizzo'] ?>" > </div>
                         <div>Genere :
                         <select name="genere" id="genere" class="form-control">

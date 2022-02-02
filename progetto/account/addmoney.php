@@ -34,7 +34,7 @@ if(isset($_POST["submit"])){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-        $query= "UPDATE utente set saldo = saldo + ? where uid = ?";
+        $query= "UPDATE saldo set starterbits = starterbits + ? where Utente_idUtente = ?";
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 

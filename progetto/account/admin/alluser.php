@@ -2,7 +2,7 @@
 
 //session_start();
 
-if($_SESSION["rid"] === "2" ){
+if($_SESSION["rid"] === "admin" ){
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
@@ -15,7 +15,7 @@ if($_SESSION["rid"] === "2" ){
     $res=mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($res) ===  0){
-            
+
         echo"Tabella vuota!";
 
     }else{
@@ -28,7 +28,6 @@ if($_SESSION["rid"] === "2" ){
             echo"<th>Data di nascita</th>";
             echo"<th>Indirizzo</th>";
             echo"<th>Genere</th>";
-            echo"<th>Saldo</th>";
         echo"</tr>";
 
         while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
@@ -40,7 +39,6 @@ if($_SESSION["rid"] === "2" ){
                 echo"<td>". $row['datan']. "</td>";
                 echo"<td>". $row['indirizzo']. "</td>";
                 echo"<td>". $row['genere']. "</td>";
-                echo"<td>". $row['saldo']. "</td>";
             echo"</tr>";
 
         }

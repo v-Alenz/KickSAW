@@ -5,8 +5,6 @@ if(isset($_POST["email"])) {
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-    $emailusata = 1;        //se $emailusata = 1 -> email già usata . Se $emailusata = 0 -> non email usata
-
     $email=trim($_POST["email"]);
 
     $query = "SELECT * FROM utente where email = ? ";
@@ -22,11 +20,10 @@ if(isset($_POST["email"])) {
     $res=mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($res) == 1){
+
         echo "Email già usata, riprova!";
-    }else{
-        //echo "Registrazione avvenuta con sucesso!";
-        //echo "Operazione avvenuta con sucesso!";
-        $emailusata = 0;
+        header("Refresh:2; url=/progetto/startSAW.php");
+
     }
 
 

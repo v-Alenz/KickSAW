@@ -33,7 +33,7 @@ if(isset($_POST["submit"])){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-        $query="SELECT uid, nome, password, ruoloid FROM utente WHERE email = ?";
+        $query="SELECT idUtente, nome, password, stato FROM utente JOIN ruolo ON idUtente=Utente_idUtente WHERE email = ?";
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -53,8 +53,8 @@ if(isset($_POST["submit"])){
             if( password_verify($pass, $row["password"]) ){
 
                 $_SESSION["loggato"] = 1;
-                $_SESSION["uid"] = $row["uid"];
-                $_SESSION["rid"] = $row["ruoloid"];
+                $_SESSION["uid"] = $row["idUtente"];
+                $_SESSION["rid"] = $row["stato"];
                 echo("Bentornato/a " . $row["nome"] . " !");
                 header("Refresh:2; url=/progetto/startSAW.php");
 

@@ -7,16 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
 </head>
 <body>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
-                
+
 //session_start();
 
-if($_SESSION["rid"] === "2" ){
+if($_SESSION["rid"] === "admin" ){
 
 ?>
 
@@ -27,7 +27,7 @@ if($_SESSION["rid"] === "2" ){
 
     <div class="content">
         <div class="header"> Area Admin </div>
-            <div class="info">  
+            <div class="info">
 
                 <form action="/progetto/account/admin/tuttiutenti.php" method="post">
                     <div> Vedi tutti gli utenti registrati : </div>
@@ -37,7 +37,7 @@ if($_SESSION["rid"] === "2" ){
 
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 
 <?php
@@ -47,7 +47,7 @@ if($_SESSION["rid"] === "2" ){
     <div class="account-page">
     <div class="container">
         <div class="col-2">
-            <div class="form-container msg">   
+            <div class="form-container msg">
 
 <?php
     echo("Errore, riprova più tardi!");

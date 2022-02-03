@@ -13,7 +13,16 @@
 
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+?>
 
+
+<div class="account-page">
+    <div class="container">
+        <div class="col-2">
+            <div class="form-container msg">
+
+
+<?php
 if(isset($_POST["submit"])){
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
@@ -42,8 +51,19 @@ if(isset($_POST["submit"])){
 
 else{
 
-    include  $_SERVER['DOCUMENT_ROOT']."/progetto/account/errora.php";
-}
+  echo("Errore, riprova più tardi!");
+  header("Refresh:2; url=/progetto/startSAW.php");
+
+}?>
+
+
+              </div>
+          </div>
+      </div>
+</div>
+
+
+<?php
 
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
 ?>

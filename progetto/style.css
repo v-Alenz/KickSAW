@@ -520,3 +520,8 @@ table {
     background-color: #4b4276;
     color: #fff;
   }
+
+
+  textarea {
+    resize: none;
+  }

@@ -23,7 +23,7 @@
             <div class="footer-col-3">
                 <h3> Promuovi il tuo progetto </h3>
                 <ul>
-                    <li>Ottieni account premium</li>
+                    <li><a href="/progetto/account/accountpremium.php">Ottieni account premium</a></li>
                     <li>Crea progetti</li>
                 </ul>
             </div>

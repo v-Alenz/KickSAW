@@ -47,7 +47,7 @@ if(isset($_POST["submit"])){
         if ( mysqli_affected_rows($conn) === 0){
 
             echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/progetto/account/modificapass.php");
+            header("Refresh:2; url=/progetto/account/caricosaldo.php");
 
         }else{
 

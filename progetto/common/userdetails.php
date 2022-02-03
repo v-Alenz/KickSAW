@@ -3,7 +3,7 @@
 ini_set('display_errors', false);
 ini_set('error_log', 'php.log');
 
-if ( !empty($nome) & !empty($cognome)){
+if ( !empty($email)){
   //ricavo l'id dell'utente appena aggiunto/////////////////////////////////////
   $query="SELECT idUtente FROM utente WHERE email = ?";
 

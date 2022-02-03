@@ -55,11 +55,29 @@ if(isset($_SESSION["loggato"])){
                         <div>Data di nascita : <input type="date" name="datan" class="form-control" value="<?php echo $row['dataNascita'] ?>" > </div>
                         <div>Indirizzo : <input type="text" name="indirizzo" class="form-control" value="<?php echo $row['indirizzo'] ?>" > </div>
                         <div>Genere :
-                        <select name="genere" id="genere" class="form-control">
-                            <option value="maschio">Maschio</option>
-                            <option value="femmina">Femmina</option>
-                            <option value="preferisco non specifare" selected>Preferisco non specifare</option>
-                        </select>
+                          <select name="genere" id="genere" class="form-control">
+                              <option
+                                <?php
+                                  if ($row["genere"] == 'maschio') {
+                                    echo " selected ";
+                                  }
+                                ?>
+                                value="maschio">Maschio</option>
+                              <option
+                                <?php
+                                  if ($row["genere"] == 'femmina') {
+                                    echo " selected ";
+                                  }
+                                ?>
+                                value="femmina">Femmina</option>
+                              <option
+                                <?php
+                                  if ($row["genere"] == 'preferisco non specificare') {
+                                    echo " selected ";
+                                  }
+                                ?>
+                                value="preferisco non specifare">Preferisco non specifare</option>
+                          </select>
                         </div>
                         <input type="submit" name="submit" value="Modifica" class="btn">
                     </form>

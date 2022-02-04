@@ -425,6 +425,18 @@ input:focus{
     outline: none;
 }
 
+.head_title{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.author{
+    text-align: center;
+    font-size: 35px;
+    color: gray;
+}
+
 /*class javascript error*/
 
 .error{
@@ -519,9 +531,4 @@ table {
   th {
     background-color: #4b4276;
     color: #fff;
-  }
-
-
-  textarea {
-    resize: none;
   }

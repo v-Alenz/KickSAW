@@ -15,7 +15,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 //session_start();
 
-if($_SESSION["rid"] === "pro"){
+if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" ){
 
 ?>
 
@@ -28,14 +28,19 @@ if($_SESSION["rid"] === "pro"){
         <div class="header"> Crea la tua nuova startup! </div>
             <div class="info">
 
-                <form action="/progetto/account/addproject.php" method="post" id="projform">
+                <form action="/progetto/account/startup/addproject.php" method="post" id="projform">
 
                     <br>
+<<<<<<< HEAD
                     <div>Titolo : <input type="text" name="titolo" class="form-control" placeholder="Inserisci titolo" maxlength="200"></div>
+=======
+                    <div>Titolo : <input type="text" name="titolo" class="form-control" > </div>
+>>>>>>> d0791f0b63d6f252fb00868b125038aba5722cb7
 
                     <?php // <div>Immagine : <input type="image" name="imm" class="form-control" > </div> ?>
 
                     Introduzione :
+<<<<<<< HEAD
                     <textarea rows="5" cols="160" name="intro" form="projform" placeholder="Enter text here (Max 1000 caratteri)" maxlength="1000"></textarea>
                     <br><br>
                     Descrizione :
@@ -46,6 +51,22 @@ if($_SESSION["rid"] === "pro"){
                     <br><br>
                     Data di scadenza:
                     <input type="datetime-local" name="expire" class="form-control"> </div>
+=======
+                    <textarea rows="5" cols="160" name="intro" form="projform" placeholder="Inserischi qui una breve introduzione al progetto..."></textarea>
+                    <br><br>
+                    Descrizione :
+                    <textarea rows="5" cols="160" name="descr" form="projform" placeholder="Inserisci qui la descriozione del progetto..."></textarea>
+                    <br><br>
+                    <div>
+                      <div>
+                        Obbiettvo da raggiungere : <input type="number" name="obbiettivo" class="form-control" >
+                      </div>
+                      <div>
+                        Data di scadenza : <input type="datetime-local" name="expire" class="form-control">
+                      </div>
+
+                    </div>
+>>>>>>> d0791f0b63d6f252fb00868b125038aba5722cb7
 
                     <input type="submit" name="submit" value="Crea Progetto" class="btn">
 

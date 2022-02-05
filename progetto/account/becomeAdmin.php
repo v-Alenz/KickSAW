@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Become Premium </title>
+    <title> Become Admin </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
     <?php
@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query="UPDATE ruolo SET stato='pro', scadenzaLinceza=? WHERE Utente_idUtente = ?";
+  $query="UPDATE ruolo SET stato='admin', scadenzaLinceza=? WHERE Utente_idUtente = ?";
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -48,8 +48,8 @@ if(isset($_POST["submit"])){
   }
 
   else{
-    echo ("Sarà un piacere aiutarti coi tuoi progetti!");
-    $_SESSION["rid"]='pro';
+    echo ("Sarà un piacere lavorare con te!");
+    $_SESSION["rid"]='admin';
     header("Refresh:2; url=/progetto/startSAW.php");
   }
 }

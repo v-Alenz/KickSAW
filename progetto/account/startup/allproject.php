@@ -6,9 +6,13 @@ if($_SESSION["rid"] === "pro"){
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-    //$query="SELECT * FROM utente";
+    $query="SELECT * FROM progetto WHERE Utente_idUtente= ?";
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+
+    mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
@@ -21,26 +25,22 @@ if($_SESSION["rid"] === "pro"){
     }else{
 
         echo"<table>";
-        /*echo"<tr>";
-            echo"<th>Nome</th>";
-            echo"<th>Cognome</th>";
-            echo"<th>Email</th>";
-            echo"<th>Data di nascita</th>";
-            echo"<th>Indirizzo</th>";
-            echo"<th>Genere</th>";
-        echo"</tr>";
 
+        $numProj=1;
         while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
 
             echo"<tr>";
+                echo"<td>". $numProj . "</td>";
                 echo"<td>". $row['nome'] . "</td>";
-                echo"<td>". $row['cognome']. "</td>";
-                echo"<td>". $row['email']. "</td>";
-                echo"<td>". $row['datan']. "</td>";
-                echo"<td>". $row['indirizzo']. "</td>";
-                echo"<td>". $row['genere']. "</td>";
+                echo"<td>". $row['introduzione']. "</td>";
+                echo '<form action="/progetto/account/startup/scriviMail.php" method="post">';
+                echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
+                echo $row['nome'];
+                echo '" class="btn-link">Aggiorna i follower</button></td>';
+                echo '</form>';
+                echo '<td><a href="'.'/progetto/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
             echo"</tr>";
-
+            $numProj=$numProj+1;
         }
 
         echo"</table>";
@@ -54,4 +54,3 @@ if($_SESSION["rid"] === "pro"){
 }
 
 ?>
-*/

@@ -36,7 +36,15 @@
               <?php }else {
                 include $_SERVER['DOCUMENT_ROOT']."/progetto/account/showexpire.php"; ?>
                 <div> Il tuo account premium scadrà il <?php echo $scadenza ?> </div>
-              <?php }
+                <br><br><br>
+                <?php if($_SESSION["rid"] === "pro"){  ?>
+                  <form action="/progetto/account/becomeAdmin.php" method="post">
+                      <div> Vuoi entrare nell'amministrazione del sito? Fai richiesta, ti contatteremo noi </div>
+
+                      <input type="submit" name="submit" value="Unisciti a noi" class="btn">
+                  </form>
+                <?php }
+               }
               ?>
             </div>
         </div>

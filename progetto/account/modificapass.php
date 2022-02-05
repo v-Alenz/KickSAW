@@ -30,8 +30,8 @@ if(isset($_SESSION["loggato"])){
 
                 <form action="/progetto/account/updatepass.php" method="post">
                     <div>Vecchia password : <input type="password" name="oldpass" class="form-control" > </div>
-                    <div>Nuova password : <input type="password" name="newpass" class="form-control" > </div>
-                    <div>Ripeti nuova password : <input type="password" name="newppass" class="form-control" > </div>
+                    <div>Nuova password : <input type="password" name="newpass" class="form-control" minlength="8" > </div>
+                    <div>Ripeti nuova password : <input type="password" name="newppass" class="form-control" minlength="8" > </div>
 
                     <input type="submit" name="submit" value="Modifica password" class="btn">
                 </form>

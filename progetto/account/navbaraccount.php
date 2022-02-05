@@ -11,9 +11,9 @@
 
           <?php
 
-          if($_SESSION["rid"] === "pro"){ 
+          if($_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
             echo '<li><a href="/progetto/account/startup/tuttiprogetti.php">I tuoi progetti</a></li>';
-            echo '<li><a href="/progetto/account/startup/creaprogetto.php">Carica un nuovo progetti</a></li>';
+            echo '<li><a href="/progetto/account/startup/creaprogetto.php">Carica un nuovo progetto</a></li>';
           }
           if($_SESSION["rid"] === "admin" ){
               echo '<li><a href="/progetto/account/admin/areaadmin.php">Area admin</a></li> ';

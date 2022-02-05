@@ -28,7 +28,7 @@ if($_SESSION["rid"] === "pro"){
         <div class="header"> Tutti i tuoi progetti </div>
             <div class="info">
 
-            <?php // include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/allproject.php"; ?>
+            <?php  include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/allproject.php"; ?>
 
             </div>
         </div>

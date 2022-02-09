@@ -101,7 +101,16 @@ p{
 
 
 .sfondopagprincipale{
-    background: radial-gradient(#fff, #dad6ff); /*#fff;  ffd6d6*/
+    background: radial-gradient( farthest-corner at 1400px 300px, #fff, #6cd070); /*#fff;  ffd6d6*/
+}
+
+
+.titoloprincipale{
+
+}
+
+.titoloprincipale::first-letter{
+    color: white;
 }
 
 
@@ -531,4 +540,9 @@ table {
   th {
     background-color: #4b4276;
     color: #fff;
+  }
+
+  /*------- MEssaggio errore Noscript ---------*/
+  .noscriptmsg {
+    color: red;
   }

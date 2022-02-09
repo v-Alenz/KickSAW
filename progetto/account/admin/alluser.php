@@ -36,7 +36,7 @@ if($_SESSION["rid"] === "admin" ){
                 echo"<td>". $row['nome'] . "</td>";
                 echo"<td>". $row['cognome']. "</td>";
                 echo"<td>". $row['email']. "</td>";
-                echo"<td>". $row['datan']. "</td>";
+                echo"<td>". $row['dataNascita']. "</td>";
                 echo"<td>". $row['indirizzo']. "</td>";
                 echo"<td>". $row['genere']. "</td>";
             echo"</tr>";

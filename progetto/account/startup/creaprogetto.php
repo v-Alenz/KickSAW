@@ -15,7 +15,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 //session_start();
 
-if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" ){
+if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
 
 ?>
 

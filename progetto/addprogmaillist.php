@@ -34,7 +34,7 @@ if(isset($_POST["idprog"] )){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-        $query= "INSERT INTO maillist (Utente_idUtente, MailList_idProgetto) values ( ?, ?)";
+        $query= "SELECT * FROM maillist WHERE Utente_idUtente = ? and MailList_idProgetto = ?";
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -44,16 +44,36 @@ if(isset($_POST["idprog"] )){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-        if ( mysqli_affected_rows($conn) === 0){
+        $res=mysqli_stmt_get_result($stmt);
 
-            echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/progetto/startSAW.php");
+        if(mysqli_num_rows($res) == 1){
+
+            echo("Non puoi iscriverti più volte allo stesso progetto!");
+            header("Refresh:2; url=/progetto/elencoprogetti.php");
 
         }else{
 
-            echo("Ti sei registrato con sucesso alla newsletter!");
-            header("Refresh:2; url=/progetto/elencoprogetti.php");
+            $query= "INSERT INTO maillist (Utente_idUtente, MailList_idProgetto) values ( ?, ?)";
 
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+
+            mysqli_stmt_bind_param($stmt, "ii", $_SESSION["uid"], $idprog);
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+
+            if ( mysqli_affected_rows($conn) === 0){
+
+                echo("Errore, riprova più tardi!");
+                header("Refresh:2; url=/progetto/startSAW.php");
+
+            }else{
+
+                echo("Ti sei registrato con sucesso alla newsletter!");
+                header("Refresh:2; url=/progetto/elencoprogetti.php");
+
+            }
         }
 
     }else{

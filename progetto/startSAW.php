@@ -17,10 +17,10 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 <div class="sfondopagprincipale">
 
-    <div class= "container sfondopagprincipale">
+    <div class= "container">
         <div class="row">
             <div class="col-2">
-                <h1> Starter Punch! </h1>
+                <h1 class="titoloprincipale"> Starter <a class="lettera_nera">P</a>unch! </h1>
                 <p>Dove i migliori progetti prendono vita</p>
                 <a href="/progetto/elencoprogetti.php" class="btn">Scoprili Ora &#8594;</a>
             </div>

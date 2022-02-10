@@ -33,62 +33,69 @@ if(isset($_POST["submit"])){
 
     if(!empty($oldpass) & !empty($newpass) & !empty($newppass)){
 
-        if( $newpass === $newppass){
+        if (strlen($oldpass)>= 8 && strlen($newpass)>= 8  && strlen($newppass)>= 8){
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+            if( $newpass === $newppass){
 
-            $query= "SELECT password FROM utente where idUtente = ?";
+                include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                $query= "SELECT password FROM utente where idUtente = ?";
 
-            mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"] );
+                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"] );
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-            $res=mysqli_stmt_get_result($stmt);
+                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-            if (mysqli_num_rows($res) === 1){
+                $res=mysqli_stmt_get_result($stmt);
 
-                $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                if (mysqli_num_rows($res) === 1){
 
-                if( password_verify($oldpass, $row["password"]) ){
+                    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-                    $newpasscifr = password_hash($newpass, PASSWORD_DEFAULT);
+                    if( password_verify($oldpass, $row["password"]) ){
 
-                    $query= "UPDATE utente set password = ? where idUtente = ?";
+                        $newpasscifr = password_hash($newpass, PASSWORD_DEFAULT);
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                        $query= "UPDATE utente set password = ? where idUtente = ?";
 
-                    mysqli_stmt_bind_param($stmt, "ss", $newpasscifr, $_SESSION["uid"] );
+                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                        mysqli_stmt_bind_param($stmt, "ss", $newpasscifr, $_SESSION["uid"] );
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-                    if ( mysqli_affected_rows($conn) === 0){
+                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-                        echo("Errore, riprova più tardi!");
-                        header("Refresh:2; url=/progetto/account/modificapass.php");
+                        if ( mysqli_affected_rows($conn) === 0){
+
+                            echo("Errore, riprova più tardi!");
+                            header("Refresh:2; url=/progetto/account/modificapass.php");
+
+                        }else{
+                            echo("Modifica della password avvenuta con sucesso!");
+                            header("Refresh:2; url=/progetto/account/show_profile.php");
+                        }
 
                     }else{
-                        echo("Modifica della password avvenuta con sucesso!");
-                        header("Refresh:2; url=/progetto/account/show_profile.php");
+                        echo("Vecchia password errata, riprova!");
+                        header("Refresh:2; url=/progetto/account/modificapass.php");
                     }
 
                 }else{
-                    echo("Vecchia password errata, riprova!");
-                    header("Refresh:2; url=/progetto/account/modificapass.php");
+                    echo("Errore, riprova più tardi!");
+                    header("Refresh:2; url=/progetto/startSAW.php");
                 }
 
             }else{
-                echo("Errore, riprova più tardi!");
-                header("Refresh:2; url=/progetto/startSAW.php");
+                echo("Le nuove password non combaciano, riprova!");
+                header("Refresh:2; url=/progetto/account/modificapass.php");
             }
 
         }else{
-            echo("Le nuove password non combaciano, riprova!");
+            echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
             header("Refresh:2; url=/progetto/account/modificapass.php");
         }
 

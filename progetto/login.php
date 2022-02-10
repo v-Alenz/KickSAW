@@ -31,42 +31,49 @@ if(isset($_POST["submit"])){
 
     if(!empty($email) & !empty($pass)){
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+        if (strlen($pass)>= 8){
 
-        $query="SELECT idUtente, nome, password, stato FROM utente JOIN ruolo ON idUtente=Utente_idUtente WHERE email = ?";
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+            $query="SELECT idUtente, nome, password, stato FROM utente JOIN ruolo ON idUtente=Utente_idUtente WHERE email = ?";
 
-        mysqli_stmt_bind_param($stmt, "s",$email);
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+            mysqli_stmt_bind_param($stmt, "s",$email);
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
 
-        $res=mysqli_stmt_get_result($stmt);
+            $res=mysqli_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($res) === 1){
+            if (mysqli_num_rows($res) === 1){
 
-            $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-            if( password_verify($pass, $row["password"]) ){
+                if( password_verify($pass, $row["password"]) ){
 
-                $_SESSION["loggato"] = 1;
-                $_SESSION["uid"] = $row["idUtente"];
-                $_SESSION["rid"] = $row["stato"];
-                echo("Bentornato/a " . $row["nome"] . " !");
-                header("Refresh:2; url=/progetto/startSAW.php");
+                    $_SESSION["loggato"] = 1;
+                    $_SESSION["uid"] = $row["idUtente"];
+                    $_SESSION["rid"] = $row["stato"];
+                    echo("Bentornato/a " . $row["nome"] . " !");
+                    header("Refresh:2; url=/progetto/startSAW.php");
+
+                }else{
+
+                    echo("Password errata, riprova!");
+                    header("Refresh:2; url=/progetto/formlogin.php");
+                }
 
             }else{
-
-                echo("Password errata, riprova!");
-                header("Refresh:2; url=/progetto/formlogin.php");
+                echo("Non sei ancora registrato/a, registrati ora!");
+                header("Refresh:2; url=/progetto/formregistration.php");
             }
 
         }else{
-            echo("Non sei ancora registrato/a, registrati ora!");
-            header("Refresh:2; url=/progetto/formregistration.php");
+            echo("La password deve essere lunga almeno otto caratteri, riprova!");
+            header("Refresh:2; url=/progetto/formlogin.php");
         }
 
     }else{

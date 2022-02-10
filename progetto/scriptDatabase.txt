@@ -199,7 +199,7 @@ DROP TABLE IF EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` ;
 
 CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` (
   `Progetto_idProgetto` INT NOT NULL,
-  `obbiettivo` INT NOT NULL,
+  `obiettivo` INT NOT NULL,
   `sogliaAttuale` INT NOT NULL DEFAULT 0,
   `dataScadenza` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Progetto_idProgetto`),

@@ -32,7 +32,7 @@ if(isset($_POST["submit"])){
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query="UPDATE ruolo SET stato='pro', scadenzaLinceza=? WHERE Utente_idUtente = ?";
+  $query="UPDATE ruolo SET stato='pro', scadenzaLicenza=? WHERE Utente_idUtente = ?";
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 

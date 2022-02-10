@@ -2,7 +2,7 @@
 
 //session_start();
 
-if($_SESSION["rid"] === "admin" ){
+if(isset($_SESSION["loggato"])){
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
@@ -48,8 +48,8 @@ if($_SESSION["rid"] === "admin" ){
     }
 
 }else{
-    echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
 
 }
 

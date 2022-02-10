@@ -101,16 +101,25 @@ p{
 
 
 .sfondopagprincipale{
-    background: radial-gradient( farthest-corner at 1400px 300px, #fff, #6cd070); /*#fff;  ffd6d6*/
+    background: radial-gradient( /*farthest-corner at 1400px 300px,*/ellipse at bottom, #fff, #3ed843); /*#fff;  ffd6d6*/
 }
 
+.sfondopagprincipalelight{
+    background: radial-gradient(ellipse at bottom, #a3d8a4, #84cf87);
+}
 
 .titoloprincipale{
+    color: #ffffff;
+    font-style: oblique;
 
 }
 
 .titoloprincipale::first-letter{
-    color: white;
+    color: rgb(0, 0, 0);
+}
+
+.lettera_nera{
+    color: rgb(0, 0, 0);
 }
 
 
@@ -127,7 +136,7 @@ p{
     padding: 10px;
     min-width: 200px;
     margin-bottom: 50px;
-    transition: trans- 0.5s;
+    transition: transform 0.5s;
 }
 
 .col-4 img{
@@ -181,8 +190,8 @@ h4{
 }
 
 .footer-col-2 img{
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     margin-bottom: 20px;
 }
 
@@ -263,7 +272,7 @@ ul{
 #ricerca{
     padding:15px;
     color:#ffffff;
-    background:#35424a
+    background:#005052
 }
 
 #ricerca h1{
@@ -315,7 +324,7 @@ ul{
 
 .account-page{
     padding: 50px 0;
-    background: radial-gradient(#fff, #dad6ff);
+    background: radial-gradient( ellipse at bottom, #fff, #3ed843);
 }
 
 .form-container{
@@ -442,8 +451,8 @@ input:focus{
 
 .author{
     text-align: center;
-    font-size: 35px;
-    color: gray;
+    font-size: 20px;
+    color: rgb(44, 44, 44);
 }
 
 /*class javascript error*/
@@ -462,14 +471,14 @@ input:focus{
 .wrapper{
     position: relative;
     display: flex;
-    background: #f0beb8;
+    background: radial-gradient( /*farthest-corner at 1400px 300px,*/ellipse at bottom, #a3d8a4, #84cf87); /*#fff;  ffd6d6*/
 
 }
 
 .wrapper .sidebar{
     width: 200px;
-    height: 700px;
-    background: #4b4276;
+    height: 800px;
+    background: #005052;
     padding: 30px 0;
 }
 
@@ -488,7 +497,7 @@ input:focus{
 }
 
 .wrapper .sidebar ul li:hover{
-    background: #594f8d;
+    background: #00787a;
 }
 
 .wrapper .sidebar ul li:hover a{
@@ -504,10 +513,12 @@ input:focus{
 
 .wrapper .content .header{
     padding: 20px;
-    background: #4b4276;
+    background: #005052;
     color: #ffffff;
     border-bottom: 1px solid #e0e4e8;
     font-weight: bold;
+    margin-right: 20px;
+
 
 }
 
@@ -538,11 +549,16 @@ table {
   }
 
   th {
-    background-color: #4b4276;
+    background-color: #005052;
     color: #fff;
   }
 
-  /*------- MEssaggio errore Noscript ---------*/
-  .noscriptmsg {
+/*------- Messaggio errore Noscript ---------*/
+  
+.noscriptmsg {
     color: red;
-  }
+}
+
+textarea {
+    resize: none;
+}

@@ -2,54 +2,70 @@
 
 //session_start();
 
-if($_SESSION["rid"] === "pro"){
+if(isset($_SESSION["loggato"])){
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    if($_SESSION["rid"] === "pro"){
 
-    $query="SELECT * FROM progetto WHERE Utente_idUtente= ?";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+        $query="SELECT * FROM progetto WHERE Utente_idUtente= ?";
 
-    mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-    $res=mysqli_stmt_get_result($stmt);
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-    if (mysqli_num_rows($res) ===  0){
+        $res=mysqli_stmt_get_result($stmt);
 
-        echo"Tabella vuota!";
+        if (mysqli_num_rows($res) ===  0){
 
-    }else{
+            echo"Non hai ancora caricato nessun progetto!";
 
-        echo"<table>";
+        }else{
 
-        $numProj=1;
-        while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
-
+            echo"<table>";
             echo"<tr>";
-                echo"<td>". $numProj . "</td>";
-                echo"<td>". $row['nome'] . "</td>";
-                echo"<td>". $row['introduzione']. "</td>";
-                echo '<form action="/progetto/account/startup/scriviMail.php" method="post">';
-                echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
-                echo $row['nome'];
-                echo '" class="btn-link">Aggiorna i follower</button></td>';
-                echo '</form>';
-                echo '<td><a href="'.'/progetto/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
+                echo"<th> </th>";
+                echo"<th>Nome progetto</th>";
+                echo"<th>Introduzione</th>";
+                echo"<th> </th>";
+                echo"<th> </th>";
             echo"</tr>";
-            $numProj=$numProj+1;
+
+            $numProj=1;
+            while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
+
+                echo"<tr>";
+                    echo"<td>". $numProj . "</td>";
+                    echo"<td>". $row['nome'] . "</td>";
+                    echo"<td>". $row['introduzione']. "</td>";
+                        echo '<form action="/progetto/account/startup/scriviMail.php" method="post">';
+                            echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
+                            echo $row['nome'];
+                            echo '" class="btn-link">Aggiorna i follower</button></td>';
+                        echo '</form>';
+                    echo '<td><a href="'.'/progetto/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
+                echo"</tr>";
+                $numProj=$numProj+1;
+            }
+
+            echo"</table>";
+
         }
 
-        echo"</table>";
+    }else{
+        
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/errorenopro.php";
 
     }
 
 }else{
-    echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+
 
 }
 

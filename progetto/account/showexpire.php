@@ -4,7 +4,7 @@ if(isset($_SESSION["loggato"])){
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query="SELECT scadenzaLinceza FROM ruolo WHERE Utente_idUtente = ?";
+  $query="SELECT scadenzaLicenza FROM ruolo WHERE Utente_idUtente = ?";
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -16,7 +16,7 @@ if(isset($_SESSION["loggato"])){
 
   $res=mysqli_stmt_get_result($stmt);
   $statoUtente = mysqli_fetch_array($res, MYSQLI_ASSOC);
-  $scadenza=$statoUtente['scadenzaLinceza'];
+  $scadenza=$statoUtente['scadenzaLicenza'];
 
 }
 

@@ -1,15 +1,15 @@
 <?php
 
-if(!empty($email)) {
+if(!empty($titolo)) {
 
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-    $query = "SELECT * FROM utente where email = ? ";
+    $query = "SELECT * FROM progetto where nome = ? ";
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_bind_param($stmt, "s", $titolo);
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
@@ -19,14 +19,16 @@ if(!empty($email)) {
 
     if(mysqli_num_rows($res) == 1){
 
-        echo "Email già usata, riprova!";
-        ?>           </div>
+        echo "Nome del titolo già usato, riprova con un altro!";
+        ?>          </div>
                 </div>
             </div>
         </div>
+
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
-        header("Refresh:2; url=/progetto/startSAW.php");
+        header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+        exit();
 
     }
 

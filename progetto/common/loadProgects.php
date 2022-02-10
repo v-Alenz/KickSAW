@@ -4,7 +4,7 @@ ini_set('display_errors', false);
 ini_set('error_log', 'php.log');
 
 if(!defined('AccessDbForProgects')){
-  die("Accesso diretto negato!");
+  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
 }
 
 

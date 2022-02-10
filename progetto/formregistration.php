@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img class="img" src="/progetto/immagini/gabibbo.jpg" alt="">
+                <img class="img" src="/progetto/immagini/pipreg.png" alt="immagine registration">
             </div>
             <div class="col-2">
                 <div class="form-container reg">
@@ -32,9 +32,9 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                             <input type="text" name="lastname" placeholder="Cognome" class="form-control">
                             <input type="email" name="email" placeholder="Email" class="form-control" id="email" onchange="checkemail('/progetto/common/checkemail.php');">
                             <div id="emailerror" class="error"></div>
-                            <input type="password" name="pass" placeholder="Password" class="form-control" id="pass">
+                            <input type="password" name="pass" placeholder="Password" class="form-control" id="pass" minlength="8">
                             <div id="passerror" class="error"></div>
-                            <input type="password" name="confirm" placeholder="Conferma password" class="form-control">
+                            <input type="password" name="confirm" placeholder="Conferma password" class="form-control" minlength="8">
                             <input type="submit" name="submit" value="Registrati" class="btn">
                     </form>
                 </div>

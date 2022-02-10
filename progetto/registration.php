@@ -35,10 +35,11 @@ if(isset($_POST["submit"])){
 
     if(!empty($nome) & !empty($cognome) & !empty($email) & !empty($pass) & !empty($confpass)){
 
-        if( $pass === $confpass){
+        if (strlen($pass)>= 8 && strlen($confpass)>= 8){
 
             include $_SERVER['DOCUMENT_ROOT']."/progetto/common/verificamail.php";
 
+            if( $pass === $confpass){
 
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
 
@@ -67,8 +68,13 @@ if(isset($_POST["submit"])){
 
                 }
 
+            }else{
+                echo("Le password non combaciano, riprova!");
+                header("Refresh:2; url=/progetto/formregistration.php");
+            }
+
         }else{
-            echo("Le password non combaciano, riprova!");
+            echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
             header("Refresh:2; url=/progetto/formregistration.php");
         }
 

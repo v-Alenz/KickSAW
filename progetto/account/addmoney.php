@@ -30,7 +30,7 @@ if(isset($_POST["submit"])){
 
     $money = trim($_POST['money']);
 
-    if(!empty($money)){
+    if(!empty($money) && $money>0 && is_numeric($money)){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 

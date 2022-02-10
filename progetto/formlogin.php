@@ -27,14 +27,14 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
                     <form id="form" action="/progetto/login.php" method="post">
                             <input type="email" name="email" placeholder="Email" class="form-control" id="email">
                             <div id="emailerror" class="error"></div>
-                            <input type="password" name="pass" placeholder="Password" class="form-control" id="pass">
+                            <input type="password" name="pass" placeholder="Password" class="form-control" id="pass" minlength="8">
                             <div id="passerror" class="error"></div>
                             <input type="submit" name="submit" value="Loggati" class="btn">
                     </form>
                 </div>
            </div>
             <div class="col-2">
-                <img class="img" src="/progetto/immagini/gabibbo.jpg" alt="">
+                <img class="img" src="/progetto/immagini/piplog.png" alt="immagine login">
             </div>
         </div>
     </div>

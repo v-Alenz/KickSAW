@@ -4,17 +4,16 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 
     <title> StartSAW </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    ?>
 </head>
 
 <?php
 
   include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query = "SELECT progetto.nome, introduzione, descrizione, obbiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza
+  $query = "SELECT progetto.nome, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza
             FROM progetto
             JOIN sogliafinanziamento  on progetto.idProgetto = sogliafinanziamento.Progetto_idProgetto
             JOIN utente ON  progetto.Utente_idUtente = utente.idUtente
@@ -104,8 +103,8 @@ include "common/navbar.php";
   </div>
 
   <?php
-    include "common/footer.php";
-  ?>
+include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+?>
 
 </body>
 </html>

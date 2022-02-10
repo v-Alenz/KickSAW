@@ -8,7 +8,7 @@
             </div>
 
             <div class="footer-col-2">
-                <img class="logo_img" src="/progetto/immagini/logo_piccolo.jpg" alt="logo">
+                <img class="logo_footer" src="/progetto/immagini/logo_piccolo.jpg" alt="logo">
             </div>
 
             <div class="footer-col-3">
@@ -31,5 +31,6 @@
         </div>
         <hr>
         <p class="copyright">Copyright 2021 - StarterPunch </p>
+        <br>
     </div>
 </div>

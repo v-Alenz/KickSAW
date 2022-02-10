@@ -16,45 +16,39 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 //session_start();
 
-if($_SESSION["rid"] === "admin" ){
+if(isset($_SESSION["loggato"])){
 
-?>
+    if($_SESSION["rid"] === "admin" ){
 
-<div class="wrapper">
+    ?>
 
-    <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
+    <div class="wrapper">
 
-    <div class="content">
-        <div class="header"> Tutti gli utenti </div>
-            <div class="info">
+        <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
 
-            <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/admin/alluser.php"; ?>
+        <div class="content">
+            <div class="header"> Tutti gli utenti </div>
+                <div class="info">
 
+                <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/admin/alluser.php"; ?>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<?php
+    <?php
 
+    }else{
+
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/admin/errorenoadmin.php";
+
+    }
+    
 }else{
-?>
-    <div class="account-page">
-    <div class="container">
-        <div class="col-2">
-            <div class="form-container msg">
 
-<?php
-    echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
-?>
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/account/errora.php";
 
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
 }
 
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";

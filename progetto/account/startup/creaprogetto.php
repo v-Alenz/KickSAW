@@ -25,7 +25,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" ){
     <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
 
     <div class="content">
-        <div class="header"> Crea la tua nuova startup! </div>
+        <div class="header"> Crea la tua nuova startup!</div>
             <div class="info">
 
                 <form action="/progetto/account/startup/addproject.php" method="post" id="projform">
@@ -35,19 +35,21 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" ){
 
                     <?php // <div>Immagine : <input type="image" name="imm" class="form-control" > </div> ?>
 
-                    Introduzione :
+                    <div> Introduzione :
                     <textarea rows="5" cols="160" name="intro" form="projform" placeholder="Enter text here (Max 1000 caratteri)" maxlength="1000"></textarea>
-                    <br><br>
-                    Descrizione :
+                    </div>
+
+                    <div> Descrizione :
                     <textarea rows="5" cols="160" name="descr" form="projform" placeholder="Enter text here (Max 1000 caratteri)" maxlength="10000"></textarea>
-                    <br><br>
-                    Obiettivo da raggiungere:
-                    <input type="number" name="obbiettivo" class="form-control" placeholder="100"> €
-                    <br><br>
-                    Data di scadenza:
+                    </div>
+                    
+                    <div> Obiettivo da raggiungere:
+                    <input type="number" min="1" value="1" step="any" name="obiettivo" class="form-control" placeholder="5"> € </div>
+                    
+                    <div> Data di scadenza:
                     <input type="datetime-local" name="expire" class="form-control"> </div>
 
-                    <input type="submit" name="submit" value="Crea Progetto" class="btn">
+                    <div> <input type="submit" name="submit" value="Crea Progetto" class="btn"> </div>
 
                 </form>
 

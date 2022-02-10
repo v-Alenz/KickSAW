@@ -1,8 +1,8 @@
 <?php
 
-$servername = "localhost";
+$servername = "192.168.1.166";
 $username = "root";
-$password = "";
+$password = "saw2021";
 $dbname = "starterpunchdatabase";
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);

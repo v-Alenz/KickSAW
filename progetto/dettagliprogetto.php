@@ -13,10 +13,11 @@
 
   include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query = "SELECT progetto.nome, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza
+  $query = "SELECT progetto.nome, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza, mediaLink
             FROM progetto
             JOIN sogliafinanziamento  on progetto.idProgetto = sogliafinanziamento.Progetto_idProgetto
             JOIN utente ON  progetto.Utente_idUtente = utente.idUtente
+            JOIN mediaprogetto ON progetto.idProgetto = mediaprogetto.Progetto_idProgetto
             WHERE idProgetto = ?";
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
@@ -59,7 +60,7 @@ include "common/navbar.php";
         </h2>
           <div class="row">
               <div class="col-2">
-                  <img src="immagini/ilgabibbo.jpg" alt="progetto" >
+                  <?php echo '<img src="'.$row[0][8].'" alt="progetto" >' ?>
               </div>
               <div class="col-2">
                   <br>

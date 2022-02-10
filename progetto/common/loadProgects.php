@@ -10,9 +10,10 @@ if(!defined('AccessDbForProgects')){
 
   include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-  $query = "SELECT idProgetto, progetto.nome AS nomeP, utente.nome, cognome
+  $query = "SELECT idProgetto, progetto.nome AS nomeP, utente.nome, cognome, mediaLink
             FROM progetto
             JOIN utente ON progetto.Utente_idUtente = utente.idUtente
+            JOIN mediaprogetto ON progetto.idProgetto = mediaprogetto.Progetto_idProgetto
            ";
 
   include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";

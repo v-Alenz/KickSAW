@@ -21,9 +21,6 @@
             <div class="form-container msg">
 
   <?php
-    /*if(!isset($_SESSION)){
-      session_start();
-    }*/
 
     if(isset($_POST['submit'])){
 
@@ -32,6 +29,46 @@
       $descr = trim($_POST['descr']);
       $obj = trim($_POST['obiettivo']);
       $date = str_replace('T', ' ', trim($_POST['expire']).":00");
+      $localImage = 'immaginiProgetti/'.basename($_FILES["image"]["name"]);
+      $imageLocation = $_SERVER['DOCUMENT_ROOT'].'/progetto/'.$localImage;
+
+      // Faccio i controlli sull'Immagine
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($imageLocation,PATHINFO_EXTENSION));
+
+      // Controllo se l'imamgine e' veramente un immagino o no
+      $check = getimagesize($_FILES["image"]["tmp_name"]);
+      if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+      }else{
+          echo "File is not an image.";
+          $uploadOk = 0;
+      }
+
+      // Contorllo la dimensione del file
+      if ($_FILES["image"]["size"] > 5000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+      }
+
+      // Allow certain file formats
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
+        echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+        $uploadOk = 0;
+      }
+
+      // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+      // if everything is ok, try to upload file
+      } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $imageLocation)) {
+          echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+        } else {
+          echo "Sorry, there was an error uploading your file.";
+        }
+      }
 
       if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($date)){
 
@@ -40,6 +77,8 @@
         if(is_numeric($obj) && strlen($titolo) < 100 && strlen($descr) < 1000 && strlen($descr) < 10000 && $obj>0){
 
           include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+
+          mysqli_autocommit($conn, FALSE);
 
           //creo il progetto
           $query="INSERT INTO progetto (Utente_idUtente, nome, introduzione, descrizione)
@@ -75,10 +114,15 @@
           include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
           //imposto l'immagine del progetto
-          //$querry="";
-          //include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
-          //include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
-          //include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+          $query="INSERT INTO mediaprogetto( Progetto_idProgetto, mediaLink)
+                  VALUES ((SELECT idProgetto FROM progetto WHERE nome = ?), ?)
+          ";
+          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+
+          mysqli_stmt_bind_param($stmt, 'ss', $titolo, $localImage);
+
+          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
         }if ( mysqli_affected_rows($conn) === 0){
 
@@ -90,6 +134,7 @@
 
         }
 
+        mysqli_commit($conn);
 
         }else{
           // campo con valori sballati

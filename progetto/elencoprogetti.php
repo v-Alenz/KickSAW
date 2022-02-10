@@ -48,7 +48,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
             }else{
               while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
                 echo '<div name="progects" class="col-4">';
-                echo '    <a href="/progetto/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="/progetto/immagini/placeholder.jpg" alt="progetto">';
+                echo '    <a href="/progetto/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="'.$row["mediaLink"].'">';
                 echo '    <h3>'.$row["nomeP"].'</h3>';
                 echo '    <p class="author">'.$row["nome"].' '.$row["cognome"].'</p></a>';
                 echo '</div>';

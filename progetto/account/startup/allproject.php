@@ -4,7 +4,7 @@
 
 if(isset($_SESSION["loggato"])){
 
-    if($_SESSION["rid"] === "pro"){
+    if($_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 

@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 if(isset($_SESSION["loggato"])){
 
-    if($_SESSION["rid"] === "pro"){
+    if($_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
 
     ?>
 

@@ -4,7 +4,7 @@
             <div class="form-container msg">   
 
 <?php
-    echo("Non sei un utente pro!");
+    echo("Non sei un utente pro o superiore!");
     header("Refresh:2; url=/progetto/startSAW.php");
 ?>
 

@@ -34,8 +34,8 @@ if(isset($_SESSION["loggato"])){
               <form action="/progetto/account/startup/prepareMail.php" method="post" id="emailtext">
                 <textarea rows="5" cols="160" name="testoMail" form="emailtext" placeholder="Enter text here"></textarea>
 
-                <input type="submit" name="nomeProgetto" value="Invia" class="btn" post=<?php echo $_POST['progetto'] ?>>
-
+                <button type="submit" name="nomeProgetto" class="btn" value=<?php echo $_POST['progetto'] ?>>
+                Invia</button>
               </form>
 
             </div>

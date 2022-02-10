@@ -82,6 +82,11 @@ include "common/navbar.php";
                         echo $row[0][7]
                     ?>
                   </h4>
+                  <br>
+                  <form action="/progetto/addprogmaillist.php" method="post">
+                      <button type="submit" name="idprog" class="btn" 
+                      value=<?php echo $_GET['prog'] ?>>Iscriviti alla newsletter</button>
+                  </form>
               </div>
           </div>
 

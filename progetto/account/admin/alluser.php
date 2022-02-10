@@ -28,6 +28,8 @@ if(isset($_SESSION["loggato"])){
             echo"<th>Data di nascita</th>";
             echo"<th>Indirizzo</th>";
             echo"<th>Genere</th>";
+            echo"<th> </th>";
+
         echo"</tr>";
 
         while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
@@ -39,6 +41,11 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['dataNascita']. "</td>";
                 echo"<td>". $row['indirizzo']. "</td>";
                 echo"<td>". $row['genere']. "</td>";
+                echo '<form action="/progetto/account/admin/eliminautente.php" method="post">';
+                    echo '<td><button type="submit" name="idUtente" class="btnsmall" value="';
+                    echo $row['idUtente'];
+                    echo '" class="btn-link">Elimina utente</button></td>';
+                echo '</form>';
             echo"</tr>";
 
         }

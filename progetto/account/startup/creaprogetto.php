@@ -31,21 +31,21 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" ){
                 <form action="/progetto/account/startup/addproject.php" method="post" id="projform">
 
                     <br>
-                    <div>Titolo : <input type="text" name="titolo" class="form-control" placeholder="Inserisci titolo" maxlength="200"></div>
+                    <div>Titolo : <br><input type="text" name="titolo" class="form-control" placeholder="Inserisci titolo" maxlength="200"></div>
 
                     <?php // <div>Immagine : <input type="image" name="imm" class="form-control" > </div> ?>
 
-                    <div> Introduzione :
+                    <div> Introduzione : <br>
                     <textarea rows="5" cols="160" name="intro" form="projform" placeholder="Enter text here (Max 1000 caratteri)" maxlength="1000"></textarea>
                     </div>
 
-                    <div> Descrizione :
+                    <div> Descrizione : <br>
                     <textarea rows="5" cols="160" name="descr" form="projform" placeholder="Enter text here (Max 1000 caratteri)" maxlength="10000"></textarea>
                     </div>
-                    
+
                     <div> Obiettivo da raggiungere:
                     <input type="number" min="1" value="1" step="any" name="obiettivo" class="form-control" placeholder="5"> € </div>
-                    
+
                     <div> Data di scadenza:
                     <input type="datetime-local" name="expire" class="form-control"> </div>
 

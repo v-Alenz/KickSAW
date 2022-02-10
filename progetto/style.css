@@ -471,7 +471,7 @@ input:focus{
 .wrapper{
     position: relative;
     display: flex;
-    background: radial-gradient( /*farthest-corner at 1400px 300px,*/ellipse at bottom, #a3d8a4, #84cf87); /*#fff;  ffd6d6*/
+    background: radial-gradient( /*farthest-corner at 1400px 300px,*/ellipse at top, #a3d8a4, white); /*#fff;  ffd6d6*/
 
 }
 
@@ -554,7 +554,7 @@ table {
   }
 
 /*------- Messaggio errore Noscript ---------*/
-  
+
 .noscriptmsg {
     color: red;
 }

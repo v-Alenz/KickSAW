@@ -32,17 +32,18 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
         <style type="text/css">
             .pagecontainer {display:none;}
         </style>
-        <div class="noscriptmsg">
-          <h4> I tuoi JavaScript sono disabilitati, non potrai accedere a tutte le funzionalita' della pagina! </h4>
+        <div>
+          <h4 class="noscriptmsg"> I tuoi JavaScript sono disabilitati, non potrai accedere a tutte le funzionalita' della pagina! </h4>
         </div>
     </noscript>
     <div id="container" class="small-container">
         <div class="row">
           <?php
           if (mysqli_num_rows($res) ===  0){
-            
-            echo" Non c'è ancora nessun progetto :( ";
-            echo"<br><br><br><br><br>";
+
+            echo "<div class='head_title'>";
+            echo "  <h4> Non è stato trovato alcun progetto :( </h4><br><br>";
+            echo "</div>";
 
             }else{
               while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){

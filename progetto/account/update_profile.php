@@ -45,26 +45,27 @@ if(isset($_POST["submit"])){
 
             include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-                $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
+            $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-                mysqli_stmt_bind_param($stmt, "sssssss", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
+            mysqli_stmt_bind_param($stmt, "sssssss", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-                if ( mysqli_affected_rows($conn) === 0){
-                  //controllare che la mail non ci sia già
-                    echo("Errore, riprova più tardi!");
-                    header("Refresh:2; url=/progetto/account/modificaprofilo.php");
+            if ( mysqli_affected_rows($conn) === 0){
+                //controllare che la mail non ci sia già
+                echo("Errore, riprova più tardi!");
+                header("Refresh:2; url=/progetto/account/modificaprofilo.php");
 
-                }else{
-                    echo("Modifica avvenuta con sucesso");
-                    header("Refresh:2; url=/progetto/account/show_profile.php");
+            }else{
 
-                }
+                echo("Modifica avvenuta con sucesso");
+                header("Refresh:2; url=/progetto/account/show_profile.php");
+
+            }
 
 
           /*  }else{

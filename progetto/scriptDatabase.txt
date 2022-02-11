@@ -103,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Progetto` (
   CONSTRAINT `fk_Progetto_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
     REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------

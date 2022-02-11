@@ -32,45 +32,57 @@
       $localImage = 'immaginiProgetti/'.basename($_FILES["image"]["name"]);
       $imageLocation = $_SERVER['DOCUMENT_ROOT'].'/progetto/'.$localImage;
 
+      if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($date) && !empty($_FILES["image"]["name"])){
+
       // Faccio i controlli sull'Immagine
-      $uploadOk = 1;
+      $uploadOk = 0;  //prima messo = 1
       $imageFileType = strtolower(pathinfo($imageLocation,PATHINFO_EXTENSION));
 
       // Controllo se l'imamgine e' veramente un immagino o no
       $check = getimagesize($_FILES["image"]["tmp_name"]);
       if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
       }else{
-          echo "File is not an image.";
-          $uploadOk = 0;
+          //echo "File is not an image.";
+          //$uploadOk = 0;
+          echo "Il file selezionato non è un immagine, riprova!";
+          include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
       }
 
       // Contorllo la dimensione del file
       if ($_FILES["image"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
+        //echo "Sorry, your file is too large.";
+        //$uploadOk = 0;
+        echo "L'immagine selezionata è troppo grande, riprova!";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
       }
 
       // Allow certain file formats
       if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
-        echo "Sorry, only JPG, JPEG, PNG files are allowed.";
-        $uploadOk = 0;
+        //echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+        //$uploadOk = 0;
+        echo "Sono ammessi solo file JPG, JPEG o PNG, riprova!";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
       }
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        //echo "Sorry, your file was not uploaded.";
+        echo "Non è stata caricata correttamente l'immagine, riprova!";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+
       // if everything is ok, try to upload file
       } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $imageLocation)) {
-          echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+          //echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
         } else {
-          echo "Sorry, there was an error uploading your file.";
+          //echo "Sorry, there was an error uploading your file.";
+          echo "Non è stata caricata correttamente l'immagine, riprova!";
+          include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
         }
       }
 
-      if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($date)){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/verificatitolo.php";
 
@@ -128,8 +140,9 @@
 
           echo("Errore, riprova più tardi!");
           header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+
         }else{
-          echo("inserimento del progetto avvenuta con sucesso");
+          echo("Inserimento del progetto avvenuta con successo");
           header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
 
         }
@@ -141,8 +154,8 @@
           echo("Valori non conformi, riprova!");
           header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
         }
-      }
-      else{
+      
+      }else{
         //campi vuoti
         echo("Mancano dei dati, riprova!");
         header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");

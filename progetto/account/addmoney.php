@@ -51,7 +51,7 @@ if(isset($_POST["submit"])){
 
         }else{
 
-            echo("Il tuo conto è stato ricaricato con sucesso!");
+            echo("Il tuo conto è stato ricaricato con successo!");
             header("Refresh:2; url=/progetto/account/show_profile.php");
         }
 

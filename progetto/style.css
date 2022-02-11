@@ -140,7 +140,8 @@ p{
 }
 
 .col-4 img{
-    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 
@@ -408,6 +409,14 @@ form .btn:focus{
     margin-bottom: 25px;
 }
 
+.inputfile {
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 /*---------dettaglio progetto---------------------*/
 
 .single-product{
@@ -417,6 +426,8 @@ form .btn:focus{
 .single-product .col-2 img{
     padding: 0;
     margin-top: 80px;
+    max-width: 500px;
+    max-height: 600px;
 }
 
 .single-product .col-2{
@@ -477,7 +488,7 @@ input:focus{
 
 .wrapper .sidebar{
     width: 200px;
-    height: 800px;
+    height: 1000px;
     background: #005052;
     padding: 30px 0;
 }

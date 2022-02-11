@@ -42,7 +42,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
                     </div>
 
                     <div> Immagine: <br>
-                        <input type="file" name="image" id="image" class="form-control"> </div>
+                        <input type="file" name="image" id="image" class="inputfile"> </div>
 
                     <div> Obiettivo da raggiungere:
                     <input type="number" min="1" value="1" step="any" name="obiettivo" class="form-control" placeholder="5"> € </div>
@@ -59,7 +59,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
     </div>
 </div>
 
-<script src="/progetto/account/startup/controlloTesto.js"></script>
+<!----<script src="/progetto/account/startup/controlloTesto.js"></script>
 
 <?php
 

@@ -63,7 +63,7 @@ if(isset($_POST["submit"])){
                 }else{
 
                     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/userdetails.php";
-                    echo("Registrazione avvenuta con sucesso");
+                    echo("Registrazione avvenuta con successo");
                     header("Refresh:2; url=/progetto/startSAW.php");
 
                 }

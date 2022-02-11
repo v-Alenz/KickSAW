@@ -70,7 +70,7 @@ if(isset($_POST["idprog"] )){
 
             }else{
 
-                echo("Ti sei registrato con sucesso alla newsletter!");
+                echo("Ti sei registrato con successo alla newsletter!");
                 header("Refresh:2; url=/progetto/elencoprogetti.php");
 
             }

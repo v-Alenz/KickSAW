@@ -75,7 +75,7 @@ if(isset($_POST["submit"])){
                             header("Refresh:2; url=/progetto/account/modificapass.php");
 
                         }else{
-                            echo("Modifica della password avvenuta con sucesso!");
+                            echo("Modifica della password avvenuta con successo!");
                             header("Refresh:2; url=/progetto/account/show_profile.php");
                         }
 

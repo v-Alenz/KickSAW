@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
           ?>
         </div>
         <div name="missProg" class="head_title" hidden>
-          <h4> Non è stato trovato alcun progetto :( </h4><br><br>
+          <h4> Non è stato trovato alcun progetto :( </h4><br><br>    <!--- per js --->
         </div>
     </div>
 </div>

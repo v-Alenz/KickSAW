@@ -24,8 +24,8 @@ if(isset($_POST["email"])) {
     if(mysqli_num_rows($res) == 1){
         echo "Email già usata, riprova!";
     }else{
-        //echo "Registrazione avvenuta con sucesso!";
-        //echo "Operazione avvenuta con sucesso!";
+        //echo "Registrazione avvenuta con successo!";
+        //echo "Operazione avvenuta con successo!";
         $emailusata = 0;
     }
 

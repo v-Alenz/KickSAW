@@ -28,6 +28,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 //session_start();
 
 if(isset($_POST["submit"])){
+
     $nome = trim($_POST['firstname']);
     $cognome = trim($_POST['lastname']);
     $email = trim($_POST['email']);
@@ -39,39 +40,31 @@ if(isset($_POST["submit"])){
     if(!empty($nome) & !empty($cognome) & !empty($email)){
 
 
-        //include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkemail.php";
-        //if ( $emailusata === 0){
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/checkuserexist.php";
 
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+        $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
 
-            $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+        mysqli_stmt_bind_param($stmt, "sssssss", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
 
-            mysqli_stmt_bind_param($stmt, "sssssss", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+        if ( mysqli_affected_rows($conn) === 0){
+                
+            echo("Errore, riprova più tardi!");
+            header("Refresh:2; url=/progetto/account/modificaprofilo.php");
 
-            if ( mysqli_affected_rows($conn) === 0){
-                //controllare che la mail non ci sia già
-                echo("Errore, riprova più tardi!");
-                header("Refresh:2; url=/progetto/account/modificaprofilo.php");
+        }else{
 
-            }else{
+            echo("Modifica avvenuta con successo");
+            header("Refresh:2; url=/progetto/account/show_profile.php");
 
-                echo("Modifica avvenuta con sucesso");
-                header("Refresh:2; url=/progetto/account/show_profile.php");
-
-            }
-
-
-          /*  }else{
-                //echo("Email già usata!");
-                header("Refresh:2; url=/progetto/account/modificaprofilo.php");
-            }*/
+        }
 
     }else{
         echo("Mancano dei dati importanti, riprova!");

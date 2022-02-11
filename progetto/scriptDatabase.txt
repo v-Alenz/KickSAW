@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Collabora` (
 DROP TABLE IF EXISTS `StarterPunchDatabase`.`MediaProgetto` ;
 
 CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MediaProgetto` (
-  `idMedia` INT NOT NULL,
+  `idMedia` INT NOT NULL AUTO_INCREMENT,
   `Progetto_idProgetto` INT NOT NULL,
   `mediaLink` VARCHAR(200) NULL,
   PRIMARY KEY (`idMedia`),

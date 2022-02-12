@@ -3,7 +3,7 @@ function checkemail(url){
 
 let usermail = document.getElementById("email").value;
 //console.log(usermail);
-    
+
 return fetch(url, {
     method:"post",
     headers: { "Content-type" : "application/x-www-form-urlencoded"},

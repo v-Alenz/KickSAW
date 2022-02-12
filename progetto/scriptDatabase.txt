@@ -177,6 +177,7 @@ DROP TABLE IF EXISTS `StarterPunchDatabase`.`Finanzia` ;
 CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Finanzia` (
   `Utente_idUtente` INT NOT NULL,
   `Progetto_idProgetto` INT NOT NULL,
+  `Ammount` INT NOT NULL,
   PRIMARY KEY (`Utente_idUtente`, `Progetto_idProgetto`),
   INDEX `fk_Finanzia_Utente1_idx` (`Utente_idUtente` ASC),
   INDEX `fk_Finanzia_Progetto1_idx` (`Progetto_idProgetto` ASC),

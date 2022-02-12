@@ -59,8 +59,8 @@ include "common/navbar.php";
             ?>
         </h2>
           <div class="row">
-              <div class="col-2">
-                  <?php echo '<img src="'.$row[0][8].'" alt="progetto" >' ?>
+              <div>
+                  <?php echo '<br><img src="'.$row[0][8].'" alt="immagine progetto" class="immagineprogetto">' ?>
               </div>
               <div class="col-2">
                   <br>
@@ -74,8 +74,11 @@ include "common/navbar.php";
                       echo $row[0][3];
                     ?>
                   €</h4>
-                  <a href="" class="btn">Sostieni questo progetto</a>
-                  <input type="number" min="1" value="1" step="any">€
+                  <form action="donazione.php" method="post">
+                      <button type="submit" name="idprog" class="btn"
+                      value=<?php echo $_GET['prog'] ?>>Sostieni questo progetto</button><br>
+                      <input type="number" name="ammount" min="1" value="1" step="any">€</input>
+                  </form>
                   <h4>
                     Scade il:
                     <?php
@@ -84,7 +87,7 @@ include "common/navbar.php";
                   </h4>
                   <br>
                   <form action="/progetto/addprogmaillist.php" method="post">
-                      <button type="submit" name="idprog" class="btn" 
+                      <button type="submit" name="idprog" class="btn"
                       value=<?php echo $_GET['prog'] ?>>Iscriviti alla newsletter</button>
                   </form>
               </div>

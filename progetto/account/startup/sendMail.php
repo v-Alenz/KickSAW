@@ -1,49 +1,92 @@
-
 <?php
 
-//LETTERALMENTE COPIA E INCOLLA DA INTERNET
-//composer require phpmailer/phpmailer -----> PER INSTALLARE
+  //composer require phpmailer/phpmailer -----> PER INSTALLARE
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
 
-//require_once "vendor/autoload.php";
+  //require_once "vendor/autoload.php";
 
-if(/*isset($sender) && isset($destinatario) &&*/ !empty($_POST['testoMail'])){
-  //PHPMailer Object
-  $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
+  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/Exception.php';
+  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/PHPMailer.php';
+  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/SMTP.php';
 
-  //From email address and name
-  $mail->From = $sender[email];
-  $mail->FromName = $sender[nome]." ".$sender[cognome];
-  echo "1";
-  //To address and name
-  //$mail->addAddress("recepient1@example.com", "Recepient Name");
-  $mail->addAddress($destinatario); //Recipient name is optional
+  if(isset($_SESSION["loggato"])){
 
-  //Address to which recipient will reply
-  //$mail->addReplyTo("reply@yourdomain.com", "Reply");
+  if(!empty($_POST['testoMail'])){
 
-  //CC and BCC
-  //$mail->addCC("cc@example.com");
-  //$mail->addBCC("bcc@example.com");
+    //PHPMailer Object
+    $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
 
-  //Send HTML or Plain Text email
-  $mail->isHTML(false);
-  echo "2";
-  $mail->Subject = "Newsletter StarterPunch! sul progetto ".$_POST['nomeProgetto'];
-  //$mail->Body = "<i>Mail body in HTML</i>";
-  $mail->AltBody = $_POST['testoMail'];
-  echo "3";
-  try {
-      $mail->send();
-      echo "Message has been sent successfully to ".$destinatario."<br>";
-  } catch (Exception $e) {
-      echo "Mailer Error: " . $mail->ErrorInfo;
+    //Enable SMTP debugging.
+    //$mail->SMTPDebug = 3;
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();
+    //Set SMTP host name
+    $mail->Host = "smtp.gmail.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;
+    //Provide username and password
+    $mail->Username = "starterpunchofficial@gmail.com";
+    $mail->Password = "Animalcrossing";
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";
+    //Set TCP port to connect to
+    $mail->Port = 587;
+
+    //From email address and name
+    $mail->From = $sender['email'];
+    $mail->FromName = $sender['nome']." ".$sender['cognome'];
+    
+    //To address and name
+    //$mail->addAddress("recepient1@example.com", "Recepient Name");
+
+   
+      $mail->addAddress($destinatari[$i]['email']); 
+      //echo $destinatari[$i]['email'];
+
+
+    //Address to which recipient will reply
+    //$mail->addReplyTo("reply@yourdomain.com", "Reply");
+
+    //CC and BCC
+    //$mail->addCC("cc@example.com");
+    //$mail->addBCC("bcc@example.com");
+
+    //Send HTML or Plain Text email
+    $mail->isHTML(true);
+    
+    $mail->Subject = "Newsletter StarterPunch! sul progetto ".$_POST['nomeProgetto'];
+    $mail->Body =  $_POST['testoMail'];
+    //$mail->AltBody = $_POST['testoMail'];
+    
+
+    try {
+        $mail->send();
+          //echo "Message has been sent successfully to ".$destinatario['email']."<br>";
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+
+    }
+
+  }else{
+
+    echo("Devi scrivi qualcosa ai tuoi follower!");
+          echo"</div>";
+      echo"</div>";
+      echo"</div>";
+    echo"</div>";
+    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+    header("Refresh:2; url=/progetto/startSAW.php");
+    exit();
+
+
   }
-}
-else{
 
-  echo "Non ricevo le coseh";
+}else{
+
+  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
 
 }
+
+?>

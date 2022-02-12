@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title> Area Admin </title>
+    <title> Tutti i progetti </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
     <?php
@@ -22,26 +22,15 @@ if(isset($_SESSION["loggato"])){
 
     ?>
 
-
     <div class="wrapper">
 
         <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
 
         <div class="content">
-            <div class="header"> Area Admin </div>
+            <div class="header"> Tutti i progetti </div>
                 <div class="info">
 
-                    <form action="/progetto/account/admin/tuttiutenti.php" method="post">
-                        <div> Vedi tutti gli utenti registrati : </div>
-                        <input type="submit" name="submit" value="Vedi tutti gli utenti" class="btn">
-                    </form>
-                    <br>
-
-                    <form action="/progetto/account/admin/vedituttiprogetti.php" method="post">
-                        <div> Vedi tutti i progetti : </div>
-                        <input type="submit" name="submit" value="Vedi tutti i progetti" class="btn">
-                    </form>
-                    <br>
+                <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/admin/viewproject.php"; ?>
 
                 </div>
             </div>
@@ -53,7 +42,7 @@ if(isset($_SESSION["loggato"])){
     }else{
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/account/admin/errorenoadmin.php";
-        
+
     }
     
 }else{

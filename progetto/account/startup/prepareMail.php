@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -39,6 +38,14 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($res) ===  0){
+
+      echo("Errore, riprova più tardi!");
+      header("Refresh:2; url=/progetto/account/startup/scriviMail.php");
+
+    }
+
     $sender= mysqli_fetch_array($res, MYSQLI_ASSOC);
 
     //trovo mail dei follower
@@ -59,15 +66,41 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
     $receivers=mysqli_stmt_get_result($stmt);
 
-    while($destinatario = mysqli_fetch_array($receivers, MYSQLI_ASSOC)){
+    if (mysqli_num_rows($receivers) ===  0){
+
+      echo("Non c'è nessuno iscritto alla tua newsletter :( !");
+            echo"</div>";
+          echo"</div>";
+        echo"</div>";
+      echo"</div>";
+      include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+      header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+      exit();
+
+    }else{
+
+      //echo mysqli_num_rows($receivers);
+
+      $i = 0;
+      for ( $i ; $i < mysqli_num_rows($receivers) ; $i++){
+
+        $destinatari[$i] =  mysqli_fetch_array($receivers, MYSQLI_ASSOC);
+        //echo $destinatari[$i]['email'];
+
+      }
+
+      $i = 0;
+      for ( $i ; $i < mysqli_num_rows($receivers) ; $i++){
 
       include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/sendMail.php";
 
+      }
+
+      echo "Messaggio inviato con successo";
+      header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+
     }
-
-    //echo "Messaggi inviati con successo";
-    //header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
-
+  
   } else{
 
     echo("Errore, riprova più tardi!");

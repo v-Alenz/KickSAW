@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 //session_start();
 
-if(isset($_SESSION["loggato"])){
+if(isset($_SESSION["loggato"]) && isset($_POST['progetto'])  ){
 
 ?>
 

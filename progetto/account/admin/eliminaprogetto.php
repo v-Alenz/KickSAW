@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title> Area Admin </title>
+    <title> Elimina progetto </title>
     <link rel="stylesheet" type="text/css" href="/progetto/style.css">
 
     <?php
@@ -28,21 +28,14 @@ if(isset($_SESSION["loggato"])){
         <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
 
         <div class="content">
-            <div class="header"> Area Admin </div>
+            <div class="header"> Elimina Progetto </div>
                 <div class="info">
 
-                    <form action="/progetto/account/admin/tuttiutenti.php" method="post">
-                        <div> Vedi tutti gli utenti registrati : </div>
-                        <input type="submit" name="submit" value="Vedi tutti gli utenti" class="btn">
+                    <form action="/progetto/account/admin/deleteuser.php" method="post">
+                        <div> Sei sicuro di voler eliminare questo progetto " numero <?php echo $_POST['idProgetto'];?> " ? </div>
+                        <button type="submit" name="eliminaprogetto"  class="btnsmall" 
+                        value=<?php echo $_POST['idProgetto'] ?>>Elimina Definitivamente</button>
                     </form>
-                    <br>
-
-                    <form action="/progetto/account/admin/vedituttiprogetti.php" method="post">
-                        <div> Vedi tutti i progetti : </div>
-                        <input type="submit" name="submit" value="Vedi tutti i progetti" class="btn">
-                    </form>
-                    <br>
-
                 </div>
             </div>
         </div>

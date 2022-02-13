@@ -1,0 +1,30 @@
+ERRORI COMUNI SEGNALATI DALLA PROF
+
+-mysqli_real_escpe_string
+  NON SERVE, al massimo si usano espressioni regolari o filter_var() per
+  controllare l'input
+
+-htmlspecialchars
+  serve solo per ritornare al browser input esterno (evita iniezione JS malevolo)
+  sanitizzazione password solo trim(), lunghezza, caratteri speciali, etc
+
+-stripslashes
+  utile per ritornare al client, non per mandare i dati al database, dove invece
+  dovremmo aggiungere slash per nascondere caratteri speciali
+
+-troppe query inutili
+
+-verificare esistenza variabili
+  come risultati di SELECT
+
+FUNZIONALITà ANCORA DA IMPLEMENTARE
+
+
+-presentazione Power Point
+
+-controlli server side
+
+-testare le cosseh
+
+-rifattorizzare
+

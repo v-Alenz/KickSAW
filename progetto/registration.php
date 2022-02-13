@@ -35,46 +35,53 @@ if(isset($_POST["submit"])){
 
     if(!empty($nome) & !empty($cognome) & !empty($email) & !empty($pass) & !empty($confpass)){
 
-        if (strlen($pass)>= 8 && strlen($confpass)>= 8){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL )){
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/verificamail.php";
+            if (strlen($pass)>= 8 && strlen($confpass)>= 8){
 
-            if( $pass === $confpass){
+                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/verificamail.php";
 
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
+                if( $pass === $confpass){
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+                    $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-                $query= "INSERT INTO utente (nome, cognome, email, password) values ( ?, ?, ?, ?)";
+                    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                    $query= "INSERT INTO utente (nome, cognome, email, password) values ( ?, ?, ?, ?)";
 
-                mysqli_stmt_bind_param($stmt, "ssss", $nome, $cognome, $email, $pass);
+                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                    mysqli_stmt_bind_param($stmt, "ssss", $nome, $cognome, $email, $pass);
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
-                if ( mysqli_affected_rows($conn) === 0){
+                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-                    echo("Errore, riprova più tardi!");
-                    header("Refresh:2; url=/progetto/startSAW.php");
+                    if ( mysqli_affected_rows($conn) === 0){
+
+                        echo("Errore, riprova più tardi!");
+                        header("Refresh:2; url=/progetto/startSAW.php");
+
+                    }else{
+
+                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/userdetails.php";
+                        echo("Registrazione avvenuta con successo");
+                        header("Refresh:2; url=/progetto/startSAW.php");
+
+                    }
 
                 }else{
-
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/userdetails.php";
-                    echo("Registrazione avvenuta con successo");
-                    header("Refresh:2; url=/progetto/startSAW.php");
-
+                    echo("Le password non combaciano, riprova!");
+                    header("Refresh:2; url=/progetto/formregistration.php");
                 }
 
             }else{
-                echo("Le password non combaciano, riprova!");
+                echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
                 header("Refresh:2; url=/progetto/formregistration.php");
             }
 
         }else{
-            echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
+            echo("La mail inserita non è valida, riprova!");
             header("Refresh:2; url=/progetto/formregistration.php");
         }
 

@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title> Creazione Startup </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
   </head>
   <body>
 
   <?php
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+  include dirname(__FILE__)."/www/common/navbar.php";
   ?>
 
   <div class="account-page">
@@ -30,11 +30,11 @@
       $obj = trim($_POST['obiettivo']);
       $date = str_replace('T', ' ', trim($_POST['expire']).":00");
       $localImage = 'immaginiProgetti/'.basename($_FILES["image"]["name"]);
-      $imageLocation = $_SERVER['DOCUMENT_ROOT'].'/progetto/'.$localImage;
+      $imageLocation = dirname(__FILE__).'/progetto/'.$localImage;
 
       if($obj > 2000000000){
         echo "Obiettivo troppo alto!";
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
       }
 
       if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($_POST['expire']) && !empty($_FILES["image"]["name"])){
@@ -52,7 +52,7 @@
           //echo "File is not an image.";
           //$uploadOk = 0;
           echo "Il file selezionato non è un immagine, riprova!";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+          include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
       }
 
       // Contorllo la dimensione del file
@@ -60,7 +60,7 @@
         //echo "Sorry, your file is too large.";
         //$uploadOk = 0;
         echo "L'immagine selezionata è troppo grande, riprova!";
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
       }
 
       // Allow certain file formats
@@ -68,14 +68,14 @@
         //echo "Sorry, only JPG, JPEG, PNG files are allowed.";
         //$uploadOk = 0;
         echo "Sono ammessi solo file JPG, JPEG o PNG, riprova!";
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
       }
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
         //echo "Sorry, your file was not uploaded.";
         echo "Non è stata caricata correttamente l'immagine, riprova!";
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
 
       // if everything is ok, try to upload file
       } else {
@@ -84,16 +84,16 @@
         } else {
           //echo "Sorry, there was an error uploading your file.";
           echo "Non è stata caricata correttamente l'immagine, riprova!";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+          include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
         }
       }
 
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/verificatitolo.php";
+        include dirname(__FILE__)."/sys/account/startu/verificatitolo.php";
 
         if(is_numeric($obj) && strlen($titolo) < 100 && strlen($descr) < 1000 && strlen($descr) < 10000 && $obj>0){
 
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+          include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
           mysqli_autocommit($conn, FALSE);
 
@@ -101,12 +101,12 @@
           $query="INSERT INTO progetto (Utente_idUtente, nome, introduzione, descrizione)
                   VALUES( ?, ?, ?, ?)";
 
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, "isss", $_SESSION['uid'], $titolo, $intro, $descr);
 
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+          include dirname(__FILE__)."/sys/common/db/executequery.php";
           //echo 'ho eseguito la query<br>';
 
           if ( mysqli_affected_rows($conn) === 0){
@@ -123,23 +123,23 @@
                    VALUES ((SELECT idProgetto FROM progetto WHERE nome = ?), ?, ?)
                   ";
           //echo 'ho esequito la query2<br>';
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, 'sis', $titolo, $obj, $date);
 
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+          include dirname(__FILE__)."/sys/common/db/executequery.php";
 
           //imposto l'immagine del progetto
           $query="INSERT INTO mediaprogetto( Progetto_idProgetto, mediaLink)
                   VALUES ((SELECT idProgetto FROM progetto WHERE nome = ?), ?)
           ";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, 'ss', $titolo, $localImage);
 
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
-          include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+          include dirname(__FILE__)."/sys/common/db/executequery.php";
 
         }if ( mysqli_affected_rows($conn) === 0){
 
@@ -179,7 +179,7 @@
 </div>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Logout </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -51,7 +51,7 @@ header("Refresh:2; url=/progetto/startSAW.php");
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <title> Crea nuova startup </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 
 //session_start();
 
@@ -22,7 +22,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
 
 <div class="wrapper">
 
-    <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
+    <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header"> Crea la tua nuova startup!</div>
@@ -65,11 +65,11 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
 
 }else{
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/account/errora.php";
+    include dirname(__FILE__)."/sys/common/error/errora.php";
 
 }
 
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

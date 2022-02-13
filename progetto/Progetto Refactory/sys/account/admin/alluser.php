@@ -4,13 +4,13 @@
 
 if(isset($_SESSION["loggato"])){
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
     $query="SELECT * FROM utente join ruolo on idUtente = Utente_idUtente";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
 
@@ -60,7 +60,7 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+    include dirname(__FILE__)."/sys/common/error/errore.php";
 
 }
 

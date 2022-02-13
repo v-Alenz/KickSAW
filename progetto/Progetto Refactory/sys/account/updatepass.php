@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Update password </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -37,17 +37,17 @@ if(isset($_POST["submit"])){
 
             if( $newpass === $newppass){
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+                include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
                 $query= "SELECT password FROM utente where idUtente = ?";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"] );
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                include dirname(__FILE__)."/sys/common/db/executequery.php";
 
                 $res=mysqli_stmt_get_result($stmt);
 
@@ -61,13 +61,13 @@ if(isset($_POST["submit"])){
 
                         $query= "UPDATE utente set password = ? where idUtente = ?";
 
-                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
                         mysqli_stmt_bind_param($stmt, "ss", $newpasscifr, $_SESSION["uid"] );
 
-                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                        include dirname(__FILE__)."/sys/common/db/executequery.php";
 
                         if ( mysqli_affected_rows($conn) === 0){
 
@@ -121,7 +121,7 @@ if(isset($_POST["submit"])){
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

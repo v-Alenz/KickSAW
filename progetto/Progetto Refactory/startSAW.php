@@ -6,13 +6,13 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 <div class="sfondopagprincipale">
@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 </div>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

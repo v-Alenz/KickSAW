@@ -4,11 +4,11 @@ ini_set('display_errors', false);
 ini_set('error_log', 'php.log');
 
 if(!defined('AccessDbForProgects')){
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+  include dirname(__FILE__)."/sys/common/error/errore.php";
 }
 
 
-  include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+  include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
   $query = "SELECT idProgetto, progetto.nome AS nomeP, utente.nome, cognome, mediaLink
             FROM progetto
@@ -16,9 +16,9 @@ if(!defined('AccessDbForProgects')){
             JOIN mediaprogetto ON progetto.idProgetto = mediaprogetto.Progetto_idProgetto
            ";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   $res = mysqli_stmt_get_result($stmt);
 

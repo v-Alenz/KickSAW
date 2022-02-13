@@ -7,13 +7,13 @@ if ( !empty($email)){
   //ricavo l'id dell'utente appena aggiunto/////////////////////////////////////
   $query="SELECT idUtente FROM utente WHERE email = ?";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "s", $email);
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   $res=mysqli_stmt_get_result($stmt);
   $utente = mysqli_fetch_array($res, MYSQLI_ASSOC);
@@ -23,13 +23,13 @@ if ( !empty($email)){
   //aggiungo il saldo dell'utente///////////////////////////////////////////////
   $query= "INSERT INTO saldo (Utente_idUtente) values (?)";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "i", $id);
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
@@ -39,13 +39,13 @@ if ( !empty($email)){
   //assegno un ruolo all'utente/////////////////////////////////////////////////
   $query= "INSERT INTO ruolo (Utente_idUtente) values (?)";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "i", $id);
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
@@ -55,7 +55,7 @@ if ( !empty($email)){
 
 else{
 
-    include  $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+    include  dirname(__FILE__)."/sys/common/error/errore.php";
     header("Refresh:2; url=/progetto/startSAW.php");
 }
 

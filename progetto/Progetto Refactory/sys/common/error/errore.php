@@ -1,10 +1,10 @@
 <?php
     
-    echo '<link rel="stylesheet" type="text/css" href="/progetto/style.css">';
+    echo '<link rel="stylesheet" type="text/css" href="/style.css">';
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+    include dirname(__FILE__)."/www/common/navbar.php";
 
     echo '<div class="account-page">';
         echo '<div class="container">';
@@ -21,5 +21,5 @@
         echo '</div>';
     echo '</div>';
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+    include dirname(__FILE__)."/www/common/footer.php";
 ?>

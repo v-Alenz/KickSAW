@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <title> Visualizza profilo </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 
 //session_start();
 
@@ -22,24 +22,24 @@ if(isset($_SESSION["loggato"])){
 
 <div class="wrapper">
 
-<?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
+<?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header">Profilo </div>
             <div class="info">
 
                 <?php
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+                include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
                 $query = "SELECT * FROM utente JOIN saldo ON idUtente=Utente_idUtente where idUtente = ? ";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"]);
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                include dirname(__FILE__)."/sys/common/db/executequery.php";
 
                 $res=mysqli_stmt_get_result($stmt);
 
@@ -82,11 +82,11 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/account/errora.php";
+    include dirname(__FILE__)."/sys/common/error/errora.php";
 
 }
 
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

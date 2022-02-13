@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Become Admin </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -30,17 +30,17 @@ if(isset($_POST["submit"])){
   $yearExp=$thisYear+2;
   $expireDate=str_replace($thisYear, $yearExp, date("Y-m-d"))." 00:00:00";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+  include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
   $query="UPDATE ruolo SET stato='admin', scadenzaLicenza=? WHERE Utente_idUtente = ?";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "si", $expireDate, $_SESSION["uid"]);
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
@@ -70,7 +70,7 @@ else{
 
 <?php
 
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

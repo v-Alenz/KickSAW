@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Registrazione </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -39,23 +39,23 @@ if(isset($_POST["submit"])){
 
             if (strlen($pass)>= 8 && strlen($confpass)>= 8){
 
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/common/verificamail.php";
+                include dirname(__FILE__)."/sys/verificamail.phpficamail.php";
 
                 if( $pass === $confpass){
 
                     $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+                    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
                     $query= "INSERT INTO utente (nome, cognome, email, password) values ( ?, ?, ?, ?)";
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+                    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
                     mysqli_stmt_bind_param($stmt, "ssss", $nome, $cognome, $email, $pass);
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+                    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-                    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+                    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
                     if ( mysqli_affected_rows($conn) === 0){
 
@@ -64,7 +64,7 @@ if(isset($_POST["submit"])){
 
                     }else{
 
-                        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/userdetails.php";
+                        include dirname(__FILE__)."/sys/userdetails.php";
                         echo("Registrazione avvenuta con successo");
                         header("Refresh:2; url=/progetto/startSAW.php");
 
@@ -106,7 +106,7 @@ if(isset($_POST["submit"])){
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

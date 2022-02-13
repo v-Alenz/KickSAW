@@ -5,13 +5,13 @@
 
     <title> StartSAW </title>
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 
 <?php
 
-  include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+  include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
   $query = "SELECT progetto.nome, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza, mediaLink
             FROM progetto
@@ -20,20 +20,20 @@
             JOIN mediaprogetto ON progetto.idProgetto = mediaprogetto.Progetto_idProgetto
             WHERE idProgetto = ?";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "i", $_GET['prog']);
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+  include dirname(__FILE__)."/sys/common/db/executequery.php";
 
   $result = mysqli_stmt_get_result($stmt);
 
   $row = mysqli_fetch_all($result);
 
   if(!$row){
-    include  $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+    include  dirname(__FILE__)."/sys/common/error/errore.php";
     exit();
   }
 
@@ -112,7 +112,7 @@ include "common/navbar.php";
   </div>
 
   <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

@@ -2,7 +2,7 @@
 
 if(isset($_POST["email"])) {
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
     $query = "SELECT email FROM utente WHERE email = ?
               AND email NOT IN(
@@ -10,13 +10,13 @@ if(isset($_POST["email"])) {
                 FROM utente
                 WHERE idUtente = ? ) ";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
     mysqli_stmt_bind_param($stmt, "si", $email, $_SESSION["uid"]);
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
 
@@ -28,7 +28,7 @@ if(isset($_POST["email"])) {
             </div>
         </div>
         <?php
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+        include dirname(__FILE__)."/www/common/footer.php";
         header("Refresh:2; url=/progetto/account/modificaprofilo.php");
         exit();
 
@@ -37,7 +37,7 @@ if(isset($_POST["email"])) {
 
 }else{
 
-    include  $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+    include  dirname(__FILE__)."/sys/common/error/errore.php";
 
 }
 

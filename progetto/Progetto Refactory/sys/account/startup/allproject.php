@@ -6,17 +6,17 @@ if(isset($_SESSION["loggato"])){
 
     if($_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+        include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
         $query="SELECT * FROM progetto WHERE Utente_idUtente= ?";
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
         mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+        include dirname(__FILE__)."/sys/common/db/executequery.php";
 
         $res=mysqli_stmt_get_result($stmt);
 
@@ -57,14 +57,14 @@ if(isset($_SESSION["loggato"])){
         }
 
     }else{
-        
-        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/errorenopro.php";
+
+        include dirname(__FILE__)."/sys/common/error/errorenopro.php";
 
     }
 
 }else{
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+    include dirname(__FILE__)."/sys/common/error/errore.php";
 
 
 }

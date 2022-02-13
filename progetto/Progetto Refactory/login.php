@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Login </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 <div class="account-page">
@@ -33,17 +33,17 @@ if(isset($_POST["submit"])){
 
         if (strlen($pass)>= 8){
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+            include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
             $query="SELECT idUtente, nome, password, stato FROM utente JOIN ruolo ON idUtente=Utente_idUtente WHERE email = ?";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+            include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
             mysqli_stmt_bind_param($stmt, "s",$email);
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+            include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+            include dirname(__FILE__)."/sys/common/db/executequery.php";
 
 
             $res=mysqli_stmt_get_result($stmt);
@@ -97,7 +97,7 @@ if(isset($_POST["submit"])){
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

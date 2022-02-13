@@ -23,6 +23,6 @@
   </div>
 
 <?php  } else {
-  include  $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+  include  dirname(__FILE__)."/sys/common/error/errore.php";
 }
 ?>

@@ -76,7 +76,7 @@
       echo"</div>";
       echo"</div>";
     echo"</div>";
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+    include dirname(__FILE__)."/www/common/footer.php";
     header("Refresh:2; url=/progetto/startSAW.php");
     exit();
 
@@ -85,7 +85,7 @@
 
 }else{
 
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/errore.php";
+  include dirname(__FILE__)."/sys/common/error/errore.php";
 
 }
 

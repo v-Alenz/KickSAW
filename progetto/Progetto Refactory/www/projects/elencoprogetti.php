@@ -2,21 +2,21 @@
 <html lang="it">
 <head>
     <title> StartSAW </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 
 <?php
   define('AccessDbForProgects', TRUE);
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/loadProgects.php"
+  include dirname(__FILE__)."/sys/projects/loadProgects.php"
 ?>
 
 <body>
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 <div class="sfondopagprincipalelight">
     <section id="ricerca">
@@ -62,7 +62,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     </div>
 </div>
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 </body>
   <script type="text/javascript" src="searchBar.js"></script>

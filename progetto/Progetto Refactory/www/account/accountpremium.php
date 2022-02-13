@@ -2,17 +2,17 @@
 <html lang="it">
 <head>
     <title> Account premium </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 
 <body>
 
 <?php
-  include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+  include dirname(__FILE__)."/www/common/navbar.php";
 
   //session_start();
 
@@ -22,7 +22,7 @@
 
 <div class="wrapper">
 
-    <?php include $_SERVER['DOCUMENT_ROOT']."/progetto/account/navbaraccount.php"; ?>
+    <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header"> Account premium </div>
@@ -34,7 +34,7 @@
                     <input type="submit" name="submit" value="Diventa premium" class="btn">
                 </form>
               <?php }else {
-                include $_SERVER['DOCUMENT_ROOT']."/progetto/account/showexpire.php"; ?>
+                include dirname(__FILE__)."/sys/account/showexpire.php"; ?>
                 <div> Il tuo account premium scadrà il <?php echo $scadenza ?> </div>
                 <br><br><br>
                 <?php if($_SESSION["rid"] === "pro"){  ?>
@@ -68,7 +68,7 @@
   </div>
 <?php }
 
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

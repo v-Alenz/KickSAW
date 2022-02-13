@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Delete project </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -28,20 +28,20 @@ if(isset($_POST["eliminaprogetto"])){
 
     $idprogetto = $_POST['eliminaprogetto'];
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
     $query= "DELETE FROM progetto WHERE idProgetto = ?";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
     mysqli_stmt_bind_param($stmt, "i", $idprogetto );
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     if ( mysqli_affected_rows($conn) === 0){
-        
+
         echo("Errore, riprova più tardi!");
         header("Refresh:2; url=/progetto/account/admin/areaadmin.php");
 
@@ -70,9 +70,8 @@ if(isset($_POST["eliminaprogetto"])){
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>
 </html>
-

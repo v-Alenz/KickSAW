@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Trova dati mail </title>
-    <link rel="stylesheet" type="text/css" href="/progetto/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/googlefont.php";
+    include dirname(__FILE__)."/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+include dirname(__FILE__)."/www/common/navbar.php";
 ?>
 
 
@@ -25,17 +25,17 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 <?php
   if(isset($_POST["nomeProgetto"])){
     //trovo dati sender
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
     $query= "SELECT email, nome, cognome FROM utente WHERE idUtente = ?";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
     mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"] );
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
 
@@ -49,20 +49,20 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     $sender= mysqli_fetch_array($res, MYSQLI_ASSOC);
 
     //trovo mail dei follower
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
+    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
 
     $query= "SELECT email FROM utente
              JOIN maillist ON utente.idUtente = maillist.Utente_idUtente
              JOIN Progetto ON maillist.MailList_idProgetto = progetto.idProgetto
              WHERE progetto.nome = ?";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
 
     mysqli_stmt_bind_param($stmt, "s", $_POST['nomeProgetto'] );
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+    include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     $receivers=mysqli_stmt_get_result($stmt);
 
@@ -73,7 +73,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
           echo"</div>";
         echo"</div>";
       echo"</div>";
-      include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+      include dirname(__FILE__)."/www/common/footer.php";
       header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
       exit();
 
@@ -92,7 +92,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
       $i = 0;
       for ( $i ; $i < mysqli_num_rows($receivers) ; $i++){
 
-      include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/sendMail.php";
+      include dirname(__FILE__)."/sys/account/startup/sendMail.php";
 
       }
 
@@ -100,7 +100,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
       header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
 
     }
-  
+
   } else{
 
     echo("Errore, riprova più tardi!");
@@ -117,7 +117,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
+include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
 </body>

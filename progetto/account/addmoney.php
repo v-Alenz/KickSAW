@@ -34,25 +34,50 @@ if(isset($_POST["submit"])){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-        $query= "UPDATE saldo set starterbits = starterbits + ? where Utente_idUtente = ?";
+        $query = "SELECT starterbits
+        FROM saldo
+        WHERE Utente_idUtente = ?
+        ";
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
-        mysqli_stmt_bind_param($stmt, "is", $money, $_SESSION["uid"] );
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-        if ( mysqli_affected_rows($conn) === 0){
+        $result = mysqli_stmt_get_result($stmt);
 
-            echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/progetto/account/caricosaldo.php");
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+        if($row['starterbits'] + $money <= 2000000000 ){
+
+            $query= "UPDATE saldo set starterbits = starterbits + ? where Utente_idUtente = ?";
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
+
+            mysqli_stmt_bind_param($stmt, "is", $money, $_SESSION["uid"] );
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlbindquery.php";
+
+            include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
+
+            if ( mysqli_affected_rows($conn) === 0){
+
+                echo("Errore, riprova più tardi!");
+                header("Refresh:2; url=/progetto/account/caricosaldo.php");
+
+            }else{
+
+                echo("Il tuo conto è stato ricaricato con successo!");
+                header("Refresh:2; url=/progetto/account/show_profile.php");
+            }
 
         }else{
 
-            echo("Il tuo conto è stato ricaricato con successo!");
-            header("Refresh:2; url=/progetto/account/show_profile.php");
+            echo("Non puoi caricare tutti questi soldi, riprova!");
+            header("Refresh:2; url=/progetto/account/caricosaldo.php");
         }
 
     }else{

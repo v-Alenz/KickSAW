@@ -13,12 +13,20 @@
 
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
+
 ?>
+
+<div class="account-page">
+    <div class="container">
+        <div class="col-2">
+            <div class="form-container msg">
+
 
 <?php
 
   if(!isset($_SESSION['rid'])){
-      die("Devi essere registrato");
+    echo("Devi essere loggato!");
+    header("Refresh:2; url=/progetto/formlogin.php");
   }
 
   include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
@@ -61,6 +69,10 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) === 0){
+<<<<<<< HEAD
+=======
+      //echo "qui ci arrivo";
+>>>>>>> 4b7f986a6c126ecabcbcbfab9a972f5802db4812
 
       include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
@@ -106,7 +118,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
       if ( mysqli_commit($conn) === false){
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+        header("Refresh:2; url=/progetto/elencoprogetti.php");
       }
 
 
@@ -158,20 +170,27 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
         if ( mysqli_commit($conn) === false){
           echo("Errore, riprova più tardi!");
-          header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+          header("Refresh:2; url=/progetto/elencoprogetti.php");
         }
 
     }
   }else{
-      die("sando insufficiente");
+      echo("Saldo insufficiente :( ");
+      header("Refresh:2; url=/progetto/account/caricosaldo.php");
   }
 
-?>
+  echo("Grazie per la donazione! :) ");
+  header("Refresh:2; url=/progetto/elencoprogetti.php");
 
-DONE!
+  ?>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <?php
-
 include $_SERVER['DOCUMENT_ROOT']."/progetto/common/footer.php";
 ?>
 

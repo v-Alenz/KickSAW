@@ -75,8 +75,8 @@ include "common/navbar.php";
                     ?>
                   €</h4>
                   <form action="donazione.php" method="post">
-                      <button type="submit" name="idprog" class="btn"
-                      value=<?php echo $_GET['prog'] ?>>Sostieni questo progetto</button><br>
+                      <button type="submit" name="idprog" class="btnsmall"
+                      value=<?php echo $_GET['prog'] ?>>Sostieni questo progetto</button>
                       <input type="number" name="ammount" min="1" value="1" step="any">€</input>
                   </form>
                   <h4>
@@ -87,7 +87,7 @@ include "common/navbar.php";
                   </h4>
                   <br>
                   <form action="/progetto/addprogmaillist.php" method="post">
-                      <button type="submit" name="idprog" class="btn"
+                      <button type="submit" name="idprog" class="btnsmall"
                       value=<?php echo $_GET['prog'] ?>>Iscriviti alla newsletter</button>
                   </form>
               </div>

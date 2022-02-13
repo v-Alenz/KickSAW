@@ -24,16 +24,17 @@
 
   <div class="sfondopagprincipale">
       <div class="small-container single-product ">
-        <h1 class="head_title">ROBA BELLISSIMISSIMA CHE TI DICE COSA STA SUCCEDENDO</h1>
         <div class="col-2">
           <form action="common/donation.php" method="post">
+            <br><h2>Sei sicuro di voler donare a questo progetto?</h2><br>
               <button type="submit" name="idprog" class="btn"
-              value=<?php echo $_POST['idprog'] ?>>Coferma</button><br>
+              value=<?php echo $_POST['idprog'] ?>>Conferma</button><br>
               <input type="hidden" name="ammount" value=<?php echo '"'.$_POST['ammount'].'"'?>/>
           </form>
           <form action="dettagliprogetto.php" method="get">
               <button type="submit" name="prog" class="btn"
-              value=<?php echo $_POST['idprog'] ?>>Annulla</button><br>
+              value=<?php echo $_POST['idprog'] ?>>Annulla</button>
+              <br><br><br><br>
           </form>
         </div>
       </div>

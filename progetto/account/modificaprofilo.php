@@ -76,7 +76,7 @@ if(isset($_SESSION["loggato"])){
                                     echo " selected ";
                                   }
                                 ?>
-                                value="preferisco non specifare">Preferisco non specifare</option>
+                                value="preferisco non specificare">Preferisco non specifare</option>
                           </select>
                         </div>
                         <input type="submit" name="submit" value="Modifica" class="btn">

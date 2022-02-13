@@ -37,8 +37,15 @@ if(isset($_POST["submit"])){
     $genere = trim($_POST['genere']);
 
     if(empty($datan)){
-        $datan = null;
+      $datan = null;
     }
+    if(empty($ind)){
+      $ind = null;
+    }
+    if(empty($genere)){
+      $genere = "preferisco non specificare";
+    }
+
 
     if(!empty($nome) & !empty($cognome) & !empty($email)){
 
@@ -58,7 +65,7 @@ if(isset($_POST["submit"])){
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
         if ( mysqli_affected_rows($conn) === 0){
-                
+
             echo("Errore, riprova più tardi!");
             header("Refresh:2; url=/progetto/account/modificaprofilo.php");
 

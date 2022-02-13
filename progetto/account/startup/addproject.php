@@ -37,7 +37,7 @@
         include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
       }
 
-      if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($date) && !empty($_FILES["image"]["name"])){
+      if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($_POST['expire']) && !empty($_FILES["image"]["name"])){
 
       // Faccio i controlli sull'Immagine
       $uploadOk = 0;  //prima messo = 1
@@ -159,7 +159,7 @@
           echo("Valori non conformi, riprova!");
           header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
         }
-      
+
       }else{
         //campi vuoti
         echo("Mancano dei dati, riprova!");

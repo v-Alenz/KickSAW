@@ -36,6 +36,9 @@ if(isset($_POST["submit"])){
     $ind = trim($_POST['indirizzo']);
     $genere = trim($_POST['genere']);
 
+    if(empty($datan)){
+        $datan = null;
+    }
 
     if(!empty($nome) & !empty($cognome) & !empty($email)){
 

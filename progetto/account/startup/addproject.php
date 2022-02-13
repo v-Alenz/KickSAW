@@ -32,6 +32,11 @@
       $localImage = 'immaginiProgetti/'.basename($_FILES["image"]["name"]);
       $imageLocation = $_SERVER['DOCUMENT_ROOT'].'/progetto/'.$localImage;
 
+      if($obj > 2000000000){
+        echo "Obiettivo troppo alto!";
+        include $_SERVER['DOCUMENT_ROOT']."/progetto/account/startup/closeerrorproj.php";
+      }
+
       if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($date) && !empty($_FILES["image"]["name"])){
 
       // Faccio i controlli sull'Immagine

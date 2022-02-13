@@ -40,7 +40,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
 
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-  if($row['starterbits'] - $_POST['ammount'] > 0){
+  if($row['starterbits'] - $_POST['ammount'] >= 0){
 
     include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
@@ -61,7 +61,6 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) === 0){
-      echo "qui ci arrivo";
 
       include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 

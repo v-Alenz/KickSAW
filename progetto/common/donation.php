@@ -69,6 +69,7 @@ include $_SERVER['DOCUMENT_ROOT']."/progetto/common/navbar.php";
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) === 0){
+      //echo "qui ci arrivo";
 
       include  $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 

@@ -95,7 +95,7 @@ if(isset($_POST["submit"])){
             }
 
         }else{
-            echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
+            echo("Le password troppo lunga, riprova!");
             header("Refresh:2; url=/progetto/account/modificapass.php");
         }
 

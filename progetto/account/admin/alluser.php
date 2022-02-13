@@ -6,7 +6,7 @@ if(isset($_SESSION["loggato"])){
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/conn/connDbUtente.php";
 
-    $query="SELECT * FROM utente";
+    $query="SELECT * FROM utente join ruolo on idUtente = Utente_idUtente";
 
     include $_SERVER['DOCUMENT_ROOT']."/progetto/common/controlpreparequery.php";
 
@@ -28,6 +28,7 @@ if(isset($_SESSION["loggato"])){
             echo"<th>Data di nascita</th>";
             echo"<th>Indirizzo</th>";
             echo"<th>Genere</th>";
+            echo"<th>Ruolo</th>";
             echo"<th> </th>";
 
         echo"</tr>";
@@ -41,11 +42,14 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['dataNascita']. "</td>";
                 echo"<td>". $row['indirizzo']. "</td>";
                 echo"<td>". $row['genere']. "</td>";
-                echo '<form action="/progetto/account/admin/eliminautente.php" method="post">';
-                    echo '<td><button type="submit" name="idUtente" class="btnsmall" value="';
-                    echo $row['idUtente'];
-                    echo '" class="btn-link">Elimina utente</button></td>';
-                echo '</form>';
+                echo"<td>". $row['stato']. "</td>";
+                if($row['stato'] != 'admin'){
+                    echo '<form action="/progetto/account/admin/eliminautente.php" method="post">';
+                        echo '<td><button type="submit" name="idUtente" class="btnsmall" value="';
+                        echo $row['idUtente'];
+                        echo '" class="btn-link">Elimina utente</button></td>';
+                    echo '</form>';
+                }
             echo"</tr>";
 
         }

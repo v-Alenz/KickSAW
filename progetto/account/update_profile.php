@@ -36,9 +36,6 @@ if(isset($_POST["submit"])){
     $ind = trim($_POST['indirizzo']);
     $genere = trim($_POST['genere']);
 
-    if(empty($datan)){
-      $datan = null;
-    }
 
     if(!empty($nome) & !empty($cognome) & !empty($email)){
 
@@ -57,10 +54,8 @@ if(isset($_POST["submit"])){
 
         include $_SERVER['DOCUMENT_ROOT']."/progetto/common/executequery.php";
 
-        echo mysqli_error($conn);
-
         if ( mysqli_affected_rows($conn) === 0){
-
+                
             echo("Errore, riprova più tardi!");
             header("Refresh:2; url=/progetto/account/modificaprofilo.php");
 

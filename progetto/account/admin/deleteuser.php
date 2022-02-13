@@ -49,25 +49,8 @@ if(isset($_POST["eliminautente"])){
 
     }else{
 
-        //echo $idutente;
-
-        //echo $idutenteadmin;
-
-        if( $idutente === $idutenteadmin ){     /* non funziona */
-
-            echo("Ti sei eliminato dal sito correttamente, addio");
-            unset($_SESSION["loggato"]);
-            unset($_SESSION["uid"]);
-            unset($_SESSION["rid"]);
-            session_destroy();
-            header("Refresh:3; url=/progetto/startSAW.php");
-
-        }else{
-
-            echo("Utente eliminato con successo");
-            header("Refresh:2; url=/progetto/account/admin/tuttiutenti.php");
-
-        }
+        echo("Utente eliminato con successo");
+        header("Refresh:2; url=/progetto/account/admin/tuttiutenti.php");        
 
     }
 

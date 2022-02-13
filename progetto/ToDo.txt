@@ -19,7 +19,6 @@ ERRORI COMUNI SEGNALATI DALLA PROF
 
 FUNZIONALITà ANCORA DA IMPLEMENTARE
 
--finire l'area admin	// se abbiamo tempo cancellazione singoli progetti
 
 -presentazione Power Point
 
@@ -29,4 +28,3 @@ FUNZIONALITà ANCORA DA IMPLEMENTARE
 
 -rifattorizzare
 
--mettere on delete cascade per permettere di cancellare i progetti di un utente che deve essere eliminato

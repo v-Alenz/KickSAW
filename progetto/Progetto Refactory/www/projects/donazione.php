@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="stylesheet" type="text/css" href="/S4750770style.css">
+  <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <title> StartSAW </title>
     <?php
@@ -19,10 +19,10 @@
 
 <body>
   <?php
-  include "common/navbar.php";
+  include "/chroot/home/S4750770/public_html/www/common/navbar.php";
   ?>
 
-  <div class="sfondopagprincipale">
+  <div class="sfondopagprincipale sfondodonazione">
       <div class="small-container single-product ">
         <div class="col-2">
           <form action="/~S4750770/sys/projects/donation.php" method="post">

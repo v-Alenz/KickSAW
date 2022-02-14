@@ -16,7 +16,7 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
-<div class="account-page">
+<div class="sfondopagprincipale">
     <div class="container">
         <div class="row">
             <div class="col-2">

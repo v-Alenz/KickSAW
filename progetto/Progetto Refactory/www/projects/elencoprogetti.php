@@ -9,22 +9,28 @@
     ?>
 </head>
 
-<?php
-  define('AccessDbForProgects', TRUE);
-  include "/chroot/home/S4750770/public_html/sys/projects/loadProgects.php"
-?>
 
 <body>
+
 <?php
 include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
-<div class="sfondopagprincipalelight">
+
+<?php
+define('AccessDbForProgects', TRUE);
+include "/chroot/home/S4750770/public_html/sys/projects/loadProgects.php"
+?>
+
+<div class="sfondopagprincipalelight elencoprogetti">
     <section id="ricerca">
         <div class="container">
             <h1>Progetti</h1>
             <form>
-                <input id="searchBar" onkeyup="searchBarJS()" type="text" placeholder="Cerca per Titolo o Autore...">
-                <!-- <button type="submit" class="btnsmall">Cerca</button> -->
+              <?php
+                if (mysqli_num_rows($res) !=  0){
+                  echo '  <input id="searchBar" onkeyup="searchBarJS()" type="text" placeholder="Cerca per Titolo o Autore...">';
+                }
+              ?>
             </form>
         </div>
     </section>

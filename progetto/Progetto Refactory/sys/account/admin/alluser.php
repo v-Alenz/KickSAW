@@ -44,7 +44,7 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['genere']. "</td>";
                 echo"<td>". $row['stato']. "</td>";
                 if($row['stato'] != 'admin'){
-                    echo '<form action="/~S4750770/www/accout/admin/eliminautente.php" method="post">';
+                    echo '<form action="/~S4750770/www/account/admin/eliminautente.php" method="post">';
                         echo '<td><button type="submit" name="idUtente" class="btnsmall" value="';
                         echo $row['idUtente'];
                         echo '" class="btn-link">Elimina utente</button></td>';

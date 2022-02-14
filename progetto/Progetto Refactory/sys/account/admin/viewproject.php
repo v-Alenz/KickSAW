@@ -36,7 +36,7 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['pnome'] . "</td>";
                 echo"<td>". $row['unome']. "</td>";
                 echo"<td>". $row['cognome']. "</td>";
-                echo '<form action="/~S4750770/www/accout/admin/eliminaprogetto.php" method="post">';
+                echo '<form action="/~S4750770/www/account/admin/eliminaprogetto.php" method="post">';
                     echo '<td><button type="submit" name="idProgetto" class="btnsmall" value="';
                     echo $row['idProgetto'];
                     echo '" class="btn-link">Elimina progetto</button></td>';

@@ -29,8 +29,8 @@
       $descr = trim($_POST['descr']);
       $obj = trim($_POST['obiettivo']);
       $date = str_replace('T', ' ', trim($_POST['expire']).":00");
-      $localImage = '/S4750770/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
-      $imageLocation = dirname(__FILE__).$localImage;
+      $localImage = '/~S4750770/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
+      $imageLocation = '/chroot/home/S4750770/public_html/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
 
       if($obj > 2000000000){
         echo "Obiettivo troppo alto!";
@@ -89,7 +89,7 @@
       }
 
 
-        include "/chroot/home/S4750770/public_html/sys/account/startu/verificatitolo.php";
+        include "/chroot/home/S4750770/public_html/sys/account/startup/verificatitolo.php";
 
         if(is_numeric($obj) && strlen($titolo) < 100 && strlen($descr) < 1000 && strlen($descr) < 10000 && $obj>0){
 

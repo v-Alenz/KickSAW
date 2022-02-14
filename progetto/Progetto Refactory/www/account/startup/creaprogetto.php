@@ -28,7 +28,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
         <div class="header"> Crea la tua nuova startup!</div>
             <div class="info">
 
-                <form action=/sys/account/startup/addproject.php" method="post" id="projform" enctype="multipart/form-data">
+                <form action="/~S4750770/sys/account/startup/addproject.php" method="post" id="projform" enctype="multipart/form-data">
 
                     <br>
                     <div>Titolo : <br><input type="text" name="titolo" class="form-control" placeholder="Inserisci titolo" maxlength="200"></div>

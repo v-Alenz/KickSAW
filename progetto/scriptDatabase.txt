@@ -3,11 +3,11 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Table `S4750770`.`Utente`
+-- Table `S4750770`.`utente`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`Utente` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`Utente` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`utente` (
   `idUtente` INT NOT NULL AUTO_INCREMENT COMMENT 'Id Autogenerato dell\'utente',
   `nome` VARCHAR(100) NOT NULL COMMENT 'Nome utente',
   `cognome` VARCHAR(100) NOT NULL COMMENT 'Cognome utente',
@@ -21,46 +21,46 @@ CREATE TABLE IF NOT EXISTS `S4750770`.`Utente` (
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`Saldo`
+-- Table `S4750770`.`saldo`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`Saldo` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`Saldo` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`saldo` (
   `idSaldo` INT NOT NULL AUTO_INCREMENT COMMENT 'Numero del Saldo',
   `Utente_idUtente` INT NOT NULL COMMENT 'Utente a cui appartiene il conto',
   `starterbits` INT NOT NULL DEFAULT 0 COMMENT 'Numero di StarterBits sul conto',
   PRIMARY KEY (`idSaldo`),
-  INDEX `Utente` (`Utente_idUtente` ASC),
+  INDEX `utente` (`Utente_idUtente` ASC),
   UNIQUE INDEX `Utente_idUtente_UNIQUE` (`Utente_idUtente` ASC),
   CONSTRAINT `fk_Saldo_Utente`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `S4750770`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 -- -----------------------------------------------------
--- Table `S4750770`.`Ruolo`
+-- Table `S4750770`.`ruolo`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`Ruolo` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`Ruolo` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`ruolo` (
   `Utente_idUtente` INT NOT NULL COMMENT 'Numero identificativo dell\'utente a cui il ruolo fa riferimento',
   `stato` ENUM('standard', 'pro', 'admin') NOT NULL DEFAULT 'standard' COMMENT 'Attuale livello di privilegio dell\'account',
   `scadenzaLicenza` DATETIME NULL DEFAULT NULL COMMENT 'Se presente una licenza, indica la data di scadenza ',
   PRIMARY KEY (`Utente_idUtente`),
   CONSTRAINT `fk_Ruolo_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `S4750770`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`Progetto`
+-- Table `S4750770`.`progetto`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`Progetto` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`Progetto` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`progetto` (
   `idProgetto` INT NOT NULL AUTO_INCREMENT,
   `Utente_idUtente` INT NOT NULL,
   `nome` VARCHAR(200) NOT NULL,
@@ -71,39 +71,39 @@ CREATE TABLE IF NOT EXISTS `S4750770`.`Progetto` (
   UNIQUE INDEX `nome_UNIQUE` (`nome` ASC),
   CONSTRAINT `fk_Progetto_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `S4750770`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`MailList`
+-- Table `S4750770`.`maillist`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`MailList` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`MailList` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`maillist` (
   `Utente_idUtente` INT NOT NULL,
   `MailList_idProgetto` INT NOT NULL,
   INDEX `fk_table1_MailList1_idx` (`MailList_idProgetto` ASC),
   PRIMARY KEY (`Utente_idUtente`, `MailList_idProgetto`),
   CONSTRAINT `fk_table1_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `S4750770`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_table1_MailList1`
     FOREIGN KEY (`MailList_idProgetto`)
-    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`MediaProgetto`
+-- Table `S4750770`.`mediaprogetto`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`MediaProgetto` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`MediaProgetto` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`mediaprogetto` (
   `idMedia` INT NOT NULL AUTO_INCREMENT,
   `Progetto_idProgetto` INT NOT NULL,
   `mediaLink` VARCHAR(200) NULL,
@@ -111,17 +111,17 @@ CREATE TABLE IF NOT EXISTS `S4750770`.`MediaProgetto` (
   INDEX `fk_Media_Progetto1_idx` (`Progetto_idProgetto` ASC),
   CONSTRAINT `fk_Media_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`Finanzia`
+-- Table `S4750770`.`finanzia`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`Finanzia` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`Finanzia` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`finanzia` (
   `Utente_idUtente` INT NOT NULL,
   `Progetto_idProgetto` INT NOT NULL,
   `Ammount` INT NOT NULL,
@@ -130,22 +130,22 @@ CREATE TABLE IF NOT EXISTS `S4750770`.`Finanzia` (
   INDEX `fk_Finanzia_Progetto1_idx` (`Progetto_idProgetto` ASC),
   CONSTRAINT `fk_Finanzia_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `S4750770`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Finanzia_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `S4750770`.`SogliaFinanziamento`
+-- Table `S4750770`.`sogliafinanziamento`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `S4750770`.`SogliaFinanziamento` ;
 
-CREATE TABLE IF NOT EXISTS `S4750770`.`SogliaFinanziamento` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`sogliafinanziamento` (
   `Progetto_idProgetto` INT NOT NULL,
   `obiettivo` INT NOT NULL,
   `sogliaAttuale` INT NOT NULL DEFAULT 0,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `S4750770`.`SogliaFinanziamento` (
   PRIMARY KEY (`Progetto_idProgetto`),
   CONSTRAINT `fk_SogliaFinanziamento_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 

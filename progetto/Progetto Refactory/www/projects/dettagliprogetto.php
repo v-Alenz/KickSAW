@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="stylesheet" type="text/css" href="/S4750770style.css">
+  <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <title> StartSAW </title>
     <?php
@@ -40,7 +40,7 @@
 ?>
 
 <?php
-include "common/navbar.php";
+  include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
@@ -60,7 +60,7 @@ include "common/navbar.php";
         </h2>
           <div class="row">
               <div>
-                  <?php echo '<br><img src="/~S4750770'.$row[0][8].'" alt="immagine progetto" class="immagineprogetto">' ?>
+                  <?php echo '<br><img src="'.$row[0][8].'" alt="immagine progetto" class="immagineprogetto">' ?>
               </div>
               <div class="col-2">
                   <br>

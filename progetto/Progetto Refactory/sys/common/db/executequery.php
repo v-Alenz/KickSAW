@@ -8,14 +8,14 @@ if(isset($query)){
     if (!mysqli_stmt_execute($stmt)) {
         error_log("Execute failed: (" . mysqli_errno($stmt) . ") " . mysqli_error($stmt));
         echo("Errore, riprova più tardi!");
-        include dirname(__FILE__)."/www/common/footer.php";
+        include "/chroot/home/S4750770/public_html/www/common/footer.php";
         exit();
-        header("Refresh:3; url=/startSAW.php");
+        header("Refresh:3; url=/~S4750770/startSAW.php");
     }
 
 }else{
 
-    include  dirname(__FILE__)."/sys/common/error/errore.php";
+    include  "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 }
 

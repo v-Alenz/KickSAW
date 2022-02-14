@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <title> Modifica profilo </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 //session_start();
 
@@ -22,24 +22,24 @@ if(isset($_SESSION["loggato"])){
 
 <div class="wrapper">
 
-    <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
+    <?php include "/chroot/home/S4750770/public_html/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header"> Modifica profilo </div>
             <div class="info">
 
                 <?php
-                include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+                include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
                 $query = "SELECT * FROM utente where idUtente = ? ";
 
-                include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+                include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
                 mysqli_stmt_bind_param($stmt, "s", $_SESSION["uid"]);
 
-                include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+                include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-                include dirname(__FILE__)."/sys/common/db/executequery.php";
+                include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
                 $res=mysqli_stmt_get_result($stmt);
 
@@ -48,7 +48,7 @@ if(isset($_SESSION["loggato"])){
                     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
                     ?>
-                    <form action="/progetto/account/update_profile.php" method="post">
+                    <form action="/~S4750770/update_profile.php" method="post">
                         <div>Nome : <input type="text" name="firstname" class="form-control" value="<?php echo $row['nome'] ?>" > </div>
                         <div>Cognome : <input type="text" name="lastname" class="form-control" value="<?php echo $row['cognome'] ?>" > </div>
                         <div>Email : <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>" > </div>
@@ -86,7 +86,7 @@ if(isset($_SESSION["loggato"])){
                 }else{
 
                     echo("Errore, riprova più tardi!");
-                    header("Refresh:2; url=/startSAW.php");
+                    header("Refresh:2; url=/~S4750770/startSAW.php");
 
                 }
                 ?>
@@ -100,11 +100,11 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
 
 }
 
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

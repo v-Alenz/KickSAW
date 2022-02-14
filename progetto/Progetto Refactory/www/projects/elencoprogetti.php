@@ -2,21 +2,21 @@
 <html lang="it">
 <head>
     <title> StartSAW </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 
 <?php
   define('AccessDbForProgects', TRUE);
-  include dirname(__FILE__)."/sys/projects/loadProgects.php"
+  include "/chroot/home/S4750770/public_html/sys/projects/loadProgects.php"
 ?>
 
 <body>
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 <div class="sfondopagprincipalelight">
     <section id="ricerca">
@@ -48,7 +48,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
             }else{
               while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
                 echo '<div name="progects" class="col-4">';
-                echo '    <a href="/www/projects/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto">';
+                echo '    <a href="/~S4750770/www/projects/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto">';
                 echo '    <h3>'.$row["nomeP"].'</h3>';
                 echo '    <p class="author">'.$row["nome"].' '.$row["cognome"].'</p></a>';
                 echo '</div>';
@@ -62,8 +62,8 @@ include dirname(__FILE__)."/www/common/navbar.php";
     </div>
 </div>
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 </body>
-  <script type="text/javascript" src="/www/projects/searchBar.js"></script>
+  <script type="text/javascript" src="/~S4750770/www/projects/searchBar.js"></script>
 </html>

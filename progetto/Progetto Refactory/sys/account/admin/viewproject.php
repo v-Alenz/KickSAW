@@ -4,14 +4,14 @@
 
 if(isset($_SESSION["loggato"])){
 
-    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
     $query="SELECT progetto.nome as pnome, utente.nome as unome, cognome, idProgetto
          FROM progetto join utente on Utente_idUtente = idUtente";
 
-    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-    include dirname(__FILE__)."/sys/common/db/executequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
 
@@ -36,7 +36,7 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['pnome'] . "</td>";
                 echo"<td>". $row['unome']. "</td>";
                 echo"<td>". $row['cognome']. "</td>";
-                echo '<form action="/progetto/account/admin/eliminaprogetto.php" method="post">';
+                echo '<form action="/~S4750770/www/accout/admin/eliminaprogetto.php" method="post">';
                     echo '<td><button type="submit" name="idProgetto" class="btnsmall" value="';
                     echo $row['idProgetto'];
                     echo '" class="btn-link">Elimina progetto</button></td>';
@@ -51,7 +51,7 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errore.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 }
 

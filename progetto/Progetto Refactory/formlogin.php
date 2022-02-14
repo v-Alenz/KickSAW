@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Login </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
@@ -24,7 +24,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
                     <div class="form-btn">
                         <span>Loggati</span>
                     </div>
-                    <form id="form" action="/progetto/login.php" method="post">
+                    <form id="form" action="/~S4750770/login.php" method="post">
                             <input type="email" name="email" placeholder="Email" class="form-control" id="email">
                             <div id="emailerror" class="error"></div>
                             <input type="password" name="pass" placeholder="Password" class="form-control" id="pass" minlength="8">
@@ -34,7 +34,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
                 </div>
            </div>
             <div class="col-2">
-                <img class="img" src="/www/immagini/piplog.png" alt="immagine login">
+                <img class="img" src="/~S4750770/www/immagini/piplog.png" alt="immagine login">
             </div>
         </div>
     </div>
@@ -42,10 +42,10 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
-<script src="/sys/controlinput.js"></script>
+<script src="/~S4750770/sys/controlinput.js"></script>
 
 </body>
 </html>

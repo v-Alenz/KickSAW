@@ -3,22 +3,11 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema StarterPunchDatabase
+-- Table `S4750770`.`Utente`
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `StarterPunchDatabase` ;
+DROP TABLE IF EXISTS `S4750770`.`Utente` ;
 
--- -----------------------------------------------------
--- Schema StarterPunchDatabase
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `StarterPunchDatabase` DEFAULT CHARACTER SET utf8 ;
-USE `StarterPunchDatabase` ;
-
--- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`Utente`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`Utente` ;
-
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Utente` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`Utente` (
   `idUtente` INT NOT NULL AUTO_INCREMENT COMMENT 'Id Autogenerato dell\'utente',
   `nome` VARCHAR(100) NOT NULL COMMENT 'Nome utente',
   `cognome` VARCHAR(100) NOT NULL COMMENT 'Cognome utente',
@@ -32,11 +21,11 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Utente` (
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`Saldo`
+-- Table `S4750770`.`Saldo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`Saldo` ;
+DROP TABLE IF EXISTS `S4750770`.`Saldo` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Saldo` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`Saldo` (
   `idSaldo` INT NOT NULL AUTO_INCREMENT COMMENT 'Numero del Saldo',
   `Utente_idUtente` INT NOT NULL COMMENT 'Utente a cui appartiene il conto',
   `starterbits` INT NOT NULL DEFAULT 0 COMMENT 'Numero di StarterBits sul conto',
@@ -45,33 +34,33 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Saldo` (
   UNIQUE INDEX `Utente_idUtente_UNIQUE` (`Utente_idUtente` ASC),
   CONSTRAINT `fk_Saldo_Utente`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`Utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`Ruolo`
+-- Table `S4750770`.`Ruolo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`Ruolo` ;
+DROP TABLE IF EXISTS `S4750770`.`Ruolo` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Ruolo` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`Ruolo` (
   `Utente_idUtente` INT NOT NULL COMMENT 'Numero identificativo dell\'utente a cui il ruolo fa riferimento',
   `stato` ENUM('standard', 'pro', 'admin') NOT NULL DEFAULT 'standard' COMMENT 'Attuale livello di privilegio dell\'account',
   `scadenzaLicenza` DATETIME NULL DEFAULT NULL COMMENT 'Se presente una licenza, indica la data di scadenza ',
   PRIMARY KEY (`Utente_idUtente`),
   CONSTRAINT `fk_Ruolo_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`Utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`Progetto`
+-- Table `S4750770`.`Progetto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`Progetto` ;
+DROP TABLE IF EXISTS `S4750770`.`Progetto` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Progetto` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`Progetto` (
   `idProgetto` INT NOT NULL AUTO_INCREMENT,
   `Utente_idUtente` INT NOT NULL,
   `nome` VARCHAR(200) NOT NULL,
@@ -82,39 +71,39 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Progetto` (
   UNIQUE INDEX `nome_UNIQUE` (`nome` ASC),
   CONSTRAINT `fk_Progetto_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`Utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`MailList`
+-- Table `S4750770`.`MailList`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`MailList` ;
+DROP TABLE IF EXISTS `S4750770`.`MailList` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MailList` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`MailList` (
   `Utente_idUtente` INT NOT NULL,
   `MailList_idProgetto` INT NOT NULL,
   INDEX `fk_table1_MailList1_idx` (`MailList_idProgetto` ASC),
   PRIMARY KEY (`Utente_idUtente`, `MailList_idProgetto`),
   CONSTRAINT `fk_table1_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`Utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_table1_MailList1`
     FOREIGN KEY (`MailList_idProgetto`)
-    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`MediaProgetto`
+-- Table `S4750770`.`MediaProgetto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`MediaProgetto` ;
+DROP TABLE IF EXISTS `S4750770`.`MediaProgetto` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MediaProgetto` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`MediaProgetto` (
   `idMedia` INT NOT NULL AUTO_INCREMENT,
   `Progetto_idProgetto` INT NOT NULL,
   `mediaLink` VARCHAR(200) NULL,
@@ -122,17 +111,17 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MediaProgetto` (
   INDEX `fk_Media_Progetto1_idx` (`Progetto_idProgetto` ASC),
   CONSTRAINT `fk_Media_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`Finanzia`
+-- Table `S4750770`.`Finanzia`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`Finanzia` ;
+DROP TABLE IF EXISTS `S4750770`.`Finanzia` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Finanzia` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`Finanzia` (
   `Utente_idUtente` INT NOT NULL,
   `Progetto_idProgetto` INT NOT NULL,
   `Ammount` INT NOT NULL,
@@ -141,22 +130,22 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Finanzia` (
   INDEX `fk_Finanzia_Progetto1_idx` (`Progetto_idProgetto` ASC),
   CONSTRAINT `fk_Finanzia_Utente1`
     FOREIGN KEY (`Utente_idUtente`)
-    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    REFERENCES `S4750770`.`Utente` (`idUtente`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Finanzia_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
--- Table `StarterPunchDatabase`.`SogliaFinanziamento`
+-- Table `S4750770`.`SogliaFinanziamento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` ;
+DROP TABLE IF EXISTS `S4750770`.`SogliaFinanziamento` ;
 
-CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` (
+CREATE TABLE IF NOT EXISTS `S4750770`.`SogliaFinanziamento` (
   `Progetto_idProgetto` INT NOT NULL,
   `obiettivo` INT NOT NULL,
   `sogliaAttuale` INT NOT NULL DEFAULT 0,
@@ -164,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` (
   PRIMARY KEY (`Progetto_idProgetto`),
   CONSTRAINT `fk_SogliaFinanziamento_Progetto1`
     FOREIGN KEY (`Progetto_idProgetto`)
-    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    REFERENCES `S4750770`.`Progetto` (`idProgetto`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 

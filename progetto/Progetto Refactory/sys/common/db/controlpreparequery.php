@@ -8,14 +8,14 @@ if(isset($query)){
     if (!($stmt = mysqli_prepare($conn,$query) )) {
         error_log("Prepare failed: (" . mysqli_errno($conn) . ") " . mysqli_error($conn));
         echo("Errore, riprova più tardi!");
-        include dirname(__FILE__)."/www/common/footer.php";
+        include "/chroot/home/S4750770/public_html/www/common/footer.php";
         exit();
-        header("Refresh:3; url=/startSAW.php");
+        header("Refresh:3; url=/~S4750770/startSAW.php");
     }
 
 }else{
 
-    include  dirname(__FILE__)."/sys/common/error/errore.php";
+    include  "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 }
 

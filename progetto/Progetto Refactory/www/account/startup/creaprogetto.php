@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <title> Crea nuova startup </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 //session_start();
 
@@ -22,13 +22,13 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
 
 <div class="wrapper">
 
-    <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
+    <?php include "/chroot/home/S4750770/public_html/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header"> Crea la tua nuova startup!</div>
             <div class="info">
 
-                <form action="/progetto/account/startup/addproject.php" method="post" id="projform" enctype="multipart/form-data">
+                <form action=/sys/account/startup/addproject.php" method="post" id="projform" enctype="multipart/form-data">
 
                     <br>
                     <div>Titolo : <br><input type="text" name="titolo" class="form-control" placeholder="Inserisci titolo" maxlength="200"></div>
@@ -63,11 +63,11 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
 
 }
 
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

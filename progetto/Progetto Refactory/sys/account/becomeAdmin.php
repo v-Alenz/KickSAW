@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Become Admin </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
@@ -30,34 +30,34 @@ if(isset($_POST["submit"])){
   $yearExp=$thisYear+2;
   $expireDate=str_replace($thisYear, $yearExp, date("Y-m-d"))." 00:00:00";
 
-  include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
   $query="UPDATE ruolo SET stato='admin', scadenzaLicenza=? WHERE Utente_idUtente = ?";
 
-  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "si", $expireDate, $_SESSION["uid"]);
 
-  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-  include dirname(__FILE__)."/sys/common/db/executequery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/startSAW.php");
+    header("Refresh:2; url=/~S4750770/startSAW.php");
   }
 
   else{
     echo ("Sarà un piacere lavorare con te!");
     $_SESSION["rid"]='admin';
-    header("Refresh:2; url=/startSAW.php");
+    header("Refresh:2; url=/~S4750770/startSAW.php");
   }
 }
 
 else{
 
   echo("Errore, riprova più tardi!");
-  header("Refresh:2; url=/startSAW.php");
+  header("Refresh:2; url=/~S4750770/startSAW.php");
 
 }?>
 
@@ -70,7 +70,7 @@ else{
 
 <?php
 
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

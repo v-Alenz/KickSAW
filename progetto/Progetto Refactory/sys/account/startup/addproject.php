@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title> Creazione Startup </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
   </head>
   <body>
 
   <?php
-  include dirname(__FILE__)."/www/common/navbar.php";
+  include "/chroot/home/S4750770/public_html/www/common/navbar.php";
   ?>
 
   <div class="account-page">
@@ -29,12 +29,12 @@
       $descr = trim($_POST['descr']);
       $obj = trim($_POST['obiettivo']);
       $date = str_replace('T', ' ', trim($_POST['expire']).":00");
-      $localImage = '/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
+      $localImage = '/S4750770/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
       $imageLocation = dirname(__FILE__).$localImage;
 
       if($obj > 2000000000){
         echo "Obiettivo troppo alto!";
-        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
       }
 
       if(!empty($titolo) && !empty($intro) && !empty($descr) && !empty($obj) && !empty($_POST['expire']) && !empty($_FILES["image"]["name"])){
@@ -52,7 +52,7 @@
           //echo "File is not an image.";
           //$uploadOk = 0;
           echo "Il file selezionato non è un immagine, riprova!";
-          include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+          include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
       }
 
       // Contorllo la dimensione del file
@@ -60,7 +60,7 @@
         //echo "Sorry, your file is too large.";
         //$uploadOk = 0;
         echo "L'immagine selezionata è troppo grande, riprova!";
-        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
       }
 
       // Allow certain file formats
@@ -68,14 +68,14 @@
         //echo "Sorry, only JPG, JPEG, PNG files are allowed.";
         //$uploadOk = 0;
         echo "Sono ammessi solo file JPG, JPEG o PNG, riprova!";
-        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
       }
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk == 0) {
         //echo "Sorry, your file was not uploaded.";
         echo "Non è stata caricata correttamente l'immagine, riprova!";
-        include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
 
       // if everything is ok, try to upload file
       } else {
@@ -84,16 +84,16 @@
         } else {
           //echo "Sorry, there was an error uploading your file.";
           echo "Non è stata caricata correttamente l'immagine, riprova!";
-          include dirname(__FILE__)."/sys/common/error/closeerrorproj.php";
+          include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
         }
       }
 
 
-        include dirname(__FILE__)."/sys/account/startu/verificatitolo.php";
+        include "/chroot/home/S4750770/public_html/sys/account/startu/verificatitolo.php";
 
         if(is_numeric($obj) && strlen($titolo) < 100 && strlen($descr) < 1000 && strlen($descr) < 10000 && $obj>0){
 
-          include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
           mysqli_autocommit($conn, FALSE);
 
@@ -101,18 +101,18 @@
           $query="INSERT INTO progetto (Utente_idUtente, nome, introduzione, descrizione)
                   VALUES( ?, ?, ?, ?)";
 
-          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, "isss", $_SESSION['uid'], $titolo, $intro, $descr);
 
-          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
-          include dirname(__FILE__)."/sys/common/db/executequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
           //echo 'ho eseguito la query<br>';
 
           if ( mysqli_affected_rows($conn) === 0){
 
             echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/www/account/startup/creaprogetto.php");
+            header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
 
         }else{
 
@@ -123,32 +123,32 @@
                    VALUES ((SELECT idProgetto FROM progetto WHERE nome = ?), ?, ?)
                   ";
           //echo 'ho esequito la query2<br>';
-          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, 'sis', $titolo, $obj, $date);
 
-          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
-          include dirname(__FILE__)."/sys/common/db/executequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
           //imposto l'immagine del progetto
           $query="INSERT INTO mediaprogetto( Progetto_idProgetto, mediaLink)
                   VALUES ((SELECT idProgetto FROM progetto WHERE nome = ?), ?)
           ";
-          include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
           mysqli_stmt_bind_param($stmt, 'ss', $titolo, $localImage);
 
-          include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
-          include dirname(__FILE__)."/sys/common/db/executequery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+          include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
         }if ( mysqli_affected_rows($conn) === 0){
 
           echo("Errore, riprova più tardi!");
-          header("Refresh:2; url=/www/account/startup/creaprogetto.php");
+          header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
 
         }else{
           echo("Inserimento del progetto avvenuta con successo");
-          header("Refresh:2; url=/www/account/startup/tuttiprogetti.php");
+          header("Refresh:2; url=/~S4750770/www/account/startup/tuttiprogetti.php");
 
         }
 
@@ -157,19 +157,19 @@
         }else{
           // campo con valori sballati
           echo("Valori non conformi, riprova!");
-          header("Refresh:2; url=/www/account/startup/creaprogetto.php");
+          header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
         }
 
       }else{
         //campi vuoti
         echo("Mancano dei dati, riprova!");
-        header("Refresh:2; url=/www/account/startup/creaprogetto.php");
+        header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
       }
     }
     else{
       // ho fatto il furbo accedendo alla pagina manualmente
       echo("Errore, riprova più tardi!");
-      header("Refresh:2; url=/startSAW.php");
+      header("Refresh:2; url=/~S4750770/startSAW.php");
     }
 
 ?>
@@ -179,7 +179,7 @@
 </div>
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

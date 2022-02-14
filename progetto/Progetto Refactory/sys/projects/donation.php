@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Donazione </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 ?>
 
@@ -26,23 +26,23 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
   if(!isset($_SESSION['rid'])){
     echo("Devi essere loggato!");
-    header("Refresh:2; url=/formlogin.php");
+    header("Refresh:2; url=/~S4750770/formlogin.php");
   }
 
-  include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+  include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
   $query = "SELECT starterbits
             FROM saldo
             WHERE Utente_idUtente = ?
             ";
 
-  include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
   mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
 
-  include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-  include dirname(__FILE__)."/sys/common/db/executequery.php";
+  include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
   $result = mysqli_stmt_get_result($stmt);
 
@@ -50,7 +50,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
   if($row['starterbits'] - $_POST['ammount'] >= 0){
 
-    include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+    include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
     $query = "SELECT finanzia.Ammount
               FROM finanzia
@@ -58,20 +58,20 @@ include dirname(__FILE__)."/www/common/navbar.php";
               AND Progetto_idProgetto = ?
               ";
 
-    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
     mysqli_stmt_bind_param($stmt, "ii", $_SESSION["uid"], $_POST['idprog']);
 
-    include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-    include dirname(__FILE__)."/sys/common/db/executequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) === 0){
       //echo "qui ci arrivo";
 
-      include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+      include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
       mysqli_autocommit($conn, false);
 
@@ -79,49 +79,49 @@ include dirname(__FILE__)."/www/common/navbar.php";
                 VALUES(?,?,?)
                 ";
 
-      include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
       mysqli_stmt_bind_param($stmt, "iii", $_SESSION["uid"], $_POST['idprog'], $_POST['ammount']);
 
-      include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-      include dirname(__FILE__)."/sys/common/db/executequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
       $query= "UPDATE saldo
                SET starterbits = starterbits - ?
                WHERE Utente_idUtente = ?
                ";
 
-      include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
       mysqli_stmt_bind_param($stmt, "ii", $_POST['ammount'], $_SESSION["uid"] );
 
-      include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-      include dirname(__FILE__)."/sys/common/db/executequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
       $query= "UPDATE sogliafinanziamento
                SET sogliaAttuale = sogliaAttuale + ?
                WHERE Progetto_idProgetto = ?
                ";
 
-      include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
       mysqli_stmt_bind_param($stmt, "ii", $_POST['ammount'], $_POST['idprog'] );
 
-      include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-      include dirname(__FILE__)."/sys/common/db/executequery.php";
+      include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
       if ( mysqli_commit($conn) === false){
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/www/projects/elencoprogetti.php");
+        header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
       }
 
 
     }else{
 
-        include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+        include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
         mysqli_autocommit($conn, false);
 
@@ -131,53 +131,53 @@ include dirname(__FILE__)."/www/common/navbar.php";
                   AND Progetto_idProgetto = ?
                   ";
 
-        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
         mysqli_stmt_bind_param($stmt, "iii", $_POST['ammount'], $_SESSION["uid"], $_POST['idprog']);
 
-        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        include dirname(__FILE__)."/sys/common/db/executequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
         $query= "UPDATE saldo
                  SET starterbits = starterbits - ?
                  WHERE Utente_idUtente = ?
                  ";
 
-        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
         mysqli_stmt_bind_param($stmt, "ii", $_POST['ammount'], $_SESSION["uid"] );
 
-        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        include dirname(__FILE__)."/sys/common/db/executequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
         $query= "UPDATE sogliafinanziamento
                  SET sogliaAttuale = sogliaAttuale + ?
                  WHERE Progetto_idProgetto = ?
                  ";
 
-        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
         mysqli_stmt_bind_param($stmt, "ii", $_POST['ammount'], $_POST['idprog'] );
 
-        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        include dirname(__FILE__)."/sys/common/db/executequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
         if ( mysqli_commit($conn) === false){
           echo("Errore, riprova più tardi!");
-          header("Refresh:2; url=/www/projects/elencoprogetti.php");
+          header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
         }
 
     }
   }else{
       echo("Saldo insufficiente :( ");
-      header("Refresh:2; url=/www/account/caricosaldo.php");
+      header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
   }
 
   echo("Grazie per la donazione! :) ");
-  header("Refresh:2; url=/www/projects/elencoprogetti.php");
+  header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
 
   ?>
 
@@ -188,7 +188,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

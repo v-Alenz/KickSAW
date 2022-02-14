@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <title> Modifica password </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 //session_start();
 
@@ -22,13 +22,13 @@ if(isset($_SESSION["loggato"])){
 
 <div class="wrapper">
 
-    <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
+    <?php include "/chroot/home/S4750770/public_html/www/account/navbaraccount.php"; ?>
 
     <div class="content">
         <div class="header"> Modifica password </div>
             <div class="info">
 
-                <form action="/progetto/account/updatepass.php" method="post">
+                <form action="/~S4750770/sys/account/updatepass.php" method="post">
                     <div>Vecchia password : <input type="password" name="oldpass" class="form-control" minlength="8"> </div>
                     <div>Nuova password : <input type="password" name="newpass" class="form-control" minlength="8" > </div>
                     <div>Ripeti nuova password : <input type="password" name="newppass" class="form-control" minlength="8" > </div>
@@ -44,11 +44,11 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
 
 }
 
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

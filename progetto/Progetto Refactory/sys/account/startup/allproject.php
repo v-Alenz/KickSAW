@@ -6,17 +6,17 @@ if(isset($_SESSION["loggato"])){
 
     if($_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
 
-        include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
         $query="SELECT * FROM progetto WHERE Utente_idUtente= ?";
 
-        include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
         mysqli_stmt_bind_param($stmt, "i", $_SESSION["uid"]);
 
-        include dirname(__FILE__)."/sys/common/db/controlbindquery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        include dirname(__FILE__)."/sys/common/db/executequery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
         $res=mysqli_stmt_get_result($stmt);
 
@@ -42,12 +42,12 @@ if(isset($_SESSION["loggato"])){
                     echo"<td>". $numProj . "</td>";
                     echo"<td>". $row['nome'] . "</td>";
                     echo"<td>". $row['introduzione']. "</td>";
-                        echo '<form action="/www/account/startup/scriviMail.php" method="post">';
+                        echo '<form action="/~S4750770/www/account/startup/scriviMail.php" method="post">';
                             echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
                             echo $row['nome'];
                             echo '" class="btn-link">Aggiorna i follower</button></td>';
                         echo '</form>';
-                    echo '<td><a href="'.'/www/projects/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
+                    echo '<td><a href="/~S4750770'.'/www/projects/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
                 echo"</tr>";
                 $numProj=$numProj+1;
             }
@@ -58,13 +58,13 @@ if(isset($_SESSION["loggato"])){
 
     }else{
 
-        include dirname(__FILE__)."/sys/common/error/errorenopro.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/errorenopro.php";
 
     }
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errore.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 
 }

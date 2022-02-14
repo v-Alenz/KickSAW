@@ -2,17 +2,17 @@
 <html lang="it">
 <head>
     <title> Tutti gli utenti </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 //session_start();
 
@@ -24,13 +24,13 @@ if(isset($_SESSION["loggato"])){
 
     <div class="wrapper">
 
-        <?php include dirname(__FILE__)."/www/account/navbaraccount.php"; ?>
+        <?php include "/chroot/home/S4750770/public_html/www/account/navbaraccount.php"; ?>
 
         <div class="content">
             <div class="header"> Tutti gli utenti </div>
                 <div class="info">
 
-                <?php include dirname(__FILE__)."/sys/account/admin/alluser.php"; ?>
+                <?php include "/chroot/home/S4750770/public_html/sys/account/admin/alluser.php"; ?>
 
                 </div>
             </div>
@@ -41,17 +41,17 @@ if(isset($_SESSION["loggato"])){
 
     }else{
 
-        include dirname(__FILE__)."/sys/common/error/errorenoadmin.php";
+        include "/chroot/home/S4750770/public_html/sys/common/error/errorenoadmin.php";
 
     }
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
 
 }
 
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

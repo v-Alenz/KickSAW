@@ -5,7 +5,7 @@
 
 <?php
     echo("Non sei un utente admin!");
-    header("Refresh:2; url=/startSAW.php");
+    header("Refresh:2; url=/~S4750770/startSAW.php");
 ?>
 
             </div>

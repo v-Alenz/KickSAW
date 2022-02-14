@@ -4,13 +4,13 @@
 
 if(isset($_SESSION["loggato"])){
 
-    include dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
     $query="SELECT * FROM utente join ruolo on idUtente = Utente_idUtente";
 
-    include dirname(__FILE__)."/sys/common/db/controlpreparequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-    include dirname(__FILE__)."/sys/common/db/executequery.php";
+    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
 
@@ -44,7 +44,7 @@ if(isset($_SESSION["loggato"])){
                 echo"<td>". $row['genere']. "</td>";
                 echo"<td>". $row['stato']. "</td>";
                 if($row['stato'] != 'admin'){
-                    echo '<form action="/progetto/account/admin/eliminautente.php" method="post">';
+                    echo '<form action="/~S4750770/www/accout/admin/eliminautente.php" method="post">';
                         echo '<td><button type="submit" name="idUtente" class="btnsmall" value="';
                         echo $row['idUtente'];
                         echo '" class="btn-link">Elimina utente</button></td>';
@@ -60,7 +60,7 @@ if(isset($_SESSION["loggato"])){
 
 }else{
 
-    include dirname(__FILE__)."/sys/common/error/errore.php";
+    include "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 }
 

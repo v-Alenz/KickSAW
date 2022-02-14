@@ -76,8 +76,8 @@
       echo"</div>";
       echo"</div>";
     echo"</div>";
-    include dirname(__FILE__)."/www/common/footer.php";
-    header("Refresh:2; url=/startSAW.php");
+    include "/chroot/home/S4750770/public_html/www/common/footer.php";
+    header("Refresh:2; url=/~S4750770/startSAW.php");
     exit();
 
 
@@ -85,7 +85,7 @@
 
 }else{
 
-  include dirname(__FILE__)."/sys/common/error/errore.php";
+  include "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
 
 }
 

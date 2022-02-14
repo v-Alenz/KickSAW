@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost"; //192.168.1.166 //localhost
-$username = "root";
-$password = ""; //saw2021 //
-$dbname = "starterpunchdatabase";
+$username = "S4750770";
+$password = "Animalcrossing"; //saw2021 //
+$dbname = "S4750770";
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 if (!$conn) {

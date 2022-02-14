@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Registrazione </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
@@ -20,14 +20,14 @@ include dirname(__FILE__)."/www/common/navbar.php";
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img class="img" src="/www/immagini/pipreg.png" alt="immagine registration">
+                <img class="img" src="/~S4750770/www/immagini/pipreg.png" alt="immagine registration">
             </div>
             <div class="col-2">
                 <div class="form-container reg">
                     <div class="form-btn">
                         <span>Registrati</span>
                     </div>
-                    <form id="form" action="/progetto/registration.php" method="post">
+                    <form id="form" action="/~S4750770/registration.php" method="post">
                             <input type="text" name="firstname" placeholder="Nome" class="form-control">
                             <input type="text" name="lastname" placeholder="Cognome" class="form-control">
                             <input type="email" name="email" placeholder="Email" class="form-control" id="email" onchange="checkemail('/progetto/common/checkemail.php');">
@@ -45,11 +45,11 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
-<script src="/sys/checkemail.js"></script>
-<script src="/sys/controlinput.js"></script>
+<script src="/~S4750770/sys/checkemail.js"></script>
+<script src="/~S4750770/sys/controlinput.js"></script>
 
 
 </body>

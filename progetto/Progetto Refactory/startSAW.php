@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> StarterPunch! </title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 <div class="sfondopagprincipale">
@@ -22,10 +22,10 @@ include dirname(__FILE__)."/www/common/navbar.php";
             <div class="col-2">
                 <h1 class="titoloprincipale"> Starter <a class="lettera_nera">P</a>unch! </h1>
                 <p>Dove i migliori progetti prendono vita</p>
-                <a href="/www/projects/elencoprogetti.php" class="btn">Scoprili Ora &#8594;</a>
+                <a href="/~S4750770/www/projects/elencoprogetti.php" class="btn">Scoprili Ora &#8594;</a>
             </div>
             <div class="col-2">
-                <img src="/www/immagini/informatics.jpg" alt="computer in rete" class="img">
+                <img src="/~S4750770/www/immagini/informatics.jpg" alt="computer in rete" class="img">
             </div>
         </div>
         <div class="copyright">
@@ -41,7 +41,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 </div>
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

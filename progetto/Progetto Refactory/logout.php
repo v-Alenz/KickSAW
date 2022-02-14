@@ -3,16 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Logout </title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
     <?php
-    include dirname(__FILE__)."/sys/common/googlefont.php";
+    include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 <body>
 
 <?php
-include dirname(__FILE__)."/www/common/navbar.php";
+include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 ?>
 
 
@@ -39,7 +39,7 @@ if(isset($_SESSION["loggato"])){
     echo("Errore, riprova più tardi!");
 }
 
-header("Refresh:2; url=/startSAW.php");
+header("Refresh:2; url=/~S4750770/startSAW.php");
 
 ?>
 
@@ -51,7 +51,7 @@ header("Refresh:2; url=/startSAW.php");
 
 
 <?php
-include dirname(__FILE__)."/www/common/footer.php";
+include "/chroot/home/S4750770/public_html/www/common/footer.php";
 ?>
 
 </body>

@@ -1,0 +1,174 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema StarterPunchDatabase
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `StarterPunchDatabase` ;
+
+-- -----------------------------------------------------
+-- Schema StarterPunchDatabase
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `StarterPunchDatabase` DEFAULT CHARACTER SET utf8 ;
+USE `StarterPunchDatabase` ;
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`Utente`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`Utente` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Utente` (
+  `idUtente` INT NOT NULL AUTO_INCREMENT COMMENT 'Id Autogenerato dell\'utente',
+  `nome` VARCHAR(100) NOT NULL COMMENT 'Nome utente',
+  `cognome` VARCHAR(100) NOT NULL COMMENT 'Cognome utente',
+  `email` VARCHAR(200) NOT NULL COMMENT 'Email formate \"foo\"@\"mail\".\"dom\"',
+  `password` VARCHAR(256) NOT NULL COMMENT 'Password formato Sha256',
+  `dataNascita` DATE NULL DEFAULT NULL COMMENT 'Data di nascita',
+  `indirizzo` VARCHAR(200) NULL DEFAULT NULL COMMENT 'Indirizo di residenza',
+  `genere` ENUM('maschio', 'femmina', 'preferisco non specificare') NULL DEFAULT 'preferisco non specificare' COMMENT 'Genere dell\'utente',
+  PRIMARY KEY (`idUtente`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC));
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`Saldo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`Saldo` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Saldo` (
+  `idSaldo` INT NOT NULL AUTO_INCREMENT COMMENT 'Numero del Saldo',
+  `Utente_idUtente` INT NOT NULL COMMENT 'Utente a cui appartiene il conto',
+  `starterbits` INT NOT NULL DEFAULT 0 COMMENT 'Numero di StarterBits sul conto',
+  PRIMARY KEY (`idSaldo`),
+  INDEX `Utente` (`Utente_idUtente` ASC),
+  UNIQUE INDEX `Utente_idUtente_UNIQUE` (`Utente_idUtente` ASC),
+  CONSTRAINT `fk_Saldo_Utente`
+    FOREIGN KEY (`Utente_idUtente`)
+    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`Ruolo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`Ruolo` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Ruolo` (
+  `Utente_idUtente` INT NOT NULL COMMENT 'Numero identificativo dell\'utente a cui il ruolo fa riferimento',
+  `stato` ENUM('standard', 'pro', 'admin') NOT NULL DEFAULT 'standard' COMMENT 'Attuale livello di privilegio dell\'account',
+  `scadenzaLicenza` DATETIME NULL DEFAULT NULL COMMENT 'Se presente una licenza, indica la data di scadenza ',
+  PRIMARY KEY (`Utente_idUtente`),
+  CONSTRAINT `fk_Ruolo_Utente1`
+    FOREIGN KEY (`Utente_idUtente`)
+    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`Progetto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`Progetto` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Progetto` (
+  `idProgetto` INT NOT NULL AUTO_INCREMENT,
+  `Utente_idUtente` INT NOT NULL,
+  `nome` VARCHAR(200) NOT NULL,
+  `introduzione` VARCHAR(1000) NOT NULL,
+  `descrizione` VARCHAR(10000) NOT NULL,
+  PRIMARY KEY (`idProgetto`),
+  INDEX `fk_Progetto_Utente1_idx` (`Utente_idUtente` ASC),
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC),
+  CONSTRAINT `fk_Progetto_Utente1`
+    FOREIGN KEY (`Utente_idUtente`)
+    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`MailList`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`MailList` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MailList` (
+  `Utente_idUtente` INT NOT NULL,
+  `MailList_idProgetto` INT NOT NULL,
+  INDEX `fk_table1_MailList1_idx` (`MailList_idProgetto` ASC),
+  PRIMARY KEY (`Utente_idUtente`, `MailList_idProgetto`),
+  CONSTRAINT `fk_table1_Utente1`
+    FOREIGN KEY (`Utente_idUtente`)
+    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_table1_MailList1`
+    FOREIGN KEY (`MailList_idProgetto`)
+    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`MediaProgetto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`MediaProgetto` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`MediaProgetto` (
+  `idMedia` INT NOT NULL AUTO_INCREMENT,
+  `Progetto_idProgetto` INT NOT NULL,
+  `mediaLink` VARCHAR(200) NULL,
+  PRIMARY KEY (`idMedia`),
+  INDEX `fk_Media_Progetto1_idx` (`Progetto_idProgetto` ASC),
+  CONSTRAINT `fk_Media_Progetto1`
+    FOREIGN KEY (`Progetto_idProgetto`)
+    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`Finanzia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`Finanzia` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`Finanzia` (
+  `Utente_idUtente` INT NOT NULL,
+  `Progetto_idProgetto` INT NOT NULL,
+  `Ammount` INT NOT NULL,
+  PRIMARY KEY (`Utente_idUtente`, `Progetto_idProgetto`),
+  INDEX `fk_Finanzia_Utente1_idx` (`Utente_idUtente` ASC),
+  INDEX `fk_Finanzia_Progetto1_idx` (`Progetto_idProgetto` ASC),
+  CONSTRAINT `fk_Finanzia_Utente1`
+    FOREIGN KEY (`Utente_idUtente`)
+    REFERENCES `StarterPunchDatabase`.`Utente` (`idUtente`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Finanzia_Progetto1`
+    FOREIGN KEY (`Progetto_idProgetto`)
+    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `StarterPunchDatabase`.`SogliaFinanziamento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` ;
+
+CREATE TABLE IF NOT EXISTS `StarterPunchDatabase`.`SogliaFinanziamento` (
+  `Progetto_idProgetto` INT NOT NULL,
+  `obiettivo` INT NOT NULL,
+  `sogliaAttuale` INT NOT NULL DEFAULT 0,
+  `dataScadenza` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Progetto_idProgetto`),
+  CONSTRAINT `fk_SogliaFinanziamento_Progetto1`
+    FOREIGN KEY (`Progetto_idProgetto`)
+    REFERENCES `StarterPunchDatabase`.`Progetto` (`idProgetto`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

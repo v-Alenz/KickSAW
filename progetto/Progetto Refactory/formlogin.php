@@ -34,7 +34,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
                 </div>
            </div>
             <div class="col-2">
-                <img class="img" src="/progetto/immagini/piplog.png" alt="immagine login">
+                <img class="img" src="/www/immagini/piplog.png" alt="immagine login">
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
-<script src="/progetto/common/controlinput.js"></script>
+<script src="/sys/controlinput.js"></script>
 
 </body>
 </html>

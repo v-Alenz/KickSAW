@@ -59,8 +59,6 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
     </div>
 </div>
 
-<!----<script src="/progetto/account/startup/controlloTesto.js"></script>
-
 <?php
 
 }else{

@@ -8,7 +8,7 @@ if(!empty($titolo)){
     echo "</div>";
     echo "</div>";
     include dirname(__FILE__)."/www/common/footer.php";
-    header("Refresh:3; url=/progetto/account/startup/creaprogetto.php");
+    header("Refresh:3; url=/www/account/startup/creaprogetto.php");
     exit();
 
 }else{

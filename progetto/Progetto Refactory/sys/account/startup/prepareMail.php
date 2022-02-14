@@ -42,7 +42,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
     if (mysqli_num_rows($res) ===  0){
 
       echo("Errore, riprova più tardi!");
-      header("Refresh:2; url=/progetto/account/startup/scriviMail.php");
+      header("Refresh:2; url=/www/account/startup/scriviMail.php");
 
     }
 
@@ -74,7 +74,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
         echo"</div>";
       echo"</div>";
       include dirname(__FILE__)."/www/common/footer.php";
-      header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+      header("Refresh:2; url=/www/account/startup/tuttiprogetti.php");
       exit();
 
     }else{
@@ -97,14 +97,14 @@ include dirname(__FILE__)."/www/common/navbar.php";
       }
 
       echo "Messaggio inviato con successo";
-      header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+      header("Refresh:2; url=/www/account/startup/tuttiprogetti.php");
 
     }
 
   } else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+    header("Refresh:2; url=/www/account/startup/tuttiprogetti.php");
 
   }
 ?>

@@ -13,7 +13,7 @@
 
 
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/progetto/startSAW.php");
+        header("Refresh:2; url=/startSAW.php");
 
 
                 echo '</div>';

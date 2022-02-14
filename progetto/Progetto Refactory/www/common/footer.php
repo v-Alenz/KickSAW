@@ -8,7 +8,7 @@
             </div>
 
             <div class="footer-col-2">
-                <img class="logo_footer" src="/progetto/immagini/logo_piccolo.jpg" alt="logo">
+                <img class="logo_footer" src="/www/immagini/logo_piccolo.jpg" alt="logo">
             </div>
 
             <div class="footer-col-3">
@@ -23,7 +23,7 @@
             <div class="footer-col-3">
                 <h3> Promuovi il tuo progetto </h3>
                 <ul>
-                    <li><a href="/progetto/account/accountpremium.php">Ottieni account premium</a></li>
+                    <li><a href="/www/account/accountpremium.php">Ottieni account premium</a></li>
                     <li>Crea progetti</li>
                 </ul>
             </div>

@@ -31,13 +31,13 @@ if(isset($_SESSION["loggato"])){
             <div class="header"> Area Admin </div>
                 <div class="info">
 
-                    <form action="/progetto/account/admin/tuttiutenti.php" method="post">
+                    <form action="/www/account/admin/tuttiutenti.php" method="post">
                         <div> Vedi tutti gli utenti registrati : </div>
                         <input type="submit" name="submit" value="Vedi tutti gli utenti" class="btn">
                     </form>
                     <br>
 
-                    <form action="/progetto/account/admin/vedituttiprogetti.php" method="post">
+                    <form action="/www/account/admin/vedituttiprogetti.php" method="post">
                         <div> Vedi tutti i progetti : </div>
                         <input type="submit" name="submit" value="Vedi tutti i progetti" class="btn">
                     </form>

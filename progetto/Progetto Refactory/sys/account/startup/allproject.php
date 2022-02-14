@@ -42,12 +42,12 @@ if(isset($_SESSION["loggato"])){
                     echo"<td>". $numProj . "</td>";
                     echo"<td>". $row['nome'] . "</td>";
                     echo"<td>". $row['introduzione']. "</td>";
-                        echo '<form action="/progetto/account/startup/scriviMail.php" method="post">';
+                        echo '<form action="/www/account/startup/scriviMail.php" method="post">';
                             echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
                             echo $row['nome'];
                             echo '" class="btn-link">Aggiorna i follower</button></td>';
                         echo '</form>';
-                    echo '<td><a href="'.'/progetto/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
+                    echo '<td><a href="'.'/www/projects/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
                 echo"</tr>";
                 $numProj=$numProj+1;
             }

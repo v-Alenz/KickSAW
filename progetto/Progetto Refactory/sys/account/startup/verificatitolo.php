@@ -27,7 +27,7 @@ if(!empty($titolo)) {
 
         <?php
         include dirname(__FILE__)."/www/common/footer.php";
-        header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+        header("Refresh:2; url=/www/account/startup/creaprogetto.php");
         exit();
 
     }

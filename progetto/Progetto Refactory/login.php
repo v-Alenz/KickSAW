@@ -58,33 +58,33 @@ if(isset($_POST["submit"])){
                     $_SESSION["uid"] = $row["idUtente"];
                     $_SESSION["rid"] = $row["stato"];
                     echo("Bentornato/a " . $row["nome"] . " !");
-                    header("Refresh:2; url=/progetto/startSAW.php");
+                    header("Refresh:2; url=/startSAW.php");
 
                 }else{
 
                     echo("Password errata, riprova!");
-                    header("Refresh:2; url=/progetto/formlogin.php");
+                    header("Refresh:2; url=/formlogin.php");
                 }
 
             }else{
                 echo("Non sei ancora registrato/a, registrati ora!");
-                header("Refresh:2; url=/progetto/formregistration.php");
+                header("Refresh:2; url=/formregistration.php");
             }
 
         }else{
             echo("La password deve essere lunga almeno otto caratteri, riprova!");
-            header("Refresh:2; url=/progetto/formlogin.php");
+            header("Refresh:2; url=/formlogin.php");
         }
 
     }else{
         echo("Mancano dei dati, riprova!");
-        header("Refresh:2; url=/progetto/formlogin.php");
+        header("Refresh:2; url=/formlogin.php");
     }
 
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 

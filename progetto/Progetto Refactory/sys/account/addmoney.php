@@ -66,28 +66,28 @@ if(isset($_POST["submit"])){
             if ( mysqli_affected_rows($conn) === 0){
 
                 echo("Errore, riprova più tardi!");
-                header("Refresh:2; url=/progetto/account/caricosaldo.php");
+                header("Refresh:2; url=/www/account/caricosaldo.php");
 
             }else{
 
                 echo("Il tuo conto è stato ricaricato con successo!");
-                header("Refresh:2; url=/progetto/account/show_profile.php");
+                header("Refresh:2; url=/show_profile.php");
             }
 
         }else{
 
             echo("Non puoi caricare tutti questi soldi, riprova!");
-            header("Refresh:2; url=/progetto/account/caricosaldo.php");
+            header("Refresh:2; url=/www/account/caricosaldo.php");
         }
 
     }else{
         echo("Inserisci una quantità valida, riprova!");
-        header("Refresh:2; url=/progetto/account/caricosaldo.php");
+        header("Refresh:2; url=/www/account/caricosaldo.php");
     }
 
 }else{
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 

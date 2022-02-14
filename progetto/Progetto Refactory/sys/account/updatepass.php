@@ -72,41 +72,41 @@ if(isset($_POST["submit"])){
                         if ( mysqli_affected_rows($conn) === 0){
 
                             echo("Errore, riprova più tardi!");
-                            header("Refresh:2; url=/progetto/account/modificapass.php");
+                            header("Refresh:2; url=/www/account/modificapass.php");
 
                         }else{
                             echo("Modifica della password avvenuta con successo!");
-                            header("Refresh:2; url=/progetto/account/show_profile.php");
+                            header("Refresh:2; url=/show_profile.php");
                         }
 
                     }else{
                         echo("Vecchia password errata, riprova!");
-                        header("Refresh:2; url=/progetto/account/modificapass.php");
+                        header("Refresh:2; url=/www/account/modificapass.php");
                     }
 
                 }else{
                     echo("Errore, riprova più tardi!");
-                    header("Refresh:2; url=/progetto/startSAW.php");
+                    header("Refresh:2; url=/startSAW.php");
                 }
 
             }else{
                 echo("Le nuove password non combaciano, riprova!");
-                header("Refresh:2; url=/progetto/account/modificapass.php");
+                header("Refresh:2; url=/www/account/modificapass.php");
             }
 
         }else{
             echo("Le password troppo lunga, riprova!");
-            header("Refresh:2; url=/progetto/account/modificapass.php");
+            header("Refresh:2; url=/www/account/modificapass.php");
         }
 
     }else{
         echo("Mancano dei dati, riprova!");
-        header("Refresh:2; url=/progetto/account/modificapass.php");
+        header("Refresh:2; url=/www/account/modificapass.php");
     }
 
 }else{
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 

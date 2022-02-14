@@ -22,10 +22,10 @@ include dirname(__FILE__)."/www/common/navbar.php";
             <div class="col-2">
                 <h1 class="titoloprincipale"> Starter <a class="lettera_nera">P</a>unch! </h1>
                 <p>Dove i migliori progetti prendono vita</p>
-                <a href="/progetto/elencoprogetti.php" class="btn">Scoprili Ora &#8594;</a>
+                <a href="/www/projects/elencoprogetti.php" class="btn">Scoprili Ora &#8594;</a>
             </div>
             <div class="col-2">
-                <img src="/progetto/immagini/informatics.jpg" alt="computer in rete" class="img">
+                <img src="/www/immagini/informatics.jpg" alt="computer in rete" class="img">
             </div>
         </div>
         <div class="copyright">

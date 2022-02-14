@@ -77,7 +77,7 @@
       echo"</div>";
     echo"</div>";
     include dirname(__FILE__)."/www/common/footer.php";
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
     exit();
 
 

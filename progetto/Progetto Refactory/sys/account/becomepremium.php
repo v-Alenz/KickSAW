@@ -44,20 +44,20 @@ if(isset($_POST["submit"])){
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
   }
 
   else{
     echo ("Sarà un piacere aiutarti coi tuoi progetti!");
     $_SESSION["rid"]='pro';
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
   }
 }
 
 else{
 
   echo("Errore, riprova più tardi!");
-  header("Refresh:2; url=/progetto/startSAW.php");
+  header("Refresh:2; url=/startSAW.php");
 
 }?>
 

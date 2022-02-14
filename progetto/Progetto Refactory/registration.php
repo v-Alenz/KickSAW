@@ -60,40 +60,40 @@ if(isset($_POST["submit"])){
                     if ( mysqli_affected_rows($conn) === 0){
 
                         echo("Errore, riprova più tardi!");
-                        header("Refresh:2; url=/progetto/startSAW.php");
+                        header("Refresh:2; url=/startSAW.php");
 
                     }else{
 
                         include dirname(__FILE__)."/sys/userdetails.php";
                         echo("Registrazione avvenuta con successo");
-                        header("Refresh:2; url=/progetto/startSAW.php");
+                        header("Refresh:2; url=/startSAW.php");
 
                     }
 
                 }else{
                     echo("Le password non combaciano, riprova!");
-                    header("Refresh:2; url=/progetto/formregistration.php");
+                    header("Refresh:2; url=/formregistration.php");
                 }
 
             }else{
                 echo("Le password devono essere lunghe almeno otto caratteri, riprova!");
-                header("Refresh:2; url=/progetto/formregistration.php");
+                header("Refresh:2; url=/formregistration.php");
             }
 
         }else{
             echo("La mail inserita non è valida, riprova!");
-            header("Refresh:2; url=/progetto/formregistration.php");
+            header("Refresh:2; url=/formregistration.php");
         }
 
     }else{
         echo("Mancano dei dati, riprova!");
-        header("Refresh:2; url=/progetto/formregistration.php");
+        header("Refresh:2; url=/formregistration.php");
     }
 
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 ?>

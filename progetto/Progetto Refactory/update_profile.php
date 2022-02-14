@@ -67,24 +67,24 @@ if(isset($_POST["submit"])){
         if ( mysqli_affected_rows($conn) === 0){
 
             echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/progetto/account/modificaprofilo.php");
+            header("Refresh:2; url=/www/account/modificaprofilo.php");
 
         }else{
 
             echo("Modifica avvenuta con successo");
-            header("Refresh:2; url=/progetto/account/show_profile.php");
+            header("Refresh:2; url=/show_profile.php");
 
         }
 
     }else{
         echo("Mancano dei dati importanti, riprova!");
-        header("Refresh:2; url=/progetto/account/modificaprofilo.php");
+        header("Refresh:2; url=/www/account/modificaprofilo.php");
     }
 
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 ?>

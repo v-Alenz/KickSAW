@@ -43,12 +43,12 @@ if(isset($_POST["eliminaprogetto"])){
     if ( mysqli_affected_rows($conn) === 0){
 
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/progetto/account/admin/areaadmin.php");
+        header("Refresh:2; url=/www/account/admin/areaadmin.php");
 
     }else{
 
             echo("Progetto eliminato con successo");
-            header("Refresh:2; url=/progetto/account/admin/vedituttiprogetti.php");
+            header("Refresh:2; url=/www/account/admin/vedituttiprogetti.php");
 
         }
 
@@ -56,7 +56,7 @@ if(isset($_POST["eliminaprogetto"])){
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 
 }
 

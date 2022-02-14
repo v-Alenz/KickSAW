@@ -60,7 +60,7 @@
 
   <?php
     echo ("Ti serve un account per diventare premium");
-    header("Refresh:2; url=/progetto/formregistration.php");
+    header("Refresh:2; url=/formregistration.php");
   ?>
               </div>
           </div>

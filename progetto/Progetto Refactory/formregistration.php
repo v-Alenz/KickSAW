@@ -20,7 +20,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img class="img" src="/progetto/immagini/pipreg.png" alt="immagine registration">
+                <img class="img" src="/www/immagini/pipreg.png" alt="immagine registration">
             </div>
             <div class="col-2">
                 <div class="form-container reg">
@@ -48,8 +48,8 @@ include dirname(__FILE__)."/www/common/navbar.php";
 include dirname(__FILE__)."/www/common/footer.php";
 ?>
 
-<script src="/progetto/common/checkemail.js"></script>
-<script src="/progetto/common/controlinput.js"></script>
+<script src="/sys/checkemail.js"></script>
+<script src="/sys/controlinput.js"></script>
 
 
 </body>

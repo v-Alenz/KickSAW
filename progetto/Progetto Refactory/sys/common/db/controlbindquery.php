@@ -10,7 +10,7 @@ if(isset($query)) {
         echo("Errore, riprova più tardi!");
         include dirname(__FILE__)."/www/common/footer.php";
         exit();
-        header("Refresh:3; url=/progetto/startSAW.php");
+        header("Refresh:3; url=/startSAW.php");
     }
     
 }else{

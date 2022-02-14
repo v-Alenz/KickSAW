@@ -29,8 +29,8 @@
       $descr = trim($_POST['descr']);
       $obj = trim($_POST['obiettivo']);
       $date = str_replace('T', ' ', trim($_POST['expire']).":00");
-      $localImage = 'immaginiProgetti/'.basename($_FILES["image"]["name"]);
-      $imageLocation = dirname(__FILE__).'/progetto/'.$localImage;
+      $localImage = '/www/projects/immaginiProgetti/'.basename($_FILES["image"]["name"]);
+      $imageLocation = dirname(__FILE__).$localImage;
 
       if($obj > 2000000000){
         echo "Obiettivo troppo alto!";
@@ -112,7 +112,7 @@
           if ( mysqli_affected_rows($conn) === 0){
 
             echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+            header("Refresh:2; url=/www/account/startup/creaprogetto.php");
 
         }else{
 
@@ -144,11 +144,11 @@
         }if ( mysqli_affected_rows($conn) === 0){
 
           echo("Errore, riprova più tardi!");
-          header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+          header("Refresh:2; url=/www/account/startup/creaprogetto.php");
 
         }else{
           echo("Inserimento del progetto avvenuta con successo");
-          header("Refresh:2; url=/progetto/account/startup/tuttiprogetti.php");
+          header("Refresh:2; url=/www/account/startup/tuttiprogetti.php");
 
         }
 
@@ -157,19 +157,19 @@
         }else{
           // campo con valori sballati
           echo("Valori non conformi, riprova!");
-          header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+          header("Refresh:2; url=/www/account/startup/creaprogetto.php");
         }
 
       }else{
         //campi vuoti
         echo("Mancano dei dati, riprova!");
-        header("Refresh:2; url=/progetto/account/startup/creaprogetto.php");
+        header("Refresh:2; url=/www/account/startup/creaprogetto.php");
       }
     }
     else{
       // ho fatto il furbo accedendo alla pagina manualmente
       echo("Errore, riprova più tardi!");
-      header("Refresh:2; url=/progetto/startSAW.php");
+      header("Refresh:2; url=/startSAW.php");
     }
 
 ?>

@@ -43,21 +43,21 @@ if(isset($_POST["eliminautente"])){
     include dirname(__FILE__)."/sys/common/db/executequery.php";
 
     if ( mysqli_affected_rows($conn) === 0){
-        
+
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/progetto/account/admin/areaadmin.php");
+        header("Refresh:2; url=/www/account/admin/areaadmin.php");
 
     }else{
 
         echo("Utente eliminato con successo");
-        header("Refresh:2; url=/progetto/account/admin/tuttiutenti.php");        
+        header("Refresh:2; url=/www/account/admin/tuttiutenti.php");
 
     }
 
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 
 }
 
@@ -76,4 +76,3 @@ include dirname(__FILE__)."/www/common/footer.php";
 
 </body>
 </html>
-

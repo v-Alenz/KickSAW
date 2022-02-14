@@ -26,7 +26,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
   if(!isset($_SESSION['rid'])){
     echo("Devi essere loggato!");
-    header("Refresh:2; url=/progetto/formlogin.php");
+    header("Refresh:2; url=/formlogin.php");
   }
 
   include  dirname(__FILE__)."/sys/common/db/conn/connDbUtente.php";
@@ -115,7 +115,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
       if ( mysqli_commit($conn) === false){
         echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/progetto/elencoprogetti.php");
+        header("Refresh:2; url=/www/projects/elencoprogetti.php");
       }
 
 
@@ -167,17 +167,17 @@ include dirname(__FILE__)."/www/common/navbar.php";
 
         if ( mysqli_commit($conn) === false){
           echo("Errore, riprova più tardi!");
-          header("Refresh:2; url=/progetto/elencoprogetti.php");
+          header("Refresh:2; url=/www/projects/elencoprogetti.php");
         }
 
     }
   }else{
       echo("Saldo insufficiente :( ");
-      header("Refresh:2; url=/progetto/account/caricosaldo.php");
+      header("Refresh:2; url=/www/account/caricosaldo.php");
   }
 
   echo("Grazie per la donazione! :) ");
-  header("Refresh:2; url=/progetto/elencoprogetti.php");
+  header("Refresh:2; url=/www/projects/elencoprogetti.php");
 
   ?>
 

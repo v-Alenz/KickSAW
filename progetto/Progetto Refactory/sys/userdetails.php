@@ -33,7 +33,7 @@ if ( !empty($email)){
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
   }
 
   //assegno un ruolo all'utente/////////////////////////////////////////////////
@@ -49,14 +49,14 @@ if ( !empty($email)){
 
   if ( mysqli_affected_rows($conn) === 0){
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
   }
 }
 
 else{
 
     include  dirname(__FILE__)."/sys/common/error/errore.php";
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 ?>

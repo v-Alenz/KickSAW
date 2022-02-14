@@ -5,7 +5,7 @@
 
 <?php
     echo("Non sei un utente pro o superiore!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 ?>
 
             </div>

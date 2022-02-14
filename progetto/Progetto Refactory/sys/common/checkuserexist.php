@@ -6,7 +6,7 @@ if(isset($_POST["email"])) {
 
     $query = "SELECT email FROM utente WHERE email = ?
               AND email NOT IN(
-                SELECT email 
+                SELECT email
                 FROM utente
                 WHERE idUtente = ? ) ";
 
@@ -29,7 +29,7 @@ if(isset($_POST["email"])) {
         </div>
         <?php
         include dirname(__FILE__)."/www/common/footer.php";
-        header("Refresh:2; url=/progetto/account/modificaprofilo.php");
+        header("Refresh:2; url=/www/account/modificaprofilo.php");
         exit();
 
     }

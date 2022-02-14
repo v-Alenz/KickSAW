@@ -48,7 +48,7 @@ include dirname(__FILE__)."/www/common/navbar.php";
             }else{
               while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
                 echo '<div name="progects" class="col-4">';
-                echo '    <a href="/progetto/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto">';
+                echo '    <a href="/www/projects/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto">';
                 echo '    <h3>'.$row["nomeP"].'</h3>';
                 echo '    <p class="author">'.$row["nome"].' '.$row["cognome"].'</p></a>';
                 echo '</div>';
@@ -65,5 +65,5 @@ include dirname(__FILE__)."/www/common/navbar.php";
 include dirname(__FILE__)."/www/common/footer.php";
 ?>
 </body>
-  <script type="text/javascript" src="searchBar.js"></script>
+  <script type="text/javascript" src="/www/projects/searchBar.js"></script>
 </html>

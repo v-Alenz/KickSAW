@@ -49,7 +49,7 @@ if(isset($_POST["idprog"] )){
         if(mysqli_num_rows($res) == 1){
 
             echo("Non puoi iscriverti più volte allo stesso progetto!");
-            header("Refresh:2; url=/progetto/elencoprogetti.php");
+            header("Refresh:2; url=/www/projects/elencoprogetti.php");
 
         }else{
 
@@ -66,25 +66,25 @@ if(isset($_POST["idprog"] )){
             if ( mysqli_affected_rows($conn) === 0){
 
                 echo("Errore, riprova più tardi!");
-                header("Refresh:2; url=/progetto/startSAW.php");
+                header("Refresh:2; url=/startSAW.php");
 
             }else{
 
                 echo("Ti sei registrato con successo alla newsletter!");
-                header("Refresh:2; url=/progetto/elencoprogetti.php");
+                header("Refresh:2; url=/www/projects/elencoprogetti.php");
 
             }
         }
 
     }else{
         echo("Devi essere loggato/registrato per iscriverti alla newsletter");
-        header("Refresh:2; url=/progetto/formlogin.php");
+        header("Refresh:2; url=/formlogin.php");
     }
 
 }else{
 
     echo("Errore, riprova più tardi!");
-    header("Refresh:2; url=/progetto/startSAW.php");
+    header("Refresh:2; url=/startSAW.php");
 }
 
 ?>

@@ -3,13 +3,18 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/~S4750770/style.css">
 
-    <title> StartSAW </title>
+    <title> Dettaglio progetto </title>
     <?php
     include "/chroot/home/S4750770/public_html/sys/common/googlefont.php";
     ?>
 </head>
 
+<body>
+
 <?php
+
+  include "/chroot/home/S4750770/public_html/www/common/navbar.php";
+
 
   include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
@@ -33,18 +38,12 @@
   $row = mysqli_fetch_all($result);
 
   if(!$row){
-    include  "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
+    include  "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/www/common/footer.php";
     exit();
   }
 
 ?>
-
-<?php
-  include "/chroot/home/S4750770/public_html/www/common/navbar.php";
-?>
-
-
-<body>
 
   <div class="sfondopagprincipale">
       <div class="small-container single-product ">

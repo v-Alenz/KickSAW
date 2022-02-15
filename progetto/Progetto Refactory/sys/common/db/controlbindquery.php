@@ -6,8 +6,7 @@
 if(isset($query)) {
 
     if(!$stmt){
-        //error_log("Binding parameters failed: (" . mysqli_errno($stmt) . ")" .  mysqli_error($stmt));
-        echo("Errore, nel bind!"."</div></div></div></div>");
+        echo("Errore, riprova più tardi!"."</div></div></div></div>");
         include "/chroot/home/S4750770/public_html/www/common/footer.php";
         exit();
         header("Refresh:3; url=/~S4750770/startSAW.php");

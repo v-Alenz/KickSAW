@@ -71,13 +71,13 @@
 
   }else{
 
-    echo("Devi scrivi qualcosa ai tuoi follower!");
+    echo("Devi scrivere qualcosa ai tuoi follower!");
           echo"</div>";
       echo"</div>";
       echo"</div>";
     echo"</div>";
     include "/chroot/home/S4750770/public_html/www/common/footer.php";
-    header("Refresh:2; url=/~S4750770/startSAW.php");
+    header("Refresh:2; url=/~S4750770/www/account/startup/tuttiprogetti.php");
     exit();
 
 

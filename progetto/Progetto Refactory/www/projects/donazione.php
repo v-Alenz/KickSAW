@@ -9,17 +9,15 @@
     ?>
 </head>
 
-<?php
-
-  if(isset($_SESSION['rid'])){
-      die("Devi essere registrato");
-  }
-
-?>
-
 <body>
   <?php
+
   include "/chroot/home/S4750770/public_html/www/common/navbar.php";
+
+  if(!isset($_POST["idprog"])){
+    include  "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+  }else{
+
   ?>
 
   <div class="sfondopagprincipale sfondodonazione">
@@ -41,7 +39,11 @@
   </div>
 
   <?php
-include "/chroot/home/S4750770/public_html/www/common/footer.php";
+
+  }
+
+  include "/chroot/home/S4750770/public_html/www/common/footer.php";
+
 ?>
 
 </body>

@@ -27,7 +27,7 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
   if(!isset($_SESSION['rid'])){
     echo("Devi essere loggato!");
     header("Refresh:2; url=/~S4750770/formlogin.php");
-  }
+  }else{
 
   include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
@@ -178,6 +178,8 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
   echo("Grazie per la donazione! :) ");
   header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
+
+}
 
   ?>
 

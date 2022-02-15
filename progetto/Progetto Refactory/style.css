@@ -569,6 +569,7 @@ table {
 
 .noscriptmsg {
     color: red;
+    display: none;
 }
 
 textarea {

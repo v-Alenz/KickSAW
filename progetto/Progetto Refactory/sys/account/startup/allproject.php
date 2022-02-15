@@ -33,6 +33,7 @@ if(isset($_SESSION["loggato"])){
                 echo"<th>Introduzione</th>";
                 echo"<th> </th>";
                 echo"<th> </th>";
+                echo"<th> </th>";
             echo"</tr>";
 
             $numProj=1;
@@ -42,14 +43,24 @@ if(isset($_SESSION["loggato"])){
                     echo"<td>". $numProj . "</td>";
                     echo"<td>". $row['nome'] . "</td>";
                     echo"<td>". $row['introduzione']. "</td>";
-                        echo '<form action="/~S4750770/www/account/startup/scriviMail.php" method="post">';
-                            echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
-                            echo $row['nome'];
-                            echo '" class="btn-link">Aggiorna i follower</button></td>';
-                        echo '</form>';
+
+                    echo '<form action="/~S4750770/www/account/startup/scriviMail.php" method="post">';
+                        echo '<td><button type="submit" name="progetto" class="btnsmall" value="';
+                        echo $row['nome'];
+                        echo '" class="btn-link">Aggiorna i follower</button></td>';
+                    echo '</form>';
+
                     echo '<td><a href="/~S4750770'.'/www/projects/dettagliprogetto.php?prog='.$row['idProgetto'].'" class="btnsmall">Visualizza</a>';
+                
+                    echo '<form action="/~S4750770/www/account/startup/donatori.php" method="post">';
+                        echo '<td><button type="submit" name="donatori" class="btnsmall" value="';
+                        echo $row['idProgetto'];
+                        echo '" class="btn-link">Donatori</button></td>';
+                    echo '</form>'; 
+
                 echo"</tr>";
-                $numProj=$numProj+1;
+            $numProj=$numProj+1;
+
             }
 
             echo"</table>";

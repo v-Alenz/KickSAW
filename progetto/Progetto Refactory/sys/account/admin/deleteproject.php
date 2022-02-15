@@ -32,8 +32,7 @@ if(isset($_POST["eliminaprogetto"])){
 
     $query= "SELECT mediaLink
     FROM mediaprogetto
-    WHERE Progetto_idProgetto = ?
-    ";
+    WHERE Progetto_idProgetto = ?";
 
     include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
@@ -44,32 +43,40 @@ if(isset($_POST["eliminaprogetto"])){
     include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
     $res=mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
+    if (mysqli_num_rows($res) === 1){
 
-    $query= "DELETE FROM progetto WHERE idProgetto = ?";
+        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-    mysqli_stmt_bind_param($stmt, "i", $idprogetto );
+        $query= "DELETE FROM progetto WHERE idProgetto = ?";
 
-    include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
+        mysqli_stmt_bind_param($stmt, "i", $idprogetto );
 
-    if ( mysqli_affected_rows($conn) === 0){
+        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        echo("Errore, riprova più tardi!");
-        header("Refresh:2; url=/~S4750770/www/account/admin/areaadmin.php");
+        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
-    }else{
-            unlink('/chroot/home/S4750770/public_html/'.substr($row['mediaLink'], 11));
-            echo("Progetto eliminato con successo");
-            header("Refresh:2; url=/~S4750770/www/account/admin/vedituttiprogetti.php");
+        if ( mysqli_affected_rows($conn) === 0){
+
+            echo("Errore, riprova più tardi!");
+            header("Refresh:2; url=/~S4750770/www/account/admin/areaadmin.php");
+
+        }else{
+                unlink('/chroot/home/S4750770/public_html/'.substr($row['mediaLink'], 11));
+                echo("Progetto eliminato con successo");
+                header("Refresh:2; url=/~S4750770/www/account/admin/vedituttiprogetti.php");
 
         }
 
+    }else{
+
+        echo("Errore, riprova più tardi!");
+        header("Refresh:2; url=/~S4750770/www/account/admin/areaadmin.php");
+        
+    }
 
 }else{
 

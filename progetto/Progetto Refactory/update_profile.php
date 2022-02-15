@@ -47,33 +47,39 @@ if(isset($_POST["submit"])){
     }
 
 
-    if(!empty($nome) & !empty($cognome) & !empty($email)){
+    if(!empty($nome) && !empty($cognome) && !empty($email)){
 
+        if(filter_var($email, FILTER_VALIDATE_EMAIL )){
 
-        include "/chroot/home/S4750770/public_html/sys/common/checkuserexist.php";
+            include "/chroot/home/S4750770/public_html/sys/common/checkuserexist.php";
 
-        include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
+            include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
-        $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
+            $query= "UPDATE utente set nome = ?, cognome = ?, email = ? , dataNascita = ?, indirizzo = ?, genere = ? where idUtente = ?";
 
-        include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
+            include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-        mysqli_stmt_bind_param($stmt, "ssssssi", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
+            mysqli_stmt_bind_param($stmt, "ssssssi", $nome, $cognome, $email, $datan, $ind, $genere, $_SESSION["uid"] );
 
-        include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+            include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-        include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
+            include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
-        if ( mysqli_affected_rows($conn) === 0){
+            if ( mysqli_affected_rows($conn) === 0 && mysqli_errno($conn)){
 
-            echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/~S4750770/www/account/modificaprofilo.php");
+                echo("Errore, riprova più tardi!");
+                header("Refresh:2; url=/~S4750770/www/account/modificaprofilo.php");
 
+            }else{
+
+                echo("Modifica avvenuta con successo");
+                header("Refresh:2; url=/~S4750770/show_profile.php");
+
+            }
+        
         }else{
-
-            echo("Modifica avvenuta con successo");
-            header("Refresh:2; url=/~S4750770/show_profile.php");
-
+            echo("La mail inserita non è valida, riprova!");
+            header("Refresh:2; url=/~S4750770/www/account/modificaprofilo.php");
         }
 
     }else{

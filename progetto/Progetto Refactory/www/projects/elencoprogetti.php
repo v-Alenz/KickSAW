@@ -9,7 +9,6 @@
     ?>
 </head>
 
-
 <body>
 
 <?php
@@ -35,9 +34,6 @@ include "/chroot/home/S4750770/public_html/sys/projects/loadProgects.php"
         </div>
     </section>
     <noscript>
-        <style type="text/css">
-            .pagecontainer {display:none;}
-        </style>
         <div>
           <h4 class="noscriptmsg"> I tuoi JavaScript sono disabilitati, non potrai accedere a tutte le funzionalita' della pagina! </h4>
         </div>

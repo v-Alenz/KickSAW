@@ -15,7 +15,9 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 //session_start();
 
-if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] === "admin"){
+if(isset($_SESSION['rid'])){
+
+    if($_SESSION['rid'] === "pro" || $_SESSION['rid'] === "admin"){
 
 ?>
 
@@ -48,7 +50,7 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
                     <input type="number" min="1" value="1" step="any" name="obiettivo" class="form-control" placeholder="5"> € </div>
 
                     <div> Data di scadenza:
-                    <input type="datetime-local" name="expire" class="form-control"> </div>
+                    <input type="datetime-local" name="expire" class="form-control"  min="2022-02-17T00:00"> </div>
 
                     <div> <input type="submit" name="submit" value="Crea Progetto" class="btn"> </div>
 
@@ -60,6 +62,12 @@ if(isset($_SESSION['rid']) && $_SESSION["rid"] === "pro" || $_SESSION["rid"] ===
 </div>
 
 <?php
+
+    }else{
+
+        include "/chroot/home/S4750770/public_html/sys/common/error/errorenopro.php";
+
+    }
 
 }else{
 

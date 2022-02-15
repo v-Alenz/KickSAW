@@ -36,8 +36,7 @@ if(isset($_POST["submit"])){
 
         $query = "SELECT starterbits
         FROM saldo
-        WHERE Utente_idUtente = ?
-        ";
+        WHERE Utente_idUtente = ?";
 
         include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
@@ -49,35 +48,44 @@ if(isset($_POST["submit"])){
 
         $result = mysqli_stmt_get_result($stmt);
 
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if (mysqli_num_rows($result) === 1){
 
-        if($row['starterbits'] + $money <= 2000000000 ){
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-            $query= "UPDATE saldo set starterbits = starterbits + ? where Utente_idUtente = ?";
+            if($row['starterbits'] + $money <= 2000000000 ){
 
-            include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
+                $query= "UPDATE saldo set starterbits = starterbits + ? where Utente_idUtente = ?";
 
-            mysqli_stmt_bind_param($stmt, "is", $money, $_SESSION["uid"] );
+                include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
 
-            include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+                mysqli_stmt_bind_param($stmt, "is", $money, $_SESSION["uid"] );
 
-            include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
+                include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
 
-            if ( mysqli_affected_rows($conn) === 0){
+                include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
-                echo("Errore, riprova più tardi!");
-                header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
+                if ( mysqli_affected_rows($conn) === 0){
+
+                    echo("Errore, riprova più tardi!");
+                    header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
+
+                }else{
+
+                    echo("Il tuo conto è stato ricaricato con successo!");
+                    header("Refresh:2; url=/~S4750770/show_profile.php");
+                }
 
             }else{
 
-                echo("Il tuo conto è stato ricaricato con successo!");
-                header("Refresh:2; url=/~S4750770/show_profile.php");
+                echo("Non puoi caricare tutti questi soldi, riprova!");
+                header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
             }
 
         }else{
 
-            echo("Non puoi caricare tutti questi soldi, riprova!");
+            echo("Errore, riprova più tardi!");
             header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
+
         }
 
     }else{

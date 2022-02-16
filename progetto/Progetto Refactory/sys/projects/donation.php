@@ -12,6 +12,8 @@
 <body>
 
 <?php
+
+
 include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 ?>
@@ -23,6 +25,14 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 
 <?php
+
+if(!isset($_POST['idprog']) || !isset($_POST['ammount'])){
+  echo("Errore, riprova piu' tardi!");
+  header("Refresh:2; url=/~S4750770/startSAW.php");
+  echo "</div></div></div></div>";
+  include "/chroot/home/S4750770/public_html/www/common/footer.php";
+  exit();
+}
 
   if(!isset($_SESSION['rid'])){
     echo("Devi essere loggato!");

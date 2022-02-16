@@ -18,6 +18,12 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 if(isset($_SESSION["loggato"])){
 
+    if(!isset($_POST['nome']) || !isset($_POST['idUtente'])){
+      include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+      include "/chroot/home/S4750770/public_html/www/common/footer.php";
+      exit();
+    }
+
     if($_SESSION["rid"] === "admin" ){
 
     ?>
@@ -32,7 +38,7 @@ if(isset($_SESSION["loggato"])){
                 <div class="info">
 
                     <form action="/~S4750770/sys/account/admin/deleteuser.php" method="post">
-                        <div> Sei sicuro di voler eliminare questo utente " numero <?php echo $_POST['idUtente'];?> " ? </div>
+                        <div> Sei sicuro di voler eliminare l'utente "<?php echo $_POST['nome'];?>"?</div>
                         <button type="submit" name="eliminautente"  class="btnsmall"
                         value=<?php echo $_POST['idUtente'] ?>>Elimina Definitivamente</button>
                     </form>

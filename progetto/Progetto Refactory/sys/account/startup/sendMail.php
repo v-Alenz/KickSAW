@@ -1,15 +1,18 @@
 <?php
 
-  //composer require phpmailer/phpmailer -----> PER INSTALLARE
-
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
 
-  //require_once "vendor/autoload.php";
-
-  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/Exception.php';
-  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/PHPMailer.php';
-  require_once 'C:/Users/laura/Desktop/Cittini/mimmi/Uni/SAW/PHPMailer-master/src/SMTP.php';
+  if (file_exists('/path/al/mailer/PHPMailer-master/src/Exception.php') &&
+      file_exists('/path/al/mailer/PHPMailer-master/src/PHPMailer.php') &&
+      file_exists('/path/al/mailer/PHPMailer-master/src/SMTP.php')    ) {
+    require_once '/path/al/mailer/PHPMailer-master/src/Exception.php';
+    require_once '/path/al/mailer/PHPMailer-master/src/PHPMailer.php';
+    require_once '/path/al/mailer/PHPMailer-master/src/SMTP.php';
+  }else{
+    include "/chroot/home/S4750770/public_html/sys/common/error/errore.php";
+    exit();
+  }
 
   if(isset($_SESSION["loggato"])){
 
@@ -37,12 +40,12 @@
     //From email address and name
     $mail->From = $sender['email'];
     $mail->FromName = $sender['nome']." ".$sender['cognome'];
-    
+
     //To address and name
     //$mail->addAddress("recepient1@example.com", "Recepient Name");
 
-   
-      $mail->addAddress($destinatari[$i]['email']); 
+
+      $mail->addAddress($destinatari[$i]['email']);
       //echo $destinatari[$i]['email'];
 
 
@@ -55,11 +58,11 @@
 
     //Send HTML or Plain Text email
     $mail->isHTML(true);
-    
+
     $mail->Subject = "Newsletter StarterPunch! sul progetto ".$_POST['nomeProgetto'];
     $mail->Body =  $_POST['testoMail'];
     //$mail->AltBody = $_POST['testoMail'];
-    
+
 
     try {
         $mail->send();

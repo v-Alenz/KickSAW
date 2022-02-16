@@ -15,6 +15,11 @@
 
   include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
+    if(!isset($_GET['prog'])){
+      include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+      include "/chroot/home/S4750770/public_html/www/common/footer.php";
+      exit();
+    }
 
   include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
@@ -36,20 +41,12 @@
   $result = mysqli_stmt_get_result($stmt);
 
   if (mysqli_num_rows($result) === 0){
-    echo("Errore, riprova piu' tardi");
-    header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
-    echo "</div></div></div></div>";
+    include  "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
     include "/chroot/home/S4750770/public_html/www/common/footer.php";
     exit();
   }
 
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-  if(!$row){
-    include  "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
-    include "/chroot/home/S4750770/public_html/www/common/footer.php";
-    exit();
-  }
 
 ?>
 

@@ -18,6 +18,12 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
 if(isset($_SESSION["loggato"])){
 
+  if(!isset($_POST['nome']) || !isset($_POST['idProgetto'])){
+    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+    include "/chroot/home/S4750770/public_html/www/common/footer.php";
+    exit();
+  }
+
     if($_SESSION["rid"] === "admin" ){
 
     ?>

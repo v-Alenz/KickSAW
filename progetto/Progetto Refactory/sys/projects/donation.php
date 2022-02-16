@@ -46,6 +46,14 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
 
   $result = mysqli_stmt_get_result($stmt);
 
+  if (mysqli_num_rows($result) === 0){
+    echo("Errore, riprova piu' tardi");
+    header("Refresh:2; url=/~S4750770/www/projects/dettagliprogetto.php?prog=".$_POST['idprog']);
+    echo "</div></div></div></div>";
+    include "/chroot/home/S4750770/public_html/www/common/footer.php";
+    exit();
+  }
+
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   if($row['starterbits'] - $_POST['ammount'] >= 0){
@@ -69,7 +77,6 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
     $result = mysqli_stmt_get_result($stmt);
 
     if(mysqli_num_rows($result) === 0){
-      //echo "qui ci arrivo";
 
       include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
@@ -116,6 +123,9 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
       if ( mysqli_commit($conn) === false){
         echo("Errore, riprova più tardi!");
         header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
+        echo "</div></div></div></div>";
+        include "/chroot/home/S4750770/public_html/www/common/footer.php";
+        exit();
       }
 
 
@@ -168,12 +178,18 @@ include "/chroot/home/S4750770/public_html/www/common/navbar.php";
         if ( mysqli_commit($conn) === false){
           echo("Errore, riprova più tardi!");
           header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
+          echo "</div></div></div></div>";
+          include "/chroot/home/S4750770/public_html/www/common/footer.php";
+          exit();
         }
 
     }
   }else{
       echo("Saldo insufficiente :( ");
       header("Refresh:2; url=/~S4750770/www/account/caricosaldo.php");
+      echo "</div></div></div></div>";
+      include "/chroot/home/S4750770/public_html/www/common/footer.php";
+      exit();
   }
 
   echo("Grazie per la donazione! :) ");

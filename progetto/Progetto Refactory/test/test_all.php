@@ -14,7 +14,7 @@ require 'utils.php';
 //$baseurl =  'http://localhost/....';
 
 // remote URL
-$baseurl =  'https://saw21.dibris.unige.it/~S4750770/StartSAW.php';
+$baseurl =  'https://saw21.dibris.unige.it/~S4750770';
 
 
 echo "[+] Testing Registration - Login - Show Profile\n";

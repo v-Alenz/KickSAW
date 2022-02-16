@@ -47,6 +47,8 @@ if(isset($_POST["submit"])){
 
                     include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
+                    mysqli_autocommit($conn, FALSE);
+
                     $query= "INSERT INTO utente (nome, cognome, email, password) values ( ?, ?, ?, ?)";
 
                     include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
@@ -57,17 +59,35 @@ if(isset($_POST["submit"])){
 
                     include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
-                    if ( mysqli_affected_rows($conn) === 0){
+                    $query= "INSERT INTO saldo (Utente_idUtente)
+                             VALUES ((SELECT idUtente FROM utente WHERE email = ?))";
 
+                    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
+
+                    mysqli_stmt_bind_param($stmt, "s", $email);
+
+                    include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+
+                    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
+
+                    $query= "INSERT INTO ruolo (Utente_idUtente)
+                             VALUES ((SELECT idUtente FROM utente WHERE email = ?))";
+
+                    include "/chroot/home/S4750770/public_html/sys/common/db/controlpreparequery.php";
+
+                    mysqli_stmt_bind_param($stmt, "s", $email);
+
+                    include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
+
+                    include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
+
+                    if (mysqli_commit($conn) == FALSE){
                         echo("Errore, riprova più tardi!");
                         header("Refresh:2; url=/~S4750770/startSAW.php");
 
                     }else{
-
-                        include "/chroot/home/S4750770/public_html/sys/userdetails.php";
                         echo("Registrazione avvenuta con successo");
                         header("Refresh:2; url=/~S4750770/startSAW.php");
-
                     }
 
                 }else{

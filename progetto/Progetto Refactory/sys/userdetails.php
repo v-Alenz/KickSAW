@@ -1,7 +1,5 @@
 <?php
 
-ini_set('display_errors', false);
-ini_set('error_log', 'php.log');
 
 if ( !empty($email)){
   //ricavo l'id dell'utente appena aggiunto/////////////////////////////////////

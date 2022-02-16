@@ -64,10 +64,10 @@
       }
 
       // Allow certain file formats
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jfif"){
         //echo "Sorry, only JPG, JPEG, PNG files are allowed.";
         //$uploadOk = 0;
-        echo "Sono ammessi solo file JPG, JPEG o PNG, riprova!";
+        echo "Sono ammessi solo file JPG, JFIF, JPEG o PNG, riprova!";
         include "/chroot/home/S4750770/public_html/sys/common/error/closeerrorproj.php";
       }
 
@@ -107,14 +107,6 @@
 
           include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
           include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
-          //echo 'ho eseguito la query<br>';
-
-          if ( mysqli_affected_rows($conn) === 0){
-
-            echo("Errore, riprova più tardi!");
-            header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
-
-        }else{
 
           //imposto la soglia da raggiungere
 // NOTA BENE: Siccome la chiave per progetti (IdProgetto) e' autogenerato e ignoro il suo valore
@@ -141,7 +133,7 @@
           include "/chroot/home/S4750770/public_html/sys/common/db/controlbindquery.php";
           include "/chroot/home/S4750770/public_html/sys/common/db/executequery.php";
 
-        }if ( mysqli_affected_rows($conn) === 0){
+        if (mysqli_commit($conn) == FALSE){
 
           echo("Errore, riprova più tardi!");
           header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
@@ -149,10 +141,7 @@
         }else{
           echo("Inserimento del progetto avvenuta con successo");
           header("Refresh:2; url=/~S4750770/www/account/startup/tuttiprogetti.php");
-
         }
-
-        mysqli_commit($conn);
 
         }else{
           // campo con valori sballati
@@ -165,8 +154,7 @@
         echo("Mancano dei dati, riprova!");
         header("Refresh:2; url=/~S4750770/www/account/startup/creaprogetto.php");
       }
-    }
-    else{
+    }else{
       // ho fatto il furbo accedendo alla pagina manualmente
       echo("Errore, riprova più tardi!");
       header("Refresh:2; url=/~S4750770/startSAW.php");

@@ -18,7 +18,7 @@
 
   include  "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 
-  $query = "SELECT progetto.nome, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza, mediaLink
+  $query = "SELECT progetto.nome AS nomeP, introduzione, descrizione, obiettivo, sogliaAttuale, utente.nome, cognome, dataScadenza, mediaLink
             FROM progetto
             JOIN sogliafinanziamento  on progetto.idProgetto = sogliafinanziamento.Progetto_idProgetto
             JOIN utente ON  progetto.Utente_idUtente = utente.idUtente
@@ -35,7 +35,15 @@
 
   $result = mysqli_stmt_get_result($stmt);
 
-  $row = mysqli_fetch_all($result);
+  if (mysqli_num_rows($result) === 0){
+    echo("Errore, riprova piu' tardi");
+    header("Refresh:2; url=/~S4750770/www/projects/elencoprogetti.php");
+    echo "</div></div></div></div>";
+    include "/chroot/home/S4750770/public_html/www/common/footer.php";
+    exit();
+  }
+
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
   if(!$row){
     include  "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
@@ -49,28 +57,28 @@
       <div class="small-container single-product ">
         <h1 class="head_title">
           <?php
-            echo $row[0][0];
+            echo $row['nomeP'];
           ?>
         </h1>
         <h2 class="author">
             <?php
-              echo "by<br>".$row[0][5]." ".$row[0][6];
+              echo "by<br>".$row['nome']." ".$row['cognome'];
             ?>
         </h2>
           <div class="row">
               <div>
-                  <?php echo '<br><img src="'.$row[0][8].'" alt="immagine progetto" class="immagineprogetto">' ?>
+                  <?php echo '<br><img src="'.$row['mediaLink'].'" alt="immagine progetto" class="immagineprogetto">' ?>
               </div>
               <div class="col-2">
                   <br>
                   <h4>Soldi raccolti :
                       <?php
-                        echo $row[0][4];
+                        echo $row['sogliaAttuale'];
                       ?>
                   €</h4>
                   <h4>Su un obiettivo di:
                     <?php
-                      echo $row[0][3];
+                      echo $row['obiettivo'];
                     ?>
                   €</h4>
                   <form action="/~S4750770/www/projects/donazione.php" method="post">
@@ -81,7 +89,7 @@
                   <h4>
                     Scade il:
                     <?php
-                        echo $row[0][7]
+                        echo $row['dataScadenza']
                     ?>
                   </h4>
                   <br>
@@ -97,12 +105,12 @@
       <div class="small-container single-product">
           <h4>
             <?php
-              echo $row[0][1]
+              echo $row['introduzione']
             ?>
           </h4>
           <p>
             <?php
-              echo $row[0][2]
+              echo $row['descrizione']
             ?>
           </p>
           <br><br><br><br>

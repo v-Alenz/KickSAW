@@ -49,9 +49,9 @@ include "/chroot/home/S4750770/public_html/sys/projects/loadProgects.php"
 
             }else{
               while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
-                echo '<div name="progects" class="col-4">';
-                echo '    <a href="/~S4750770/www/projects/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto">';
-                echo '    <h3>'.$row["nomeP"].'</h3>';
+                echo '<div name="progects" class="col-4 progBg">';
+                echo '    <a href="/~S4750770/www/projects/dettagliprogetto.php?prog='.$row["idProgetto"].'"><img src ="'.$row["mediaLink"].'" alt="Immagine progetto" class="progPrew">';
+                echo '    <h3 class="progPrew">'.$row["nomeP"].'</h3>';
                 echo '    <p class="author">'.$row["nome"].' '.$row["cognome"].'</p></a>';
                 echo '</div>';
               }

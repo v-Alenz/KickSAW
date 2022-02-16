@@ -32,7 +32,7 @@ if(isset($_SESSION["loggato"])){
                 <div class="info">
 
                     <form action="/~S4750770/sys/account/admin/deleteproject.php" method="post">
-                        <div> Sei sicuro di voler eliminare questo progetto " numero <?php echo $_POST['idProgetto'];?> " ? </div>
+                        <div> Sei sicuro di voler eliminare il progetto "<?php echo $_POST['nome'];?>"? </div>
                         <button type="submit" name="eliminaprogetto"  class="btnsmall"
                         value=<?php echo $_POST['idProgetto'] ?>>Elimina Definitivamente</button>
                     </form>

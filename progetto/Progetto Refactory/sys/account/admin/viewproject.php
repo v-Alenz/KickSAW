@@ -40,6 +40,7 @@ if(isset($_SESSION["loggato"])){
                     echo '<td><button type="submit" name="idProgetto" class="btnsmall" value="';
                     echo $row['idProgetto'];
                     echo '" class="btn-link">Elimina progetto</button></td>';
+                    echo '<input type="hidden" name="nome" value="'.$row['pnome'].'">';
                 echo '</form>';
             echo"</tr>";
 

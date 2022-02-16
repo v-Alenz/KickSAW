@@ -91,7 +91,7 @@
 
         include "/chroot/home/S4750770/public_html/sys/account/startup/verificatitolo.php";
 
-        if(is_numeric($obj) && strlen($titolo) < 100 && strlen($descr) < 1000 && strlen($descr) < 10000 && $obj>0){
+        if(is_numeric($obj) && strlen($titolo) < 100 && strlen($intro) < 1000 && strlen($descr) < 10000 && $obj>0){
 
           include "/chroot/home/S4750770/public_html/sys/common/db/conn/connDbUtente.php";
 

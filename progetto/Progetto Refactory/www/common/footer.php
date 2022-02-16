@@ -24,7 +24,7 @@
                 <h3> Promuovi il tuo progetto </h3>
                 <ul>
                     <li><a href="/~S4750770/www/account/accountpremium.php">Ottieni account premium</a></li>
-                    <li>Crea progetti</li>
+                    <li><a href="/~S4750770/www/account/startup/creaprogetto.php">Crea progetti</a></li>
                 </ul>
             </div>
 

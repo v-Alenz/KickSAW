@@ -71,7 +71,18 @@ if(isset($_SESSION['rid'])){
 
 }else{
 
-    include "/chroot/home/S4750770/public_html/sys/common/error/errora.php";
+    echo'<div class="account-page">';
+    echo'<div class="container">';
+    echo'<div class="col-2">';
+    echo'<div class="form-container msg">';
+
+    echo("Devi essere loggato e avere un account premium!");
+    header("Refresh:2; url=/~S4750770/formlogin.php");
+
+    echo'</div>';
+    echo'</div>';
+    echo'</div>';
+    echo'</div>';
 
 }
 

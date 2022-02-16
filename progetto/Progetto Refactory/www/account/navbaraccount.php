@@ -8,6 +8,7 @@
           <li><a href="/~S4750770/www/account/modificapass.php">Modifica password</a></li>
           <li><a href="/~S4750770/www/account/caricosaldo.php">Ricarica saldo</a></li>
           <li><a href="/~S4750770/www/account/accountpremium.php">Account premium</a></li>
+          <li><a href="/~S4750770/www/account/cronologiadonazioni.php">Cronologia donazioni</a></li>
 
           <?php
 
